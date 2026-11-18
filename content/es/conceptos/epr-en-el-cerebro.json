@@ -1,0 +1,114 @@
+{
+  "id": "epr-en-el-cerebro",
+  "familia_id": "lo-medido",
+  "orden": 4,
+  "simbolo": "EPR",
+  "titulo": "«La paradoja EPR en el cerebro» y por qué no es una prueba de Bell",
+  "resumen": "El artículo de 1994 sobre el potencial transferido se titula «The Einstein-Podolsky-Rosen paradox in the brain». Grinberg y sus coautores lo presentan como un posible caso de no localidad cuántica entre cerebros, pero ningún estudio hace una prueba de Bell, y una revisión de 2016 admite que su propio diseño no distingue lo clásico de lo no local.",
+  "idea": "Grinberg y sus coautores propusieron leer el potencial transferido como una correlación EPR; ningún estudio lo ha puesto a prueba con una prueba de Bell.",
+  "respaldo": 1,
+  "propone": {
+    "intro": "Esta ficha trata solo de la interpretación. El experimento está en «El potencial transferido».",
+    "pasos": [
+      {
+        "titulo": "El título lo anuncia",
+        "texto": "El artículo de 1994 se titula «La paradoja EPR en el cerebro»; según su resumen, buscaba verificar si el cerebro tiene un componente cuántico macroscópico."
+      },
+      {
+        "titulo": "Dos cerebros que interactuaron",
+        "texto": "Según Grinberg y sus coautores, el potencial transferido sería no localidad cuántica macroscópica: dos cerebros que interactuaron seguirían correlacionados aunque estén separados."
+      },
+      {
+        "titulo": "De las partículas a los cerebros",
+        "texto": "Sería llevar a la escala de dos cerebros una idea que la física formula para partículas. Es una extrapolación que proponen los autores; no hay prueba de que valga a esa escala."
+      }
+    ]
+  },
+  "se_sabe": [
+    {
+      "texto": "Ninguno de los estudios del potencial transferido hace una prueba de tipo Bell.",
+      "refs": [
+        "P11",
+        "S10"
+      ]
+    },
+    {
+      "texto": "La revisión de 2016 de Giroldini, Tressoldi y otros admite que su propio diseño no distingue entre una explicación clásica y una no local.",
+      "refs": [
+        "S10"
+      ]
+    },
+    {
+      "texto": "El artículo se publicó en Physics Essays, revista de física marginal con revisión por pares solo nominal; uno de sus coautores, Goswami, defiende la conciencia cuántica.",
+      "refs": [
+        "P11"
+      ]
+    }
+  ],
+  "disputa": [
+    {
+      "titulo": "Falta la prueba que decidiría la cuestión",
+      "texto": "Sin una prueba de tipo Bell no se puede decir si la supuesta correlación es no local o de otra clase. La revisión de 2016 reconoce que su propio diseño no distingue entre lo clásico y lo no local.",
+      "refs": [
+        "P11",
+        "S10"
+      ]
+    },
+    {
+      "titulo": "Nota del equipo: Bell y la no comunicación",
+      "texto": "Notas nuestras, que no vienen de estas fuentes: una prueba de Bell es la que permitiría distinguir una correlación no local de una clásica, y el teorema de no comunicación impide transmitir señales mediante el entrelazamiento.",
+      "refs": []
+    },
+    {
+      "titulo": "Lo que habría que explicar está en disputa",
+      "texto": "Antes de interpretarlo, queda saber si el potencial transferido existe: está en disputa y las réplicas son mixtas. Lo detalla la ficha del balance de las réplicas.",
+      "refs": []
+    }
+  ],
+  "detalles": [
+    {
+      "titulo": "Bohm, Pribram y Goswami",
+      "texto": "Contexto de nuestra investigación, no de la fuente: la teoría sintérgica (1981-83) es contemporánea de «Wholeness and the Implicate Order» de Bohm (1980) y del modelo holonómico de Pribram, y no deriva de ellos. Goswami, coautor del artículo de 1994 (esto sí consta en P11), publicó en 1993 un libro sobre el universo consciente, en paralelo.",
+      "refs": [
+        "P11"
+      ]
+    }
+  ],
+  "puntos_clave": [
+    "Especulativo: la lectura EPR solo la sostienen Grinberg y sus coautores, y ningún estudio hace una prueba de tipo Bell.",
+    "Según los autores, el potencial transferido sería no localidad cuántica macroscópica entre dos cerebros que interactuaron.",
+    "La revisión de 2016 admite que su propio diseño no distingue lo clásico de lo no local."
+  ],
+  "fuentes": [
+    {
+      "ref": "P11",
+      "tipo": "primaria",
+      "titulo": "The Einstein-Podolsky-Rosen paradox in the brain: the transferred potential. Physics Essays 7(4): 422-428",
+      "autor": "Grinberg-Zylberbaum, Delaflor, Attie y Goswami",
+      "anio": 1994,
+      "url": "https://www.ingentaconnect.com/contentone/pe/pe/1994/00000007/00000004/art00006",
+      "nota": "DOI discrepante: 10.4006/1.3029159 frente a 10.4006/1.3029112. Solo hemos leído el resumen."
+    },
+    {
+      "ref": "S10",
+      "tipo": "contexto",
+      "titulo": "EEG correlates of social interaction at distance. F1000Research 4: 457",
+      "autor": "Giroldini, Tressoldi y otros",
+      "anio": 2016,
+      "url": "https://f1000research.com/articles/4-457",
+      "nota": "Revisión de 29 estudios, no metaanalizables. Los revisores señalan que falta corrección por comparaciones múltiples."
+    }
+  ],
+  "enlaces": [
+    {
+      "id": "potencial-transferido",
+      "rotulo": "El potencial transferido: el experimento"
+    },
+    {
+      "id": "replicas-del-potencial-transferido",
+      "rotulo": "¿Se replicó? El balance de las réplicas"
+    }
+  ],
+  "maquina": "epr-en-el-cerebro",
+  "reel": "epr-en-el-cerebro"
+}

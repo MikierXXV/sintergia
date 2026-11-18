@@ -1,0 +1,57 @@
+{
+  "mecanica": "diagrama",
+  "tipo": "comparar",
+  "parametros": {
+    "familia_id": "lo-medido",
+    "proporcion": [2.3333, 0.8],
+    "alternativa": "Tres pasos. Uno: se registran los patrones cerebrales de dos personas, el sujeto A y el sujeto B, mientras se comunican. Dos: según Grinberg y Ramos, hay una fase en la que se comunican sin ningún estímulo sensorial entre ellos. Tres: en esa fase, los patrones de A y de B se parecerían más entre sí. Las dos trazas, lo registrado, van en trazo continuo; el parecido entre ellas, lo que proponen los autores, en discontinuo. El control «Qué muestra el registro» cambia ese parecido por su ausencia: lo esperable si no hubiera efecto. Es un esquema: no son datos del artículo.",
+    "resolucion": "Grinberg y Ramos dijeron que los patrones de dos personas se parecían más mientras se comunicaban sin estímulos sensoriales; no hemos encontrado ninguna réplica directa.",
+    "elementos": [
+      { "id": "a", "x": 22, "y": 22, "etiqueta": "Sujeto A", "sub": "se registra", "movil": [24, 22] },
+      { "id": "b", "x": 78, "y": 22, "etiqueta": "Sujeto B", "sub": "se registra", "movil": [24, 82] },
+      { "id": "fase", "tipo": "ficha", "x": 50, "y": 22, "etiqueta": "Sin estímulos sensoriales", "oculto": true, "movil": [24, 52] },
+      { "id": "trazaA", "tipo": "traza", "x": 22, "y": 74, "w": 40, "etiqueta": "Patrón de A", "sub": "lo registrado", "rol": "dato", "forma": "respuesta", "oculto": true, "movil": [78, 22] },
+      { "id": "trazaB", "tipo": "traza", "x": 78, "y": 74, "w": 40, "etiqueta": "Patrón de B", "sub": "lo registrado", "rol": "dato", "forma": "respuesta", "oculto": true, "movil": [78, 82] },
+      { "id": "parecido", "tipo": "ficha", "x": 50, "y": 74, "etiqueta": "¿Más parecidos?", "sub": "según Grinberg y Ramos", "rol": "propuesta", "oculto": true, "movil": [78, 52] }
+    ],
+    "enlaces": [
+      { "de": "a", "a": "b", "tipo": "doble", "estilo": "punteado" }
+    ],
+    "pasos": [
+      {
+        "texto": "Según el título del artículo, se estudian patrones de correlación entre hemisferios cerebrales mientras dos personas se comunican.",
+        "activos": ["a", "b"],
+        "muestra": ["trazaA", "trazaB"]
+      },
+      {
+        "texto": "Grinberg y Ramos describirían una fase en la que los dos sujetos se comunican sin ningún estímulo sensorial entre ellos.",
+        "muestra": ["fase"],
+        "activos": ["a", "b", "fase"],
+        "mensajes": [{ "de": "a", "a": "b", "etiqueta": "comunicación" }]
+      },
+      {
+        "texto": "Según los autores, en esa fase los patrones de A y de B se parecerían más entre sí que fuera de ella.",
+        "muestra": ["parecido"],
+        "activos": ["trazaA", "trazaB", "parecido"]
+      }
+    ],
+    "controles": [
+      {
+        "id": "queMuestraElRegistro",
+        "etiqueta": "Qué muestra el registro",
+        "opciones": [
+          { "id": "articulo", "etiqueta": "Según el artículo" },
+          {
+            "id": "nulo",
+            "etiqueta": "Sin efecto",
+            "parche": {
+              "elementos": [
+                { "id": "parecido", "etiqueta": "Sin parecido mayor", "sub": "lo esperable si no hay efecto" }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

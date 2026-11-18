@@ -1,0 +1,96 @@
+{
+  "id": "distorsion-del-espacio-tiempo",
+  "familia_id": "el-campo",
+  "orden": 4,
+  "simbolo": "DIS",
+  "titulo": "Distorsión del espacio-tiempo",
+  "resumen": "Según Grinberg, cada cambio neuronal sería una microdistorsión del lattice, y la suma de muchas, una macrodistorsión. Usa el lenguaje de la relatividad general sin su formalismo, nadie lo ha medido y no hay estudios independientes que lo hayan puesto a prueba.",
+  "idea": "Para Grinberg, cada cambio neuronal sería una microdistorsión del lattice, y muchas juntas darían una macrodistorsión.",
+  "respaldo": 1,
+  "propone": {
+    "pasos": [
+      {
+        "titulo": "Un cambio neuronal",
+        "texto": "Según Grinberg, cada cambio en la actividad de una neurona tendría un efecto sobre el lattice."
+      },
+      {
+        "titulo": "Una microdistorsión",
+        "texto": "Ese efecto sería una microdistorsión: una deformación mínima de la retícula."
+      },
+      {
+        "titulo": "La suma, una macrodistorsión",
+        "texto": "Al sumarse las de muchas neuronas darían una macrodistorsión del lattice."
+      }
+    ]
+  },
+  "se_sabe": [
+    {
+      "texto": "No hay estudios independientes que lo hayan puesto a prueba.",
+      "refs": []
+    },
+    {
+      "texto": "La idea figura en el artículo póstumo de 1997 en el Journal of Mind and Behavior, revista con revisión por pares y abierta a la teoría.",
+      "refs": [
+        "P12"
+      ]
+    },
+    {
+      "texto": "La Psi Encyclopedia, enciclopedia del campo parapsicológico, dice que las ideas de Grinberg «never received much academic attention» (nunca recibieron mucha atención académica).",
+      "refs": [
+        "S13"
+      ]
+    }
+  ],
+  "disputa": [
+    {
+      "titulo": "Un lenguaje prestado",
+      "texto": "Hablar de «distorsión del espacio-tiempo» evoca la relatividad general, pero en lo que hemos leído no hay ecuaciones ni magnitudes con las que calcular nada.",
+      "refs": [
+        "P12",
+        "S13"
+      ]
+    },
+    {
+      "titulo": "Nada que medir",
+      "texto": "No se indica cómo detectar una microdistorsión del lattice ni cuánto valdría, de modo que ningún resultado la confirmaría ni la refutaría.",
+      "refs": [
+        "P12"
+      ]
+    }
+  ],
+  "puntos_clave": [
+    "Especulativo: solo lo sostiene el propio Grinberg y no hay estudios independientes que lo pongan a prueba.",
+    "Según Grinberg, cada cambio neuronal sería una microdistorsión del lattice, y la suma de muchas, una macrodistorsión.",
+    "Usa el lenguaje de la relatividad general sin su formalismo."
+  ],
+  "fuentes": [
+    {
+      "ref": "P12",
+      "tipo": "primaria",
+      "titulo": "Ideas about a new psychophysiology of consciousness: the syntergic theory. Journal of Mind and Behavior 18(4): 443-458",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1997,
+      "url": "https://philpapers.org/rec/GRIIAA",
+      "nota": "Póstumo. Ficha y resumen verificados; no hemos leído el texto completo."
+    },
+    {
+      "ref": "S13",
+      "tipo": "contexto",
+      "titulo": "Entrada «Jacobo Grinberg-Zylberbaum» de la Psi Encyclopedia (SPR)",
+      "autor": "Society for Psychical Research",
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
+      "nota": "Enciclopedia del campo parapsicológico, no revisada por pares. Tiene errores de paginación."
+    }
+  ],
+  "enlaces": [
+    {
+      "id": "lattice",
+      "rotulo": "El lattice: la retícula que Grinberg supone en el espacio"
+    },
+    {
+      "id": "campo-neuronal",
+      "rotulo": "El campo neuronal"
+    }
+  ],
+  "maquina": "distorsion-del-espacio-tiempo"
+}

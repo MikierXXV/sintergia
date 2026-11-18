@@ -1,0 +1,89 @@
+{
+  "id": "vision-extraocular",
+  "familia_id": "lo-medido",
+  "orden": 5,
+  "simbolo": "VE",
+  "titulo": "Visión extraocular: lo que faltaría controlar",
+  "resumen": "Solo tenemos la referencia del artículo, no su contenido. Grinberg describió en 1983 a niños con los ojos vendados que «percibirían» imágenes al tocarlas; no hay respaldo independiente y no consta ningún control de fugas sensoriales.",
+  "idea": "Grinberg describió a niños vendados que «percibirían» imágenes al tocarlas; faltaría saber qué controles se hicieron.",
+  "respaldo": 1,
+  "propone": {
+    "intro": "Solo tenemos la referencia del artículo, no su contenido. Lo que sigue es lo que dice la ficha, más lo que haría falta ver.",
+    "pasos": [
+      {
+        "titulo": "Niños con los ojos vendados",
+        "texto": "Según la referencia del artículo de 1983, niños con los ojos vendados «percibirían» imágenes al tocarlas. Es la visión «extraocular» del título."
+      },
+      {
+        "titulo": "Lo que haría falta descartar",
+        "texto": "Para creerlo habría que descartar que vieran o notaran algo por otra vía: una venda, un procedimiento ciego, un juez ciego, un registro previo de las respuestas y un control de fugas sensoriales."
+      },
+      {
+        "titulo": "Lo que consta de esos controles",
+        "texto": "De esos cinco controles, solo la venda está descrita en la referencia. De los otros cuatro no consta nada en lo que hemos podido leer, lo que no es lo mismo que decir que no se hicieran."
+      }
+    ]
+  },
+  "se_sabe": [
+    {
+      "texto": "Solo se conoce la ficha bibliográfica del artículo, publicado en Psychoenergetics, una revista parapsicológica cuya revisión por pares es dudosa.",
+      "refs": ["P6"]
+    },
+    {
+      "texto": "No hay estudios independientes que lo hayan puesto a prueba.",
+      "refs": ["P6"]
+    },
+    {
+      "texto": "La Psi Encyclopedia, que es del campo parapsicológico, dice de las ideas de Grinberg en general que «never received much academic attention» (nunca recibieron mucha atención académica).",
+      "refs": ["S13"]
+    }
+  ],
+  "disputa": [
+    {
+      "titulo": "No sabemos lo que describe el artículo",
+      "texto": "La descripción viene de su ficha, sin el texto. Los controles de abajo son los que haría falta ver, no una lista de lo que el artículo hizo ni de lo que dejó de hacer.",
+      "refs": ["P6"]
+    },
+    {
+      "titulo": "Controles que no constan",
+      "texto": "El control de fugas sensoriales no está documentado en lo que hemos podido leer, y tampoco constan un procedimiento ciego, un juez ciego ni un registro previo de las respuestas.",
+      "refs": ["P6"]
+    },
+    {
+      "titulo": "Sin respaldo independiente",
+      "texto": "Nadie más ha publicado, que sepamos, una comprobación de estos resultados. Sin ella no hay modo de saber si se sostienen.",
+      "refs": ["P6"]
+    }
+  ],
+  "puntos_clave": [
+    "Especulativo: solo tenemos la referencia del artículo, y ningún estudio independiente lo respalda.",
+    "Según la referencia, niños con los ojos vendados «percibirían» imágenes al tocarlas.",
+    "De los cinco controles que haría falta ver, solo la venda está descrita en la referencia."
+  ],
+  "fuentes": [
+    {
+      "ref": "P6",
+      "tipo": "primaria",
+      "titulo": "Extraocular vision. Psychoenergetics 5: 141-158",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1983,
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
+      "nota": "Solo la ficha bibliográfica, tomada de la lista de la Psi Encyclopedia. No hemos leído el artículo."
+    },
+    {
+      "ref": "S13",
+      "tipo": "contexto",
+      "titulo": "Entrada «Jacobo Grinberg-Zylberbaum» de la Psi Encyclopedia (SPR)",
+      "autor": "Society for Psychical Research",
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
+      "nota": "Enciclopedia del campo parapsicológico, no revisada por pares. Tiene errores de paginación."
+    }
+  ],
+  "enlaces": [
+    {
+      "id": "que-es-la-teoria-sintergica",
+      "rotulo": "Qué es la teoría sintérgica y cómo leer este sitio"
+    }
+  ],
+  "maquina": "vision-extraocular"
+}

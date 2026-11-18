@@ -1,0 +1,27 @@
+{
+  "mecanica": "ondas",
+  "tipo": "simulador",
+  "parametros": {
+    "modo": "interferencia",
+    "rotulo_a": "Campo neuronal",
+    "rotulo_b": "Lattice",
+    "rotulo_patron": "Lo que percibimos, según esta tesis",
+    "alternativa": "Dos frentes de onda circulares, una fuente es el campo neuronal y otra el lattice. Paso uno: el mecanismo, que según Grinberg es la interferencia de las dos ondas. Paso dos: al superponerse forman un patrón de franjas. Paso tres: según la Psi Encyclopedia, los objetos y los colores que percibimos serían ese patrón. Puedes cambiar la separación entre fuentes. La interferencia es la habitual entre ondas; que sea lo percibido es una tesis filosófica. Es un esquema de una idea, no de un fenómeno medido.",
+    "resolucion": "Según la Psi Encyclopedia, Grinberg propondría que lo que percibimos sería el patrón de interferencia entre campo neuronal y lattice; es una tesis filosófica, no comprobable.",
+    "separacion": "Separación entre las fuentes",
+    "pasos": [
+      {
+        "texto": "Según Grinberg, el campo neuronal y el lattice interferirían, como dos ondas. El mecanismo está en la ficha del patrón de interferencia.",
+        "fase": 0
+      },
+      {
+        "texto": "Al superponerse, las ondas forman un patrón de franjas.",
+        "fase": 2
+      },
+      {
+        "texto": "Según la Psi Encyclopedia, objetos y colores serían producto de ese patrón: lo percibido no estaría fuera, sino en la interferencia.",
+        "fase": 2
+      }
+    ]
+  }
+}

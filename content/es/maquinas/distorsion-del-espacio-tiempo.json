@@ -1,0 +1,26 @@
+{
+  "mecanica": "reticula-3d",
+  "tipo": "espacial",
+  "parametros": {
+    "modo": "deformacion",
+    "justificacion_3d": "La idea es una retícula espacial que se deforma: se entiende al girarla, porque la deformación solo se ve de lado.",
+    "alternativa": "La misma malla tridimensional de puntos, ahora con deformaciones. Paso uno: según Grinberg, cada cambio neuronal afectaría al lattice. Paso dos: sería una microdistorsión, una pequeña abolladura en un punto de la malla. Paso tres: la suma de muchas microdistorsiones daría una macrodistorsión, una deformación grande. Puedes girar la malla y con el control «Microdistorsiones que se suman» elegir cuántas hay. Las unidades y la forma no son medidas. Es un esquema de una idea, no de un fenómeno medido.",
+    "resolucion": "Para Grinberg, cada cambio neuronal sería una microdistorsión del lattice y la suma de muchas, una macrodistorsión; es una idea sin formalismo ni medida.",
+    "giro": "Girar la retícula",
+    "suma": "Microdistorsiones que se suman",
+    "pasos": [
+      {
+        "texto": "Según Grinberg, cada cambio en la actividad de una neurona tendría un efecto sobre el lattice.",
+        "distorsiones": 0
+      },
+      {
+        "texto": "Ese efecto sería una microdistorsión: una deformación mínima de la retícula, en un solo punto.",
+        "distorsiones": 1
+      },
+      {
+        "texto": "Al sumarse las de muchas neuronas darían una macrodistorsión. Mueve el control para ver cómo se acumulan.",
+        "distorsiones": 12
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "mecanica": "diagrama",
+  "tipo": "estructura",
+  "parametros": {
+    "familia_id": "el-campo",
+    "proporcion": [2.3333, 0.8],
+    "alternativa": "Tres capas en cadena. Paso uno: las neuronas interactúan entre sí. Paso dos: según Grinberg, todas esas interacciones juntas darían lugar a algo nuevo. Paso tres: ese algo sería un campo neuronal, que Grinberg no concreta: no dice qué campo físico sería. Las neuronas y sus interacciones van en trazo continuo; el campo, que es una propuesta, en discontinuo. El control «Qué hay» cambia el campo por su ausencia: lo esperable si no hubiera campo, solo neuronas interactuando. Es un esquema de una idea, no de algo medido.",
+    "resolucion": "Grinberg propone que de las interacciones de todas las neuronas surgiría un campo neuronal; no dice qué campo físico sería y nadie lo ha medido como tal.",
+    "elementos": [
+      { "id": "neuronas", "x": 14, "y": 50, "etiqueta": "Neuronas", "sub": "actividad de cada una" },
+      { "id": "interacciones", "x": 50, "y": 50, "etiqueta": "Interacciones", "sub": "todas a la vez", "oculto": true },
+      { "id": "campo", "x": 86, "y": 50, "etiqueta": "Campo neuronal", "sub": "según Grinberg", "rol": "propuesta", "oculto": true }
+    ],
+    "enlaces": [
+      { "de": "neuronas", "a": "interacciones", "tipo": "doble", "oculto": true },
+      { "de": "interacciones", "a": "campo", "tipo": "flecha", "estilo": "punteado", "oculto": true }
+    ],
+    "pasos": [
+      {
+        "texto": "Su punto de partida sería la actividad de las neuronas, que interactúan entre sí.",
+        "activos": ["neuronas"]
+      },
+      {
+        "texto": "Según Grinberg, esas interacciones, tomadas todas a la vez, darían lugar a algo nuevo.",
+        "muestra": ["interacciones", "neuronas>interacciones"],
+        "activos": ["interacciones"]
+      },
+      {
+        "texto": "Ese algo sería el campo neuronal. Grinberg no dice qué campo físico sería: no se puede medir ni descartar.",
+        "muestra": ["campo", "interacciones>campo"],
+        "activos": ["campo"],
+        "mensajes": [{ "de": "interacciones", "a": "campo", "etiqueta": "surgiría" }]
+      }
+    ],
+    "controles": [
+      {
+        "id": "queHay",
+        "etiqueta": "Qué hay",
+        "opciones": [
+          { "id": "grinberg", "etiqueta": "Según Grinberg" },
+          {
+            "id": "nulo",
+            "etiqueta": "Sin campo",
+            "parche": {
+              "elementos": [
+                { "id": "campo", "etiqueta": "Sin campo", "sub": "solo neuronas interactuando" }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "mecanica": "ondas",
+  "tipo": "simulador",
+  "parametros": {
+    "modo": "interferencia",
+    "rotulo_a": "Campo neuronal",
+    "rotulo_b": "Lattice",
+    "rotulo_patron": "Patrón de interferencia",
+    "alternativa": "Dos frentes de onda circulares que se propagan desde dos fuentes: una es el campo neuronal y otra el lattice. Paso uno: son dos ondas que se encuentran. Paso dos: al superponerse se forma un patrón de franjas donde las ondas se suman y donde se anulan. Paso tres: según Grinberg, ese patrón sería la estructura de la experiencia perceptiva. Puedes cambiar la separación entre las fuentes para ver cómo cambia el patrón. La interferencia es la habitual entre dos ondas; que sea la experiencia es la propuesta de Grinberg. Es un esquema de una idea, no de un fenómeno medido.",
+    "resolucion": "Grinberg propone que el campo neuronal y el lattice interfieren como dos ondas y que ese patrón sería la estructura de la experiencia perceptiva.",
+    "separacion": "Separación entre las fuentes",
+    "pasos": [
+      {
+        "texto": "Según Grinberg, el campo neuronal y el lattice se comportarían como dos ondas que se encuentran.",
+        "fase": 0
+      },
+      {
+        "texto": "Al superponerse, sus crestas y valles se suman o se anulan: es lo que en física se llama interferencia.",
+        "fase": 1
+      },
+      {
+        "texto": "Ese patrón sería, según Grinberg, la estructura energética de la experiencia perceptiva. La propuesta es suya; la interferencia es solo la analogía.",
+        "fase": 2
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "mecanica": "diagrama",
+  "tipo": "comparar",
+  "parametros": {
+    "familia_id": "lo-medido",
+    "proporcion": [2.3333, 1],
+    "alternativa": "Una lista de cinco controles que haría falta ver para creer que niños vendados «perciben» imágenes al tocarlas. Paso uno: según la referencia del artículo, niños con los ojos vendados percibirían imágenes al tocarlas. Paso dos: se enumeran los cinco controles: venda, procedimiento ciego, juez ciego, registro previo de las respuestas y control de fugas sensoriales. Paso tres: solo la venda está descrita en la referencia; de los otros cuatro no consta nada en lo que hemos podido leer, lo que no significa que no se hicieran. Solo tenemos la ficha del artículo, no su contenido.",
+    "resolucion": "Grinberg describió a niños vendados que «percibirían» imágenes al tocarlas; solo tenemos la referencia, y de cuatro de los cinco controles necesarios no consta nada.",
+    "elementos": [
+      { "id": "afirmacion", "tipo": "ficha", "x": 50, "y": 14, "etiqueta": "Niños vendados «perciben» imágenes", "sub": "según Grinberg", "rol": "propuesta", "movil": [50, 8] },
+      {
+        "id": "controles",
+        "tipo": "tabla",
+        "x": 50,
+        "y": 62,
+        "etiqueta": "Controles que haría falta ver",
+        "columnas": ["Control", "Lo que hemos leído"],
+        "filas": [
+          ["Venda en los ojos", "?"],
+          ["Procedimiento ciego", "?"],
+          ["Juez ciego", "?"],
+          ["Registro previo", "?"],
+          ["Fugas sensoriales", "?"]
+        ],
+        "oculto": true,
+        "movil": [50, 62]
+      }
+    ],
+    "enlaces": [],
+    "pasos": [
+      {
+        "texto": "Según la referencia del artículo de 1983, niños con los ojos vendados «percibirían» imágenes al tocarlas.",
+        "activos": ["afirmacion"]
+      },
+      {
+        "texto": "Para creerlo habría que descartar que vieran o notaran algo por otra vía. Estos son los cinco controles que haría falta ver.",
+        "muestra": ["controles"],
+        "activos": ["controles"]
+      },
+      {
+        "texto": "Solo la venda está descrita en la referencia. De los otros cuatro no consta nada en lo que hemos podido leer: no es lo mismo que decir que no se hicieran.",
+        "activos": ["controles"],
+        "resalta": { "controles": [0] },
+        "celdas": {
+          "controles": {
+            "0,1": "descrita",
+            "1,1": "no consta",
+            "2,1": "no consta",
+            "3,1": "no consta",
+            "4,1": "no consta"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "id": "potencial-transferido",
+  "familia_id": "lo-medido",
+  "orden": 2,
+  "simbolo": "PT",
+  "titulo": "El potencial transferido: el experimento",
+  "resumen": "En 1994 Grinberg y sus colegas publicaron un experimento en el que dijeron haber registrado, en una persona que no recibía ningún estímulo, una respuesta cerebral parecida a la de otra situada a 14,5 metros. Los intentos de repetirlo dan resultados mixtos y su análisis estadístico está en disputa.",
+  "idea": "Grinberg y sus colegas dijeron haber registrado, en quien no recibía el estímulo, una respuesta parecida; se discute si los datos lo sostienen.",
+  "respaldo": 2,
+  "propone": {
+    "intro": "Según el resumen del artículo de 1994, el propósito era verificar si el cerebro tiene un componente cuántico macroscópico.",
+    "pasos": [
+      {
+        "titulo": "Los dos sujetos interactúan",
+        "texto": "Según el diseño que describe Grinberg, los dos sujetos pasan un rato interactuando antes de separarse."
+      },
+      {
+        "titulo": "Se separan en cámaras de Faraday",
+        "texto": "En el diseño del artículo, cada sujeto se sienta en una cámara de Faraday, aislada de señales eléctricas, a 14,5 metros de la otra."
+      },
+      {
+        "titulo": "Destellos para uno de los dos",
+        "texto": "Según el artículo, al sujeto A se le muestran 100 destellos de luz y el sujeto B no recibe ningún estímulo."
+      },
+      {
+        "titulo": "Respuesta evocada en A",
+        "texto": "El cerebro de A responde a los destellos con un potencial evocado, una respuesta eléctrica a los destellos."
+      },
+      {
+        "titulo": "¿Una respuesta parecida en B?",
+        "texto": "Según Grinberg, en B aparecería una respuesta parecida aunque no vea nada: el «potencial transferido». Esta es la parte que se discute."
+      },
+      {
+        "titulo": "El análisis, en disputa",
+        "texto": "Los artículos hablan de ~25 % de casos (P11) y de ~57 % de 14 sujetos (P10, según un agregador), cifras que no coinciden. Cómo se analizan los datos es el centro de la disputa."
+      }
+    ]
+  },
+  "se_sabe": [
+    {
+      "texto": "Se publicó en Subtle Energies, fuera de la corriente principal, y en Physics Essays, revista de física marginal cuya revisión por pares la investigación de este sitio valora como solo nominal; un coautor, Goswami, defiende la conciencia cuántica.",
+      "refs": [
+        "P10",
+        "P11"
+      ]
+    },
+    {
+      "texto": "El artículo de 1994 habla de ~25 % de casos; el de Subtle Energies (1993), según un agregador, de ~57 % de 14 sujetos.",
+      "refs": [
+        "P11",
+        "P10"
+      ]
+    },
+    {
+      "texto": "Tres estudios han intentado repetir el diseño, con resultados mixtos: dos positivos débiles o parciales (de S2 no se han verificado las cifras exactas) y uno negativo.",
+      "refs": [
+        "S2",
+        "S3",
+        "S8"
+      ]
+    },
+    {
+      "texto": "Hay otros estudios emparentados; el detalle está en la ficha de las réplicas.",
+      "refs": [
+        "S5",
+        "S6"
+      ]
+    }
+  ],
+  "disputa": [
+    {
+      "titulo": "Las cifras no coinciden",
+      "texto": "~25 % de casos (P11) frente a ~57 % de 14 sujetos (P10, según un agregador): no está aclarado si miden lo mismo ni qué muestra o criterio hay detrás de cada una.",
+      "refs": [
+        "P11",
+        "P10"
+      ]
+    },
+    {
+      "titulo": "El análisis estadístico",
+      "texto": "Valoración editorial, sin fuente concreta: muestras mínimas, sin preregistro y análisis flexibles; no se sabe si el efecto sobrevive a una estadística correcta.",
+      "refs": []
+    },
+    {
+      "titulo": "Una réplica negativa",
+      "texto": "Ambach comunicó una réplica negativa; según un agregador, el método estadístico original daba entre un 20 % y un 25 % de falsos positivos y, con la corrección, nada fue significativo. Esto último está sin confirmar en el original.",
+      "refs": [
+        "S8"
+      ]
+    },
+    {
+      "titulo": "Un dato bibliográfico sin cerrar",
+      "texto": "El DOI de P11 aparece con dos formas distintas (10.4006/1.3029159 y 10.4006/1.3029112).",
+      "refs": [
+        "P11"
+      ]
+    }
+  ],
+  "puntos_clave": [
+    "Disputado: hay réplicas, pero mixtas o débiles, y las cifras de los dos artículos no coinciden.",
+    "En el diseño, dos sujetos a 14,5 metros en cámaras de Faraday y 100 destellos de luz para uno de ellos.",
+    "Según Grinberg, en el otro aparecería una respuesta parecida; lo que se discute es si sus datos lo sostienen."
+  ],
+  "cita": {
+    "texto": "to verify if the brain has a macroscopic quantum component",
+    "traduccion": "para verificar si el cerebro tiene un componente cuántico macroscópico",
+    "autor": "Grinberg-Zylberbaum, Delaflor, Attie y Goswami",
+    "atribucion": "directa",
+    "fuente": "P11, resumen, Physics Essays 7(4) (1994)"
+  },
+  "fuentes": [
+    {
+      "ref": "P11",
+      "tipo": "primaria",
+      "titulo": "The Einstein-Podolsky-Rosen paradox in the brain: the transferred potential. Physics Essays 7(4): 422-428",
+      "autor": "Grinberg-Zylberbaum, Delaflor, Attie y Goswami",
+      "anio": 1994,
+      "url": "https://www.ingentaconnect.com/contentone/pe/pe/1994/00000007/00000004/art00006",
+      "nota": "DOI discrepante: 10.4006/1.3029159 frente a 10.4006/1.3029112."
+    },
+    {
+      "ref": "P10",
+      "tipo": "primaria",
+      "titulo": "Human communication and the electrophysiological activity of the brain. Subtle Energies 3(3): 25-43",
+      "autor": "Grinberg-Zylberbaum, Delaflor, Sánchez-Arellano, Guevara y Pérez",
+      "anio": 1993,
+      "url": "https://psi-research-site.pages.dev/paper/grinberg_zylberbaum_1993_human_communication",
+      "nota": "Datos tomados de un agregador, no del artículo. INV lo fecha en 1992-93."
+    },
+    {
+      "ref": "S8",
+      "tipo": "replica",
+      "titulo": "Ambach (2008). European Journal of Parapsychology 23(2)",
+      "autor": "Ambach",
+      "anio": 2008,
+      "url": "https://psi-research-site.pages.dev/paper/ambach_2008_correlations",
+      "nota": "Réplica negativa. Los porcentajes de falsos positivos proceden de un agregador: sin confirmar en el original."
+    },
+    {
+      "ref": "S3",
+      "tipo": "replica",
+      "titulo": "Wackermann, Seiter, Keibel y Walach (2003). Neuroscience Letters 336: 60-64",
+      "autor": "Wackermann, Seiter, Keibel y Walach",
+      "anio": 2003,
+      "url": "https://psi-research-site.pages.dev/paper/wackermann_2003_correlations",
+      "nota": "DOI sin verificar."
+    },
+    {
+      "ref": "S2",
+      "tipo": "replica",
+      "titulo": "Standish, Kozak, Johnson y Richards (2004). Journal of Alternative and Complementary Medicine 10(2): 307-314",
+      "autor": "Standish, Kozak, Johnson y Richards",
+      "anio": 2004,
+      "url": "https://www.researchgate.net/publication/8541903",
+      "nota": "Resultados exactos sin verificar."
+    },
+    {
+      "ref": "S5",
+      "tipo": "contexto",
+      "titulo": "Radin (2004). Journal of Alternative and Complementary Medicine 10: 315-323",
+      "autor": "Radin",
+      "anio": 2004,
+      "url": "https://f1000research.com/articles/4-457",
+      "nota": "El enlace lleva a la tabla de una revisión en F1000 (S10), no al artículo."
+    },
+    {
+      "ref": "S6",
+      "tipo": "contexto",
+      "titulo": "Richards, Kozak, Johnson y Standish (2005). Journal of Alternative and Complementary Medicine 11(6): 955-963",
+      "autor": "Richards, Kozak, Johnson y Standish",
+      "anio": 2005,
+      "url": "https://f1000research.com/articles/4-457",
+      "nota": "Resumen no leído. El enlace lleva a la tabla de una revisión en F1000 (S10), no al artículo."
+    }
+  ],
+  "enlaces": [
+    {
+      "id": "replicas-del-potencial-transferido",
+      "rotulo": "¿Se replicó? El balance de las réplicas"
+    }
+  ],
+  "maquina": "potencial-transferido",
+  "reel": "potencial-transferido"
+}

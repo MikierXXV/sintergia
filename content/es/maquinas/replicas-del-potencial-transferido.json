@@ -1,0 +1,125 @@
+{
+  "mecanica": "balance",
+  "tipo": "comparar",
+  "parametros": {
+    "familia_id": "lo-medido",
+    "alternativa": "Una lista de estudios, uno por fila, con su resultado en forma y en texto. Por defecto solo salen las tres réplicas del diseño del potencial transferido: Wackermann y colegas (2003), con resultado positivo débil o parcial; Standish y colegas (2004), también positivo débil o parcial, con cifras sin verificar; y Ambach (2008), negativo. El balance cuenta solo estas tres: dos positivas débiles o parciales y una negativa. El filtro «Todos los estudios» añade los emparentados, que no repiten el diseño: Standish (2003, resultado no leído), Radin (2004, 3 de 13 parejas), Richards (2005, resultado no leído) y la revisión de Giroldini y colegas (2016, 29 estudios no metaanalizables); y aparte, Achterberg y colegas (2005), que no es una réplica. Los autores de varios estudios se repiten, así que no son independientes entre sí.",
+    "resolucion": "De tres intentos de repetir el diseño del potencial transferido, dos dieron resultados débiles o parciales y uno fue negativo; los demás estudios no son réplicas estrictas.",
+    "rotulos": {
+      "balance": "Balance: {n} réplicas del diseño, {positivas} positivas débiles o parciales y {negativas} negativa.",
+      "vacio": "Aún no hay ningún estudio en pantalla.",
+      "grupo_diseno": "Réplicas del diseño",
+      "grupo_emparentado": "Estudios emparentados (no son réplicas del diseño)",
+      "grupo_aparte": "Aparte: no es una réplica",
+      "filtro_etiqueta": "Estudios",
+      "filtro_diseno": "Solo réplicas del diseño",
+      "filtro_todos": "Todos los estudios"
+    },
+    "resultados": {
+      "positivo-debil": {
+        "etiqueta": "positivo débil o parcial",
+        "forma": "triangulo",
+        "cuenta": "positivo"
+      },
+      "negativo": {
+        "etiqueta": "negativo",
+        "forma": "cuadrado",
+        "cuenta": "negativo"
+      },
+      "parcial": {
+        "etiqueta": "parcial: 3 de 13 parejas",
+        "forma": "rombo"
+      },
+      "no-leido": {
+        "etiqueta": "resultado no leído",
+        "forma": "interrogacion"
+      },
+      "revision": {
+        "etiqueta": "revisión: 29 estudios, no metaanalizables",
+        "forma": "barra"
+      },
+      "no-replica": {
+        "etiqueta": "no es una réplica",
+        "forma": "circulo"
+      }
+    },
+    "textos": {
+      "intro": "El diseño del potencial transferido, con dos sujetos aislados y destellos para uno, se puede repetir. Estas son las réplicas del diseño, una a una y por año.",
+      "balance": "Balance de las réplicas del diseño: dos resultados positivos débiles o parciales y uno negativo. Los autores de varios estudios se repiten, y esto no es un veredicto."
+    },
+    "estudios": [
+      {
+        "ref": "S3",
+        "autores": "Wackermann y colegas",
+        "anio": 2003,
+        "grupo": "diseno",
+        "resultado": "positivo-debil",
+        "detalle": "17 parejas; concluyen que las correlaciones «may occur»",
+        "texto": "Wackermann y colegas (2003) estudiaron 17 parejas y concluyen que las correlaciones «may occur», aunque «no biophysical mechanism is known»."
+      },
+      {
+        "ref": "S2",
+        "autores": "Standish y colegas",
+        "anio": 2004,
+        "grupo": "diseno",
+        "resultado": "positivo-debil",
+        "detalle": "EEG con tablero de ajedrez; cifras exactas sin verificar",
+        "texto": "Standish y colegas (2004) usaron EEG con EEG con un tablero de ajedrez y comunican un resultado positivo débil o parcial; sus cifras exactas están sin verificar."
+      },
+      {
+        "ref": "S8",
+        "autores": "Ambach",
+        "anio": 2008,
+        "grupo": "diseno",
+        "resultado": "negativo",
+        "detalle": "según un agregador, el método original daba 20-25 % de falsos positivos; sin confirmar en el original",
+        "texto": "Ambach (2008) comunica una réplica negativa. Según un agregador, con la corrección estadística nada fue significativo; está sin confirmar en el original."
+      },
+      {
+        "ref": "S1",
+        "autores": "Standish y colegas",
+        "anio": 2003,
+        "grupo": "emparentado",
+        "resultado": "no-leido",
+        "detalle": "fMRI, una pareja",
+        "texto": "Standish y colegas (2003) hicieron un estudio con fMRI en una sola pareja. No hemos leído su resumen, así que no le suponemos ningún resultado."
+      },
+      {
+        "ref": "S5",
+        "autores": "Radin",
+        "anio": 2004,
+        "grupo": "emparentado",
+        "resultado": "parcial",
+        "detalle": "13 parejas",
+        "texto": "Radin (2004) estudió 13 parejas y solo 3 fueron positivas. Es un estudio emparentado, no una réplica estricta."
+      },
+      {
+        "ref": "S6",
+        "autores": "Richards y colegas",
+        "anio": 2005,
+        "grupo": "emparentado",
+        "resultado": "no-leido",
+        "detalle": "fMRI, una pareja; resumen no leído",
+        "texto": "Richards y colegas (2005) hicieron otro estudio con fMRI en una pareja. No hemos leído su resumen."
+      },
+      {
+        "ref": "S10",
+        "autores": "Giroldini, Tressoldi y otros",
+        "anio": 2016,
+        "grupo": "emparentado",
+        "resultado": "revision",
+        "detalle": "método elegido tras fallar el promedio estándar",
+        "texto": "Giroldini, Tressoldi y otros (2016) listan 29 estudios y concluyen que no se pueden metaanalizar. Un revisor señala que falta corrección por comparaciones múltiples."
+      },
+      {
+        "ref": "S7",
+        "autores": "Achterberg y colegas",
+        "anio": 2005,
+        "grupo": "aparte",
+        "resultado": "no-replica",
+        "detalle": "11 sanadores, fMRI, intencionalidad a distancia",
+        "texto": "Achterberg y colegas (2005) estudiaron a 11 sanadores con fMRI e intencionalidad a distancia. No es una réplica del potencial transferido."
+      }
+    ]
+  }
+}

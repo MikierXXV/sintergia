@@ -1,0 +1,111 @@
+{
+  "$comment": "Reglas del contenido de ESTE proyecto. scripts/validar-contenido.mjs es genérico y no sabe nada del tema: lo que comprueba lo lee de aquí. Ajustar este fichero es cómo se adapta la validación a un sitio nuevo, sin tocar el guion.",
+  "idiomas": [
+    "es"
+  ],
+  "colecciones": {
+    "familias": {
+      "fichero": "familias.json",
+      "lista": "familias",
+      "schema": "familia.schema.json"
+    },
+    "conceptos": {
+      "directorio": "conceptos",
+      "schema": "concepto.schema.json"
+    }
+  },
+  "$comment_referencias": "Integridad referencial en los dos sentidos: ninguna pieza apunta a una familia que no existe, y ninguna familia se queda sin piezas. Lo segundo también es un error: una familia vacía sale en el recorrido como una parada en blanco.",
+  "referencias": [
+    {
+      "de": "conceptos",
+      "campo": "familia_id",
+      "a": "familias",
+      "exigir_uso": true
+    }
+  ],
+  "$comment_orden": "El orden dentro de cada familia debe ser 1..n sin huecos ni repetidos. Un hueco no rompe nada visible, y por eso se cuela: el recorrido simplemente salta un número y nadie lo nota hasta que hay que insertar algo en medio.",
+  "orden": [
+    {
+      "coleccion": "conceptos",
+      "agrupado_por": "familia_id",
+      "campo": "orden"
+    }
+  ],
+  "$comment_longitudes": "Límites editoriales, en caracteres. No son manías: un resumen de 900 caracteres deja de ser un resumen y desmonta la jerarquía de lectura del sitio.",
+  "longitudes": {
+    "conceptos": {
+      "titulo": [
+        3,
+        80
+      ],
+      "resumen": [
+        60,
+        400
+      ],
+      "idea": [
+        40,
+        160
+      ]
+    }
+  },
+  "$comment_citas": "Regla de derechos de autor: cita textual breve con atribución marcada, nunca un párrafo traducido. Quitar este bloque si el proyecto no cita a nadie.",
+  "citas": {
+    "coleccion": "conceptos",
+    "campo": "cita",
+    "max_palabras": 15,
+    "atribuciones": [
+      "directa"
+    ]
+  },
+  "visualizacion": null,
+  "$comment_escenografia": "Los efectos que el contenido puede pedir. Mismo trato que las mecánicas: la lista de válidos vive en el registro y se lee de ahí, nunca se copia aquí.",
+  "escenografia": {
+    "registro": "src/app/efectos.ts",
+    "$comment_presupuesto": "Cuántas paradas pueden pedir una escena que trabaja en cada fotograma de scroll (hoy, `cubierta`). El número es bajo porque el coste no es de la escena sino del recorrido entero: cada una añade lectura de geometría al bucle de scroll, y quien lo nota es el móvil de gama baja del escenario de auditoría, no el portátil donde se diseñó.",
+    "presupuesto_avance": 3,
+    "$comment_franja_3d": "Nada de escenas 3D dentro de una franja horizontal. La franja tiene sus piezas en un contenedor con scroll propio, así que entran y salen de pantalla cada vez que se desliza: una escena WebGL se monta y se destruye en bucle, y el navegador acaba tirando contextos. Si un contenido de una franja pide 3D, lo que está mal es la franja.",
+    "franja_sin_3d": true
+  },
+  "$comment_paridad": "Con más de un idioma, todos deben tener los mismos ids y las mismas claves de ui.json. Sin esta comprobación, una traducción incompleta se descubre en producción.",
+  "paridad_idiomas": true,
+  "$comment_ficha": "Reglas por elemento que el validador genérico no sabe expresar (listas con mínimo, refs en dos sentidos, tope de caracteres). Las lee scripts/comprobar-fichas.mjs.",
+  "ficha": {
+    "pasos": {
+      "min": 3,
+      "max": 6,
+      "titulo": 60,
+      "texto": [
+        40,
+        300
+      ]
+    },
+    "se_sabe": {
+      "lo-medido": [
+        2,
+        6
+      ],
+      "resto": [
+        1,
+        6
+      ]
+    },
+    "disputa": {
+      "min": 1,
+      "max": 5,
+      "titulo": 70,
+      "texto": [
+        40,
+        400
+      ]
+    },
+    "puntos_clave": {
+      "min": 2,
+      "max": 4,
+      "max_car": 200
+    },
+    "tope_car": 2400,
+    "analogia_origen": [
+      "editorial"
+    ]
+  }
+}

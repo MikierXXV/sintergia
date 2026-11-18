@@ -1,0 +1,154 @@
+{
+  "id": "que-es-la-teoria-sintergica",
+  "familia_id": "marco",
+  "orden": 1,
+  "simbolo": "TS",
+  "titulo": "Qué es la teoría sintérgica y cómo leer este sitio",
+  "resumen": "La teoría sintérgica es el conjunto de ideas que publicó Jacobo Grinberg-Zylberbaum sobre cómo el cerebro, un campo y una retícula del espacio darían lugar a la experiencia. Este sitio las explica y dice cuánto respaldo tiene cada una: de lo medido, que es poco, a lo que solo se postula.",
+  "idea": "Un mapa de las ideas de Grinberg ordenadas por cuánto respaldo tiene cada una, de lo medido a lo que solo se postula.",
+  "propone": {
+    "pasos": [
+      {
+        "titulo": "Quién y qué",
+        "texto": "Grinberg fue un investigador mexicano en psicofisiología de la conciencia que publicó la teoría entre 1981 y 1997. Este sitio explica sus ideas; no las avala."
+      },
+      {
+        "titulo": "Tres piezas",
+        "texto": "Según la teoría, la actividad de las neuronas daría lugar a un campo; el campo interactuaría con una retícula del espacio, el lattice; y de esa interferencia saldría la experiencia."
+      },
+      {
+        "titulo": "Cómo leerlo",
+        "texto": "Cada idea lleva una insignia de respaldo, de «Tesis filosófica» a «Establecido», y se ordenan de lo medido a lo postulado. Ninguna llega a «Establecido»."
+      }
+    ]
+  },
+  "se_sabe": [
+    {
+      "texto": "Lo más cercano a un dato son dos experimentos con EEG de dos personas: el de 1987 no tiene réplica directa; el de 1994, el potencial transferido, tiene réplicas mixtas y en disputa.",
+      "refs": [
+        "P7",
+        "P11"
+      ]
+    },
+    {
+      "texto": "Los conceptos centrales (sintergia, campo neuronal, lattice) solo tienen respaldo en el propio Grinberg: no hay estudios independientes que los hayan puesto a prueba.",
+      "refs": [
+        "P4",
+        "P5",
+        "P12"
+      ]
+    },
+    {
+      "texto": "La Psi Encyclopedia, enciclopedia del campo parapsicológico, dice que las ideas de Grinberg «never received much academic attention» (nunca recibieron mucha atención académica).",
+      "refs": [
+        "S13"
+      ]
+    },
+    {
+      "texto": "Según la bibliografía, dedicó libros a los chamanes de México como fuente declarada de sus ideas. Solo conocemos la ficha del libro, no su contenido.",
+      "refs": [
+        "P8"
+      ]
+    }
+  ],
+  "disputa": [
+    {
+      "titulo": "Nota del equipo: lo medido y la teoría",
+      "texto": "Nota nuestra, que no viene de estas fuentes: aunque el potencial transferido fuera real, no probaría el campo ni el lattice: son ideas aparte y para ellas no hay experimento.",
+      "refs": []
+    },
+    {
+      "titulo": "«Función de onda»: atribución dudosa",
+      "texto": "Algunas divulgaciones le atribuyen el término «función de onda». No hemos encontrado ese término en los textos de Grinberg que pudimos leer; puede venir de la divulgación.",
+      "refs": []
+    }
+  ],
+  "puntos_clave": [
+    "Este sitio explica las ideas de Grinberg; no las avala y no hay ninguna con nivel «Establecido».",
+    "Se ordenan de lo medido a lo que solo se postula; cada una dice cuánto respaldo tiene.",
+    "Los conceptos centrales solo los sostiene el propio Grinberg."
+  ],
+  "fuentes": [
+    {
+      "ref": "P7",
+      "tipo": "primaria",
+      "titulo": "Patterns of interhemispheric correlation during human communication. Int. J. Neuroscience 36: 41-53",
+      "autor": "Grinberg-Zylberbaum y Ramos",
+      "anio": 1987,
+      "url": "https://scilit.com/publications/6aa0a3b493f749f8654b4eb10df1d2d1",
+      "nota": "Una copia da vol. 32, pp. 41-45: comprobar por DOI."
+    },
+    {
+      "ref": "P11",
+      "tipo": "primaria",
+      "titulo": "The Einstein-Podolsky-Rosen paradox in the brain: the transferred potential. Physics Essays 7(4): 422-428",
+      "autor": "Grinberg-Zylberbaum, Delaflor, Attie y Goswami",
+      "anio": 1994,
+      "url": "https://www.ingentaconnect.com/contentone/pe/pe/1994/00000007/00000004/art00006",
+      "nota": "Solo hemos leído el resumen."
+    },
+    {
+      "ref": "P5",
+      "tipo": "primaria",
+      "titulo": "The orbitals of consciousness: a neurosyntergic approach to the levels of conscious experience. Psychoenergetics 5: 235-242",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1983,
+      "url": "https://documents.theblackvault.com/documents/remoteviewing/stargate/STARGATE%20%238%20237/Part0007/CIA-RDP96-00792R000700130001-6.TXT",
+      "nota": "Leído en un OCR del archivo de la CIA, con partes ilegibles."
+    },
+    {
+      "ref": "P4",
+      "tipo": "primaria",
+      "titulo": "The transformation of neuronal activity into conscious experience: the syntergic theory. Journal of Social and Biological Structures 4: 201-210",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1981,
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
+      "nota": "Solo la ficha bibliográfica. Una fuente lo sitúa en el Journal of Theoretical Biology; lo más probable es la otra."
+    },
+    {
+      "ref": "P12",
+      "tipo": "primaria",
+      "titulo": "Ideas about a new psychophysiology of consciousness: the syntergic theory. Journal of Mind and Behavior 18(4): 443-458",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1997,
+      "url": "https://philpapers.org/rec/GRIIAA",
+      "nota": "Póstumo. Ficha y resumen verificados."
+    },
+    {
+      "ref": "P8",
+      "tipo": "primaria",
+      "titulo": "Los chamanes de México V: El cerebro y los chamanes. INPEC/UNAM",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1990,
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
+      "nota": "Solo la ficha bibliográfica, sin texto."
+    },
+    {
+      "ref": "S13",
+      "tipo": "contexto",
+      "titulo": "Entrada «Jacobo Grinberg-Zylberbaum» de la Psi Encyclopedia (SPR)",
+      "autor": "Society for Psychical Research",
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
+      "nota": "Enciclopedia del campo parapsicológico, no revisada por pares. Tiene errores de paginación."
+    }
+  ],
+  "enlaces": [
+    {
+      "id": "potencial-transferido",
+      "rotulo": "Empieza por lo medido: el potencial transferido"
+    },
+    {
+      "id": "sintergia",
+      "rotulo": "Sintergia: síntesis más energía"
+    }
+  ],
+  "maquina": "que-es-la-teoria-sintergica",
+  "reel": "que-es-la-teoria-sintergica",
+  "detalles": [
+    {
+      "titulo": "Contexto: Bohm y Pribram",
+      "texto": "Contexto de nuestra investigación, no de la fuente: la teoría (1981-83) es contemporánea de «Wholeness and the Implicate Order» de Bohm (1980) y del modelo holonómico de Pribram.",
+      "refs": []
+    }
+  ]
+}

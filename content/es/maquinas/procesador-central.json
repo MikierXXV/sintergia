@@ -1,0 +1,90 @@
+{
+  "mecanica": "diagrama",
+  "tipo": "estructura",
+  "parametros": {
+    "proporcion": [
+      2.3333,
+      1
+    ],
+    "alternativa": "La experiencia, que cambia, rodea a un procesador central que no cambia. Paso uno: según Grinberg, la experiencia pasa por niveles distintos y cambia. Paso dos: en el centro estaría el procesador central, lo que permanece mientras todo lo demás varía. Paso tres: según su artículo de 1983, ese procesador central puede concebirse como conciencia pura. Todo va en trazo discontinuo porque es una tesis filosófica, no algo medido. Es un esquema de una idea, no de un fenómeno medido.",
+    "resolucion": "Para Grinberg, lo que permanece mientras cambia la experiencia sería un procesador central, concebible como conciencia pura; es una tesis filosófica, no comprobable.",
+    "elementos": [
+      {
+        "id": "exp",
+        "tipo": "grupo",
+        "x": 36,
+        "y": 50,
+        "w": 52,
+        "h": 84,
+        "etiqueta": "La experiencia, que cambia",
+        "rol": "propuesta",
+        "movil": [
+          50,
+          40
+        ]
+      },
+      {
+        "id": "proc",
+        "tipo": "circulo",
+        "x": 36,
+        "y": 56,
+        "etiqueta": "Procesador central",
+        "rol": "propuesta",
+        "oculto": true,
+        "movil": [
+          50,
+          46
+        ]
+      },
+      {
+        "id": "pura",
+        "tipo": "ficha",
+        "x": 86,
+        "y": 56,
+        "etiqueta": "Conciencia pura",
+        "rol": "propuesta",
+        "oculto": true,
+        "movil": [
+          50,
+          86
+        ]
+      }
+    ],
+    "enlaces": [
+      {
+        "de": "proc",
+        "a": "pura",
+        "tipo": "flecha",
+        "estilo": "punteado",
+        "oculto": true
+      }
+    ],
+    "pasos": [
+      {
+        "texto": "Según Grinberg, nuestra experiencia pasa por niveles distintos y cambia a medida que lo hace.",
+        "activos": [
+          "exp"
+        ]
+      },
+      {
+        "texto": "Detrás de esos cambios habría un procesador central que no cambia: lo que permanece mientras todo lo demás varía.",
+        "muestra": [
+          "proc"
+        ],
+        "activos": [
+          "proc"
+        ]
+      },
+      {
+        "texto": "En su artículo de 1983, ese procesador central puede concebirse como conciencia pura. Es una tesis, no una medición.",
+        "muestra": [
+          "pura",
+          "proc>pura"
+        ],
+        "activos": [
+          "pura"
+        ]
+      }
+    ]
+  }
+}

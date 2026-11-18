@@ -1,0 +1,99 @@
+{
+  "id": "factor-de-direccionalidad",
+  "familia_id": "el-campo",
+  "orden": 6,
+  "simbolo": "DIR",
+  "titulo": "El factor de direccionalidad",
+  "resumen": "Grinberg lo llama «hipotético»: un factor que estimularía solo una porción limitada del patrón de interferencia. Es especulativo, nadie lo ha medido y no hay estudios independientes que lo hayan puesto a prueba.",
+  "idea": "Grinberg propone, como hipótesis, un factor que estimularía solo una parte del patrón de interferencia.",
+  "respaldo": 1,
+  "propone": {
+    "pasos": [
+      {
+        "titulo": "Un patrón entero",
+        "texto": "Partimos del patrón de interferencia, que según Grinberg sería la estructura de la experiencia perceptiva."
+      },
+      {
+        "titulo": "Un factor hipotético",
+        "texto": "Grinberg añade un «factor de direccionalidad», y él mismo lo llama hipotético."
+      },
+      {
+        "titulo": "Una porción limitada",
+        "texto": "Ese factor estimularía solo una porción limitada del patrón, como un haz que ilumina una parte de él."
+      }
+    ]
+  },
+  "se_sabe": [
+    {
+      "texto": "No hay estudios independientes que lo hayan puesto a prueba.",
+      "refs": []
+    },
+    {
+      "texto": "Aparece en un artículo de 1983 en Psychoenergetics, revista parapsicológica de revisión dudosa, y allí se presenta como hipotético.",
+      "refs": [
+        "P5"
+      ]
+    },
+    {
+      "texto": "La Psi Encyclopedia, enciclopedia del campo parapsicológico, dice que las ideas de Grinberg «never received much academic attention» (nunca recibieron mucha atención académica).",
+      "refs": [
+        "S13"
+      ]
+    }
+  ],
+  "disputa": [
+    {
+      "titulo": "Hipotético, dicho por su autor",
+      "texto": "El propio Grinberg lo llama hipotético: es una pieza que el modelo necesitaría, no algo observado.",
+      "refs": [
+        "P5"
+      ]
+    },
+    {
+      "titulo": "Nota del equipo: las lecturas cabalísticas",
+      "texto": "Algunas divulgaciones lo asocian a la kavanah de la cábala. Esa lectura viene de la divulgación, no de Grinberg, y no la usamos aquí.",
+      "refs": []
+    }
+  ],
+  "puntos_clave": [
+    "Especulativo: el propio Grinberg lo llama hipotético y nadie lo ha puesto a prueba.",
+    "Según Grinberg, estimularía solo una porción limitada del patrón de interferencia."
+  ],
+  "cita": {
+    "texto": "a hypothetical directionality factor",
+    "traduccion": "un factor de direccionalidad hipotético",
+    "autor": "Grinberg-Zylberbaum",
+    "atribucion": "directa",
+    "fuente": "P5, Psychoenergetics 5 (1983)"
+  },
+  "fuentes": [
+    {
+      "ref": "P5",
+      "tipo": "primaria",
+      "titulo": "The orbitals of consciousness: a neurosyntergic approach to the levels of conscious experience. Psychoenergetics 5: 235-242",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1983,
+      "url": "https://documents.theblackvault.com/documents/remoteviewing/stargate/STARGATE%20%238%20237/Part0007/CIA-RDP96-00792R000700130001-6.TXT",
+      "nota": "Leído en un OCR del archivo de la CIA, con partes ilegibles."
+    },
+    {
+      "ref": "S13",
+      "tipo": "contexto",
+      "titulo": "Entrada «Jacobo Grinberg-Zylberbaum» de la Psi Encyclopedia (SPR)",
+      "autor": "Society for Psychical Research",
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
+      "nota": "Enciclopedia del campo parapsicológico, no revisada por pares. Tiene errores de paginación."
+    }
+  ],
+  "enlaces": [
+    {
+      "id": "patron-de-interferencia",
+      "rotulo": "El patrón de interferencia"
+    },
+    {
+      "id": "percepcion-campo-lattice",
+      "rotulo": "Percibir como interferencia entre campo y lattice"
+    }
+  ],
+  "maquina": "factor-de-direccionalidad"
+}

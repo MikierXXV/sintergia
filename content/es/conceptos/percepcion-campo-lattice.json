@@ -1,0 +1,93 @@
+{
+  "id": "percepcion-campo-lattice",
+  "familia_id": "la-conciencia",
+  "orden": 3,
+  "simbolo": "PER",
+  "titulo": "Percibir como interferencia entre campo y lattice",
+  "resumen": "Según la Psi Encyclopedia, Grinberg propondría que los objetos y los colores que percibimos serían el patrón de interferencia entre el campo neuronal y el lattice. Es una tesis filosófica: no se puede comprobar con un experimento, no lo hemos leído en un texto de Grinberg ni hay estudios independientes que la hayan puesto a prueba.",
+  "idea": "Según la Psi Encyclopedia, Grinberg propondría que lo que percibimos sería el patrón de interferencia entre campo y lattice.",
+  "respaldo": 0,
+  "propone": {
+    "pasos": [
+      {
+        "titulo": "El mecanismo, en otra ficha",
+        "texto": "Según Grinberg, el campo neuronal y el lattice interferirían, como dos ondas. El mecanismo está en la ficha del patrón de interferencia."
+      },
+      {
+        "titulo": "Lo percibido sería ese patrón",
+        "texto": "Según la Psi Encyclopedia, los objetos y los colores serían producto de ese patrón: lo que percibimos no estaría fuera, sino en la interferencia."
+      },
+      {
+        "titulo": "Una consecuencia filosófica",
+        "texto": "Esta ficha trata solo de esa consecuencia: qué sería percibir si la tesis fuera cierta. No la da por cierta."
+      }
+    ]
+  },
+  "se_sabe": [
+    {
+      "texto": "No hay estudios independientes que lo hayan puesto a prueba, y no está claro qué observación podría hacerlo.",
+      "refs": []
+    },
+    {
+      "texto": "La Psi Encyclopedia, enciclopedia del campo parapsicológico, recoge la tesis y dice que las ideas de Grinberg «never received much academic attention» (nunca recibieron mucha atención académica).",
+      "refs": [
+        "S13"
+      ]
+    }
+  ],
+  "disputa": [
+    {
+      "titulo": "No se puede comprobar con un experimento",
+      "texto": "Es una tesis filosófica: no dice qué observación la confirmaría o la refutaría, así que ningún resultado empírico puede darle ni quitarle la razón.",
+      "refs": [
+        "P5"
+      ]
+    },
+    {
+      "titulo": "Nota del equipo: idealismo y Bohm",
+      "texto": "Nota nuestra, que no viene de estas fuentes: que lo percibido sea producto de un patrón y no algo exterior acerca la tesis al idealismo filosófico y a las ideas de Bohm.",
+      "refs": []
+    },
+    {
+      "titulo": "No lo hemos leído en un texto de Grinberg",
+      "texto": "La tesis nos llega por una fuente secundaria, la Psi Encyclopedia; no la hemos encontrado formulada así en los textos de Grinberg que pudimos leer.",
+      "refs": [
+        "S13"
+      ]
+    }
+  ],
+  "puntos_clave": [
+    "Tesis filosófica: no se puede comprobar con un experimento y no la hemos leído en un texto de Grinberg, solo en una fuente secundaria.",
+    "Según la Psi Encyclopedia, objetos y colores serían el patrón de interferencia entre el campo neuronal y el lattice."
+  ],
+  "fuentes": [
+    {
+      "ref": "S13",
+      "tipo": "contexto",
+      "titulo": "Entrada «Jacobo Grinberg-Zylberbaum» de la Psi Encyclopedia (SPR)",
+      "autor": "Society for Psychical Research",
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
+      "nota": "Enciclopedia del campo parapsicológico, no revisada por pares. Tiene errores de paginación."
+    },
+    {
+      "ref": "P5",
+      "tipo": "primaria",
+      "titulo": "The orbitals of consciousness: a neurosyntergic approach to the levels of conscious experience. Psychoenergetics 5: 235-242",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1983,
+      "url": "https://documents.theblackvault.com/documents/remoteviewing/stargate/STARGATE%20%238%20237/Part0007/CIA-RDP96-00792R000700130001-6.TXT",
+      "nota": "Leído en un OCR del archivo de la CIA, con partes ilegibles."
+    }
+  ],
+  "enlaces": [
+    {
+      "id": "patron-de-interferencia",
+      "rotulo": "El patrón de interferencia: el mecanismo"
+    },
+    {
+      "id": "procesador-central",
+      "rotulo": "El procesador central o «conciencia pura»"
+    }
+  ],
+  "maquina": "percepcion-campo-lattice"
+}

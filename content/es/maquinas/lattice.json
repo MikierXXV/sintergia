@@ -1,0 +1,22 @@
+{
+  "mecanica": "reticula-3d",
+  "tipo": "espacial",
+  "parametros": {
+    "modo": "lattice",
+    "justificacion_3d": "La idea es una retícula espacial: se entiende al girarla, porque su regularidad se ve desde cualquier punto de vista.",
+    "alternativa": "Una malla tridimensional de puntos unidos por líneas, como la de un cristal, en reposo. Puedes girarla arrastrando o con el control de giro. Paso uno: según Grinberg, el espacio tendría estructura de retícula. Paso dos: sus dimensiones serían del orden de la longitud de onda de los rayos X. Paso tres: sería la retícula con la que interactúa el campo neuronal. La malla va en trazo discontinuo porque es una propuesta, no algo observado. Es un esquema de una idea, no de un fenómeno medido.",
+    "resolucion": "Grinberg supone una retícula del espacio, el lattice, con la que interactuaría el campo neuronal; toma el término de la cristalografía y no es física reconocida.",
+    "giro": "Girar la retícula",
+    "pasos": [
+      {
+        "texto": "Según Grinberg, el espacio tendría una estructura de retícula, como la de un cristal: puntos regulares unidos entre sí."
+      },
+      {
+        "texto": "En su artículo de 1983 las dimensiones de esa retícula serían del orden de la longitud de onda de los rayos X."
+      },
+      {
+        "texto": "Esa retícula sería con la que interactúa el campo neuronal. Es una propuesta de Grinberg, sin formalismo físico."
+      }
+    ]
+  }
+}

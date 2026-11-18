@@ -1,0 +1,153 @@
+{
+  "mecanica": "mapa-respaldo",
+  "tipo": "estructura",
+  "parametros": {
+    "alternativa": "Un mapa con cinco bandas horizontales, de «Establecido» arriba a «Tesis filosófica» abajo, y en cada una las ideas que tienen ese nivel de respaldo. «Establecido»: ninguna. «Publicado, sin réplica»: la correlación interhemisférica. «Disputado»: el potencial transferido y sus réplicas. «Especulativo»: la visión extraocular, la paradoja EPR en el cerebro, la sintergia, el campo neuronal, el lattice, la distorsión del espacio-tiempo, el patrón de interferencia y el factor de direccionalidad. «Tesis filosófica»: el procesador central, los orbitales de conciencia y la percepción campo-lattice. Cada idea enlaza a su ficha, y el color de su franja indica su familia. Es un esquema de cómo se reparte el respaldo, no una medida.",
+    "resolucion": "Las ideas de Grinberg se reparten por nivel de respaldo: ninguna llega a «Establecido», lo medido es poco y casi todo el peso está en lo especulativo y en las tesis filosóficas.",
+    "niveles": [
+      {
+        "nivel": 4,
+        "rotulo": "Establecido",
+        "vacio": "Ninguna idea llega aquí."
+      },
+      {
+        "nivel": 3,
+        "rotulo": "Publicado, sin réplica"
+      },
+      {
+        "nivel": 2,
+        "rotulo": "Disputado"
+      },
+      {
+        "nivel": 1,
+        "rotulo": "Especulativo"
+      },
+      {
+        "nivel": 0,
+        "rotulo": "Tesis filosófica"
+      }
+    ],
+    "puntos": [
+      {
+        "id": "potencial-transferido",
+        "rotulo": "El potencial transferido",
+        "nivel": 2,
+        "familia_id": "lo-medido"
+      },
+      {
+        "id": "correlacion-interhemisferica",
+        "rotulo": "Correlación interhemisférica",
+        "nivel": 3,
+        "familia_id": "lo-medido"
+      },
+      {
+        "id": "replicas-del-potencial-transferido",
+        "rotulo": "Réplicas del potencial",
+        "nivel": 2,
+        "familia_id": "lo-medido"
+      },
+      {
+        "id": "epr-en-el-cerebro",
+        "rotulo": "EPR en el cerebro",
+        "nivel": 1,
+        "familia_id": "lo-medido"
+      },
+      {
+        "id": "vision-extraocular",
+        "rotulo": "Visión extraocular",
+        "nivel": 1,
+        "familia_id": "lo-medido"
+      },
+      {
+        "id": "sintergia",
+        "rotulo": "Sintergia",
+        "nivel": 1,
+        "familia_id": "el-campo"
+      },
+      {
+        "id": "campo-neuronal",
+        "rotulo": "Campo neuronal",
+        "nivel": 1,
+        "familia_id": "el-campo"
+      },
+      {
+        "id": "lattice",
+        "rotulo": "El lattice",
+        "nivel": 1,
+        "familia_id": "el-campo"
+      },
+      {
+        "id": "distorsion-del-espacio-tiempo",
+        "rotulo": "Distorsión del espacio-tiempo",
+        "nivel": 1,
+        "familia_id": "el-campo"
+      },
+      {
+        "id": "patron-de-interferencia",
+        "rotulo": "Patrón de interferencia",
+        "nivel": 1,
+        "familia_id": "el-campo"
+      },
+      {
+        "id": "factor-de-direccionalidad",
+        "rotulo": "Factor de direccionalidad",
+        "nivel": 1,
+        "familia_id": "el-campo"
+      },
+      {
+        "id": "procesador-central",
+        "rotulo": "Procesador central",
+        "nivel": 0,
+        "familia_id": "la-conciencia"
+      },
+      {
+        "id": "orbitales-de-conciencia",
+        "rotulo": "Orbitales de conciencia",
+        "nivel": 0,
+        "familia_id": "la-conciencia"
+      },
+      {
+        "id": "percepcion-campo-lattice",
+        "rotulo": "Percepción campo-lattice",
+        "nivel": 0,
+        "familia_id": "la-conciencia"
+      }
+    ],
+    "familias": [
+      {
+        "familia_id": "lo-medido",
+        "nombre": "Lo que se midió"
+      },
+      {
+        "familia_id": "el-campo",
+        "nombre": "La teoría del campo"
+      },
+      {
+        "familia_id": "la-conciencia",
+        "nombre": "Conciencia y experiencia"
+      }
+    ],
+    "pasos": [
+      {
+        "texto": "Arriba, lo más respaldado: ninguna idea llega a «Establecido», y solo una está publicada en una revista convencional, sin réplica.",
+        "niveles": [
+          4,
+          3
+        ]
+      },
+      {
+        "texto": "Lo medido en disputa: el potencial transferido, con réplicas mixtas. Más abajo, casi todo es especulativo.",
+        "niveles": [
+          2,
+          1
+        ]
+      },
+      {
+        "texto": "Abajo, las tesis filosóficas: no se pueden comprobar con un experimento. Pulsa una idea para leer su ficha.",
+        "niveles": [
+          0
+        ]
+      }
+    ]
+  }
+}

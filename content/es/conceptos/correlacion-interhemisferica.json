@@ -1,0 +1,102 @@
+{
+  "id": "correlacion-interhemisferica",
+  "familia_id": "lo-medido",
+  "orden": 1,
+  "simbolo": "CI",
+  "titulo": "¿Se parecen dos cerebros al comunicarse?",
+  "resumen": "En 1987 Grinberg-Zylberbaum y Ramos publicaron, en una revista de neurociencia convencional, que los patrones de dos personas se parecían más mientras se comunicaban sin estímulos sensoriales. Es su artículo en el medio más convencional, y no hemos encontrado ninguna réplica directa.",
+  "idea": "Grinberg y Ramos dijeron haber observado que los patrones de dos personas se parecen más mientras se comunican sin estímulos sensoriales.",
+  "respaldo": 3,
+  "propone": {
+    "intro": "Solo conocemos su ficha bibliográfica, no su texto.",
+    "pasos": [
+      {
+        "titulo": "Dos personas, un registro",
+        "texto": "Según el título del artículo, se estudian patrones de correlación entre hemisferios cerebrales mientras dos personas se comunican."
+      },
+      {
+        "titulo": "Una fase de comunicación sin estímulos",
+        "texto": "Grinberg y Ramos describirían una fase en la que los dos sujetos se comunican sin ningún estímulo sensorial entre ellos."
+      },
+      {
+        "titulo": "Los patrones se parecerían más",
+        "texto": "Según Grinberg y Ramos, durante esa fase los patrones de los dos sujetos se parecerían más entre sí que fuera de ella."
+      }
+    ]
+  },
+  "se_sabe": [
+    {
+      "texto": "Se publicó en la International Journal of Neuroscience, una revista convencional con revisión por pares: el medio más convencional de los que usó Grinberg, con impacto modesto.",
+      "refs": [
+        "P7"
+      ]
+    },
+    {
+      "texto": "No hemos encontrado ninguna réplica directa de este artículo.",
+      "refs": [
+        "P7"
+      ]
+    },
+    {
+      "texto": "Una revisión de Wackermann (2004) sobre las correlaciones entre estados cerebrales de dos personas describe la evidencia como «scarce and controversial» (escasa y controvertida) (revisión general del tema; no consta que analice este artículo).",
+      "refs": [
+        "S4"
+      ]
+    }
+  ],
+  "disputa": [
+    {
+      "titulo": "Solo lo ha puesto a prueba su propio equipo",
+      "texto": "El artículo lo firman Grinberg-Zylberbaum y Ramos y no consta ninguna réplica directa: el hallazgo no lo ha comprobado nadie más.",
+      "refs": [
+        "P7"
+      ]
+    },
+    {
+      "titulo": "No hemos leído el artículo",
+      "texto": "La investigación de este sitio solo vio su ficha bibliográfica. No sabemos cuántas parejas hubo, cómo se midió el parecido ni qué control se usó.",
+      "refs": [
+        "P7"
+      ]
+    },
+    {
+      "titulo": "Un dato bibliográfico sin cerrar",
+      "texto": "Una copia del artículo lo da como volumen 32, páginas 41-45, frente al volumen 36, páginas 41-53 de la referencia habitual: hay que comprobarlo por el DOI.",
+      "refs": [
+        "P7"
+      ]
+    }
+  ],
+  "puntos_clave": [
+    "Publicado, sin réplica: salió en una revista de neurociencia convencional y no hemos encontrado ninguna réplica directa.",
+    "Según Grinberg y Ramos, los patrones de dos personas se parecerían más mientras se comunican sin estímulos sensoriales.",
+    "No hemos leído el artículo: solo su ficha bibliográfica."
+  ],
+  "fuentes": [
+    {
+      "ref": "P7",
+      "tipo": "primaria",
+      "titulo": "Patterns of interhemispheric correlation during human communication. International Journal of Neuroscience 36: 41-53",
+      "autor": "Grinberg-Zylberbaum y Ramos",
+      "anio": 1987,
+      "url": "https://scilit.com/publications/6aa0a3b493f749f8654b4eb10df1d2d1",
+      "nota": "DOI 10.3109/00207458708985559. Una copia da volumen 32, pp. 41-45: comprobar por DOI. Solo la ficha, sin texto."
+    },
+    {
+      "ref": "S4",
+      "tipo": "contexto",
+      "titulo": "Dyadic correlations between brain functional states. Mind and Matter 2(1): 105-122",
+      "autor": "Wackermann",
+      "anio": 2004,
+      "url": "https://dc2.philarchive.org/rec/WACDCB",
+      "nota": "Revisión del propio autor, que también firma una de las réplicas del potencial transferido (S3)."
+    }
+  ],
+  "enlaces": [
+    {
+      "id": "potencial-transferido",
+      "rotulo": "El potencial transferido: el experimento"
+    }
+  ],
+  "maquina": "correlacion-interhemisferica"
+}

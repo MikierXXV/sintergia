@@ -1,0 +1,85 @@
+/*
+ * Base del sitio. Los valores no se escriben aquí: salen de los tokens (design/tokens.css).
+ *
+ * Si hace falta un valor que no está en los tokens, la respuesta casi siempre es añadirlo allí, no
+ * escribirlo suelto. Un `2.3rem` perdido en una regla es el primer paso para tener cuatro escalas
+ * tipográficas distintas y ninguna razón que las explique.
+ */
+@import '../../design/tokens.css';
+@import './visualizacion.css';
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--fuente-texto);
+  font-size: var(--t-lectura);
+  line-height: 1.6;
+  /* `clip` y no `hidden`: recorta sin crear un contenedor de scroll, así que el sticky sigue funcionando. */
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  /* `optical-sizing`: la variable trae el eje; sin esto el titular grande se ve con el grosor de
+     palo pensado para 16 px. `cv05`/`ss03`: la ele con asta y la eñe de Inter. */
+  font-optical-sizing: auto;
+  font-feature-settings: 'cv05', 'ss03';
+  /* Corta a propósito: más larga, el cambio de tema se percibe como lentitud del sitio. */
+  transition: background-color var(--m-medio) var(--curva-suave), color var(--m-medio) var(--curva-suave);
+}
+
+h1, h2, h3, p, ul, ol { margin: 0; }
+h1, h2, h3 {
+  font-family: var(--fuente-titulo);
+  font-weight: var(--peso-medio);
+  line-height: var(--il-titulo);
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: var(--enlace); text-underline-offset: 0.15em; }
+a:hover { text-decoration-thickness: 2px; }
+
+/* Los iconos son SVG de trazo, del color del texto. Se dibujan en 24 y miden 1,25 em. */
+svg.ico { width: 1.25em; height: 1.25em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+svg.ico.lleno { fill: currentColor; stroke-width: 0; }
+
+/*
+ * Foco visible SIEMPRE. Quitar el contorno deja el sitio inutilizable con teclado, y es un fallo que
+ * quien lo comete nunca ve porque navega con el ratón.
+ */
+:focus-visible { outline: 2px solid var(--foco); outline-offset: 2px; border-radius: 4px; }
+
+[hidden] { display: none !important; }
+
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.cont { max-width: 70rem; margin-inline: auto; padding-inline: var(--e4); }
+@media (min-width: 720px) { .cont { padding-inline: var(--e6); } }
+
+/* ---- botones: uno primario (acción), secundarios y fantasma ---- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--e2);
+  height: var(--alto-btn); padding: 0 var(--e4);
+  border-radius: var(--radio-medio); border: 1px solid transparent;
+  font-size: var(--t-sm); font-weight: var(--peso-semibold); text-decoration: none; white-space: nowrap;
+  background: none; color: var(--texto);
+  transition: transform var(--m-instantaneo), box-shadow var(--m-instantaneo), background-color var(--m-instantaneo), border-color var(--m-instantaneo);
+}
+.btn svg { width: 18px; height: 18px; }
+.btn.pri { height: var(--alto-ui); padding-inline: var(--e5); background: var(--accion); color: var(--sobre-accion); box-shadow: var(--sombra-boton); }
+.btn.pri:hover { filter: brightness(1.08); }
+.btn.pri:active { transform: translateY(2px); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25); }
+.btn.sec { background: var(--fondo-elevado); border-color: var(--borde-interactivo); }
+.btn.sec:hover { border-color: var(--texto); background: var(--fondo-hundido); }
+.btn.sec:active { transform: translateY(1px); background: var(--separador); }
+.btn.ico-solo { padding: 0; width: var(--alto-btn); }
+.btn.fantasma { color: var(--texto-secundario); }
+.btn.fantasma:hover { background: var(--fondo-hundido); color: var(--texto); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; filter: none; transform: none; }
+.btn.video { height: 36px; font-weight: var(--peso-medio); }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

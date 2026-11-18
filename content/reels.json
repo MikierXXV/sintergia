@@ -1,0 +1,28 @@
+{
+  "nota": "Generado por scripts/importar-reels.mjs; no se edita a mano.",
+  "reels": [
+    {
+      "concepto": "potencial-transferido",
+      "titulo": "¿Puede un cerebro responder a una luz que no ve?",
+      "descripcion": "Animación 3D sobre el experimento del «potencial transferido» de Grinberg (1994). Dos figuras separadas 14,5 metros; una se ilumina al responder y la otra, según la hipótesis, también. Una balanza que no se asienta con el rótulo «Sin réplica robusta». Dos peones unidos por un hilo que se rompe al separarse en cámaras de Faraday. Dos barras con las cifras de cada artículo, ~25 % y ~57 % de 14 (esta, dato de un agregador), bajo «Dos cifras que no coinciden». Una fila de tres peones con «Réplicas: resultados mixtos». Cierra con un móvil que envía el vídeo.",
+      "fuentes": "Grinberg-Zylberbaum, Delaflor, Attie y Goswami, Physics Essays 7(4) (1994) · Grinberg-Zylberbaum y otros, Subtle Energies 3(3) (1993) · réplicas del diseño: Standish y otros (2004), Wackermann y otros (2003), Ambach (2008) · estudios emparentados: Radin (2004), Richards y otros (2005).",
+      "transcripcion": [
+        "En 1994, un investigador mexicano dijo haber medido, en un cerebro, una respuesta parecida a la de otro, a catorce metros y medio.",
+        "¿Puede un cerebro responder a una luz que no ve?",
+        "La respuesta corta: nadie lo ha replicado de forma robusta. Está en disputa.",
+        "El diseño era este: dos personas interactúan un rato, y luego se separan, cada una en una cámara aislada.",
+        "A una le muestran cien destellos de luz, y su cerebro responde. Según Grinberg, en el de la otra, que no ve nada, aparecería una respuesta parecida.",
+        "Pero las cifras no cuadran: un artículo habla de un veinticinco por ciento de casos; otro, de más de la mitad de catorce sujetos.",
+        "Las réplicas dan resultados mixtos, y una de ellas no encontró el efecto.",
+        "Así que lo abierto no es qué propuso Grinberg, sino si sus datos lo sostienen.",
+        "Envíaselo a alguien curioso, y sígueme para más ciencia de la mente."
+      ],
+      "duracion": 51,
+      "video": "reels/potencial-transferido.mp4",
+      "poster": "reels/potencial-transferido.webp",
+      "miniatura": "reels/potencial-transferido-mini.webp",
+      "bytes": 3143078,
+      "huella": "9438714-1795026837847|378316-1795026838268"
+    }
+  ]
+}

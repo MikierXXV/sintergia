@@ -1,0 +1,28 @@
+{
+  "mecanica": "ondas",
+  "tipo": "simulador",
+  "parametros": {
+    "modo": "foco",
+    "rotulo_a": "Campo neuronal",
+    "rotulo_b": "Lattice",
+    "rotulo_patron": "Patrón de interferencia",
+    "rotulo_foco": "Factor de direccionalidad (hipotético)",
+    "alternativa": "El patrón de interferencia entre dos ondas, con un haz que ilumina solo una porción. Paso uno: partimos del patrón completo. Paso dos: Grinberg añade un factor de direccionalidad, que él mismo llama hipotético. Paso tres: ese factor estimularía solo una porción limitada del patrón; el control «Dirección del haz» mueve esa porción. El haz va en trazo discontinuo porque es una hipótesis, no algo medido. Es un esquema de una idea, no de un fenómeno medido.",
+    "resolucion": "Grinberg propone, como hipótesis, un factor de direccionalidad que estimularía solo una porción limitada del patrón de interferencia.",
+    "separacion": "Dirección del haz",
+    "pasos": [
+      {
+        "texto": "Partimos del patrón de interferencia entre el campo neuronal y el lattice, completo.",
+        "fase": 2
+      },
+      {
+        "texto": "Grinberg añade un «factor de direccionalidad», y él mismo lo llama hipotético.",
+        "fase": 2
+      },
+      {
+        "texto": "Ese factor estimularía solo una porción limitada del patrón. Mueve el control para dirigir el haz.",
+        "fase": 3
+      }
+    ]
+  }
+}

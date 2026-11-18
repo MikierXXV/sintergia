@@ -1,0 +1,122 @@
+{
+  "id": "sintergia",
+  "familia_id": "el-campo",
+  "orden": 1,
+  "simbolo": "SIN",
+  "titulo": "Sintergia: síntesis más energía",
+  "resumen": "Según Grinberg, «sintergia» sería un grado de organización: síntesis más energía, con una sintergia alta cuando cada elemento contiene mucha información. Es una definición cualitativa, sin ninguna medida, y no hay estudios independientes que la hayan puesto a prueba.",
+  "idea": "Para Grinberg, una sintergia alta sería una organización en la que cada elemento contiene mucha información.",
+  "respaldo": 1,
+  "propone": {
+    "pasos": [
+      {
+        "titulo": "Síntesis más energía",
+        "texto": "Según Grinberg, «sintergia» sería la unión de síntesis y energía: un término propio para nombrar un grado de organización."
+      },
+      {
+        "titulo": "Habría grados",
+        "texto": "Su artículo de 1983 habla de «sintergia alta», lo que supone que habría grados de sintergia, de baja a alta."
+      },
+      {
+        "titulo": "La sintergia alta",
+        "texto": "Según ese artículo, una sintergia alta sería una organización cuyos elementos contienen, cada uno, grandes cantidades de información."
+      }
+    ]
+  },
+  "se_sabe": [
+    {
+      "texto": "No hay estudios independientes que lo hayan puesto a prueba.",
+      "refs": []
+    },
+    {
+      "texto": "El concepto aparece en un artículo de 1981 sobre la teoría sintérgica, lo más probable en una revista académica, y en otro de 1983 en Psychoenergetics, una revista parapsicológica de revisión dudosa.",
+      "refs": ["P4", "P5"]
+    },
+    {
+      "texto": "La Psi Encyclopedia, enciclopedia del campo parapsicológico, dice que las ideas de Grinberg «never received much academic attention» (nunca recibieron mucha atención académica).",
+      "refs": ["S13"]
+    },
+    {
+      "texto": "Existe un análisis académico de la teoría sintérgica desde la filosofía de la ciencia (Guzmán y Noda, 2025). No hemos leído su veredicto.",
+      "refs": ["S12"]
+    }
+  ],
+  "disputa": [
+    {
+      "titulo": "Una definición cualitativa, sin medida",
+      "texto": "En lo que hemos leído no hay unidad ni manera de medir la sintergia: no se puede decir cuándo una organización tiene más o menos.",
+      "refs": ["P5"]
+    },
+    {
+      "titulo": "Solo lo sostiene el propio Grinberg",
+      "texto": "Las fuentes que desarrollan el concepto son suyas. No hay prueba empírica independiente ni uso del término fuera de su círculo que hayamos podido leer.",
+      "refs": ["P5", "P4"]
+    },
+    {
+      "titulo": "Una referencia sin cerrar",
+      "texto": "Una fuente sitúa el artículo de 1981 en el Journal of Theoretical Biology; lo más probable es que sea el Journal of Social and Biological Structures.",
+      "refs": ["P4"]
+    }
+  ],
+  "puntos_clave": [
+    "Especulativo: solo lo sostiene el propio Grinberg y no hay estudios independientes que lo pongan a prueba.",
+    "Según Grinberg, una sintergia alta sería una organización donde cada elemento contiene mucha información.",
+    "Es una definición cualitativa: no hay forma de medir la sintergia."
+  ],
+  "cita": {
+    "texto": "each one of its elements contains high amounts of information",
+    "traduccion": "cada uno de sus elementos contiene grandes cantidades de información",
+    "autor": "Grinberg-Zylberbaum",
+    "atribucion": "directa",
+    "fuente": "P5, Psychoenergetics 5 (1983)"
+  },
+  "fuentes": [
+    {
+      "ref": "P5",
+      "tipo": "primaria",
+      "titulo": "The orbitals of consciousness: a neurosyntergic approach to the levels of conscious experience. Psychoenergetics 5: 235-242",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1983,
+      "url": "https://documents.theblackvault.com/documents/remoteviewing/stargate/STARGATE%20%238%20237/Part0007/CIA-RDP96-00792R000700130001-6.TXT",
+      "nota": "Leído en un OCR del archivo de la CIA, con partes ilegibles."
+    },
+    {
+      "ref": "P4",
+      "tipo": "primaria",
+      "titulo": "The transformation of neuronal activity into conscious experience: the syntergic theory. Journal of Social and Biological Structures 4: 201-210",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1981,
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
+      "nota": "Solo la ficha bibliográfica. Una fuente lo sitúa en el Journal of Theoretical Biology; lo más probable es la otra."
+    },
+    {
+      "ref": "S13",
+      "tipo": "contexto",
+      "titulo": "Entrada «Jacobo Grinberg-Zylberbaum» de la Psi Encyclopedia (SPR)",
+      "autor": "Society for Psychical Research",
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
+      "nota": "Enciclopedia del campo parapsicológico, no revisada por pares. Tiene errores de paginación."
+    },
+    {
+      "ref": "S12",
+      "tipo": "contexto",
+      "titulo": "Demarcación científica de la teoría sintérgica. Cinta de Moebio 84: 76-93",
+      "autor": "Guzmán y Noda",
+      "anio": 2025,
+      "url": "https://cintademoebio.uchile.cl/index.php/CDM/article/download/82934/81438/334304",
+      "nota": "Único análisis académico de la teoría que hemos encontrado. Veredicto no leído: la página bloqueó la lectura."
+    }
+  ],
+  "enlaces": [
+    {
+      "id": "campo-neuronal",
+      "rotulo": "El campo neuronal"
+    },
+    {
+      "id": "que-es-la-teoria-sintergica",
+      "rotulo": "Qué es la teoría sintérgica y cómo leer este sitio"
+    }
+  ],
+  "maquina": "sintergia",
+  "reel": "sintergia"
+}

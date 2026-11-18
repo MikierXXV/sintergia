@@ -1,0 +1,335 @@
+/*
+ * El marco común de las visualizaciones.
+ *
+ * Todas las piezas viven en el mismo hueco, con la misma proporción y los mismos controles. Ese
+ * marco compartido es la mitad de lo que hace que N piezas distintas se sientan del mismo sistema;
+ * la otra mitad es src/vis/lenguaje.ts.
+ *
+ * Dentro de la tarjeta de la máquina el orden es: parámetros (con rótulo) → lienzo → pista de
+ * progreso → texto del paso → botones. Los controles los crea src/vis/controles.ts.
+ */
+
+/*
+ * El hueco contiene el lienzo, que dibuja, y los controles. Están separados porque el lienzo tiene
+ * que recortar lo que se salga —un trazo desbordado ensuciaría la página—.
+ */
+.vis-hueco { width: 100%; margin: var(--e6) 0; }
+.maq .vis-hueco { margin: 0; }
+
+/* Antes de montarse, el hueco reserva el alto que va a ocupar: sin esto el contenido de debajo da un
+   salto al aparecer la pieza, que es exactamente lo que mide el CLS. */
+.vis-hueco:empty { min-height: var(--vis-reserva); background: var(--fondo); }
+@media (max-width: 559px) { .vis-hueco:empty { min-height: var(--vis-reserva-movil); } }
+
+.vis-lienzo {
+  aspect-ratio: var(--vis-proporcion);
+  position: relative;
+  margin-inline: var(--e4);
+  border-radius: var(--radio-medio);
+  background: radial-gradient(circle at 1px 1px, var(--separador) 1px, transparent 1.2px) 0 0 / 18px 18px, var(--fondo);
+  border: 1px solid var(--separador);
+  overflow: hidden;
+}
+.vis-lienzo[tabindex] { outline-offset: 2px; }
+@media (max-width: 719px) { .vis-lienzo { margin-inline: var(--e3); } }
+
+.vis-svg, .vis-canvas { display: block; width: 100%; height: 100%; }
+
+.vis-rotulo {
+  font-family: var(--fuente-texto);
+  /* La calcula crearSvg() con el ancho real, para que se vea igual de grande en cualquier pantalla.
+     El 15px de respaldo solo se usa si algo va mal antes del primer ajuste. */
+  font-size: var(--tam-rotulo, 15px);
+  fill: var(--texto);
+}
+.vis-rotulo-enfasis { font-weight: var(--peso-semibold); }
+
+.vis-marca { cursor: grab; }
+.vis-marca:active { cursor: grabbing; }
+
+.vis-controles { position: absolute; bottom: var(--e3); left: var(--e3); display: flex; flex-wrap: wrap; gap: var(--e2); }
+
+/*
+ * Alternativa textual: fuera de la vista, presente para el lector de pantalla. NO `display: none`
+ * ni `visibility: hidden`: ambos la esconden también del lector. Al cargar la máquina, montaje.ts
+ * la lleva a la sección «Qué estás viendo», donde se ve (ver .vision en app.css).
+ */
+.vis-alternativa { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+/* La resolución SÍ se ve: es el cierre de la pieza, lo que el usuario debía entender. */
+.vis-resolucion { font-size: var(--t-sm); color: var(--texto-secundario); border-left: var(--trazo-enfasis) solid var(--acento, var(--separador)); padding-left: var(--e3); margin: var(--e4) var(--e5) var(--e4); max-width: none; }
+
+/* Lo que se ve cuando no hay WebGL o el sistema pide no moverse. */
+.vis-respaldo { display: grid; place-items: center; height: 100%; padding: var(--e6); text-align: center; color: var(--texto-secundario); font-size: var(--t-sm); }
+
+/* ------------------------------------------------------------------------- */
+/* Controles comunes de las máquinas (src/vis/controles.ts)                   */
+/* ------------------------------------------------------------------------- */
+
+/* Parámetros: encima del lienzo, cada uno con su rótulo. */
+.vis-parametros { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--e3) var(--e5); padding: 0 var(--e5) var(--e3); }
+@media (max-width: 719px) { .vis-parametros { padding-inline: var(--e4); } }
+.vis-parametro { display: flex; flex-direction: column; gap: 6px; min-width: 0; max-width: 100%; }
+.vis-parametro-nombre { font-size: var(--t-xs); color: var(--texto-secundario); font-weight: var(--peso-medio); }
+.vis-parametro label.vis-parametro-nombre { display: flex; align-items: center; gap: var(--e3); flex-wrap: wrap; }
+.vis-parametro input[type='range'] { width: min(18rem, 60vw); min-height: 44px; accent-color: var(--acento, var(--accion)); }
+/* El valor se queda junto al deslizador: el deslizador cede ancho antes de mandar el valor a otra línea. */
+.vis-parametro label.vis-parametro-nombre input[type='range'] { flex: 1 1 7rem; width: auto; min-width: 0; max-width: 18rem; }
+.vis-lectura { font-family: var(--fuente-mono); font-size: var(--t-sm); color: var(--texto); min-width: 4ch; }
+
+/* Control segmentado: con muchas opciones se desplaza en horizontal en vez de apilarse. */
+.vis-seg { display: inline-flex; max-width: 100%; padding: 3px; gap: 2px; background: var(--fondo-hundido); border: 1px solid var(--separador); border-radius: var(--radio-medio); overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity; }
+.vis-seg::-webkit-scrollbar { display: none; }
+.vis-seg.envuelve { flex-wrap: wrap; overflow: visible; }
+.vis-seg-wrap { display: inline-flex; align-items: stretch; max-width: 100%; background: var(--fondo-hundido); border: 1px solid var(--separador); border-radius: var(--radio-medio); }
+.vis-seg-wrap > .vis-seg { flex: 0 1 auto; min-width: 0; border: 0; background: none; }
+/* Con desplazamiento, las flechas ocupan su sitio a los lados (no tapan ninguna pestaña). */
+.vis-seg-mas, .vis-seg-menos { display: none; flex: none; width: 28px; padding: 0; border: 0; background: none; align-items: center; justify-content: center; color: var(--texto); cursor: pointer; visibility: hidden; }
+.vis-seg-wrap.con-scroll > .vis-seg-mas, .vis-seg-wrap.con-scroll > .vis-seg-menos { display: flex; }
+.vis-seg-wrap.hay-mas > .vis-seg-mas, .vis-seg-wrap.hay-menos > .vis-seg-menos { visibility: visible; }
+.vis-seg-wrap.con-scroll > .vis-seg { flex: 1 1 auto; padding-inline: 0; }
+.vis-seg-mas .ico, .vis-seg-menos .ico { width: 18px; height: 18px; }
+.vis-opcion {
+  flex: none; height: 32px; padding: 0 var(--e3); border: 0; border-radius: 7px; background: transparent; color: var(--texto-secundario);
+  font-size: var(--t-sm); font-weight: var(--peso-medio); white-space: nowrap; scroll-snap-align: start; position: relative;
+}
+.vis-opcion::before { content: ''; position: absolute; inset: -6px -1px; } /* área táctil de 44 px */
+.vis-opcion:hover { color: var(--texto); }
+.vis-opcion[aria-pressed='true'] { background: var(--fondo-elevado); color: var(--texto); font-weight: var(--peso-semibold); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 0 1px var(--separador); }
+
+/* Panel de transporte: pista, texto del paso y botones. */
+.vis-mando { display: grid; gap: var(--e4); padding: var(--e4) var(--e5) var(--e5); }
+@media (max-width: 719px) { .vis-mando { padding: var(--e4); } }
+.vis-pista { display: grid; grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr)); gap: 0 4px; }
+/* En móvil, con más de 10 pasos la pista pasa a dos filas para que cada marca mida al menos 24 px. */
+@media (max-width: 719px) { .vis-pista.larga { grid-template-columns: repeat(var(--mitad, 1), minmax(0, 1fr)); row-gap: 4px; } }
+.vis-pista button { height: 24px; border: 0; background: none; padding: 0; position: relative; cursor: pointer; }
+.vis-pista button::before { content: ''; position: absolute; left: 0; right: 0; top: 10px; height: 4px; border-radius: 2px; background: var(--separador); transition: background-color var(--m-rapido); }
+.vis-pista button.hecho::before { background: color-mix(in srgb, var(--acento, var(--accion)) 55%, var(--separador)); }
+.vis-pista button.ahora::before { background: var(--acento, var(--accion)); height: 6px; top: 9px; }
+.vis-pista button:hover::before { background: var(--acento, var(--accion)); }
+/* Con muchos pasos: barra continua en lugar de una marca por paso. */
+.vis-pista.continua { display: block; }
+.vis-pista input[type='range'] {
+  --p: 0%; display: block; width: 100%; height: 44px; margin: -10px 0; padding: 0; background: transparent; cursor: pointer; appearance: none; -webkit-appearance: none;
+}
+.vis-pista input[type='range']::-webkit-slider-runnable-track { height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--acento, var(--accion)) var(--p), var(--separador) var(--p)); }
+.vis-pista input[type='range']::-moz-range-track { height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--acento, var(--accion)) var(--p), var(--separador) var(--p)); }
+.vis-pista input[type='range']::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; margin-top: -8px; border-radius: 50%; background: var(--fondo-elevado); border: 3px solid var(--acento, var(--accion)); }
+.vis-pista input[type='range']::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--fondo-elevado); border: 3px solid var(--acento, var(--accion)); }
+.vis-pista input[type='range']:focus-visible { outline: 2px solid var(--foco); outline-offset: 2px; border-radius: 4px; }
+.vis-estado { margin: 0; max-width: 60ch; }
+.vis-estado:empty { display: none; }
+.con-pasos .vis-estado { min-height: 4.6em; }
+.vis-contador { display: block; font-size: var(--t-xs); font-weight: var(--peso-semibold); letter-spacing: 0.06em; text-transform: uppercase; color: var(--acento, var(--texto-secundario)); margin-bottom: 4px; }
+.vis-narracion { display: block; font-size: var(--t-base); line-height: 1.5; color: var(--texto); }
+.vis-botones { display: flex; align-items: center; justify-content: space-between; gap: var(--e3); flex-wrap: wrap; }
+.vis-botones-sec .btn.fantasma { color: var(--texto); }
+.vis-acciones { display: contents; }
+.vis-botones-sec { display: flex; gap: var(--e2); align-items: center; }
+@media (max-width: 719px) {
+  .vis-botones { flex-direction: column; align-items: stretch; }
+  .vis-botones > .btn.pri { width: 100%; height: 48px; }
+  .vis-botones-sec { justify-content: space-between; }
+  .vis-acciones.en-rejilla { display: grid; grid-template-columns: 1fr 1fr; gap: var(--e2); }
+  /* Un rótulo largo se parte en dos líneas: recortarlo con «…» esconde justo lo que dice el botón. */
+  .vis-acciones.en-rejilla .btn { padding: var(--e1, 4px) var(--e2); min-width: 0; height: auto; min-height: var(--alto-btn); white-space: normal; line-height: 1.2; text-align: center; }
+  .vis-botones-sec .btn:not(.ico-solo) { flex: 1; }
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* Mecánica «diagrama»                                                        */
+/* ------------------------------------------------------------------------- */
+
+.vis-diagrama { touch-action: manipulation; }
+.vis-diagrama .d-punta { fill: var(--d-neutro); }
+.vis-diagrama .forma { fill: var(--fondo-elevado); stroke: var(--d-neutro); stroke-width: 1.5; transition: stroke var(--m-rapido), fill var(--m-rapido), opacity var(--m-rapido); }
+.vis-diagrama .forma.rol-acento { fill: color-mix(in srgb, var(--d-acento) 16%, var(--fondo-elevado)); stroke: var(--d-acento); }
+/* Rigor de DEC §6: lo medido va con trazo continuo; lo que propone Grinberg, discontinuo y SIN el acento
+   de la familia (en lo-medido el acento es cian, y cian es «verificado»). La forma lo dice además del color. */
+.vis-diagrama .forma.rol-dato { stroke: var(--texto); stroke-width: 2; }
+.vis-diagrama .forma.rol-propuesta { fill: var(--fondo-hundido); stroke: var(--texto-secundario); stroke-width: 2; stroke-dasharray: 7 5; }
+.vis-diagrama .n-activo .forma.rol-propuesta { fill: var(--fondo-hundido); stroke: var(--d-senal); stroke-dasharray: 7 5; }
+.vis-diagrama .forma.d-fila { fill: transparent; stroke: transparent; stroke-width: 1.5; }
+.vis-diagrama .forma.d-fila.on { fill: color-mix(in srgb, var(--d-acento) 16%, var(--fondo-elevado)); stroke: var(--d-senal); stroke-width: 2; }
+.vis-diagrama .d-traza { fill: none; stroke: var(--texto); stroke-width: 2; stroke-linejoin: round; }
+.vis-diagrama .forma.rol-propuesta ~ .d-traza { stroke: var(--texto-secundario); stroke-dasharray: 5 4; }
+.vis-diagrama .forma.d-vacia { fill: none; stroke: none; }
+.vis-diagrama .d-grupo { fill: none; stroke-dasharray: 5 5; stroke: var(--d-neutro); opacity: var(--vis-atenuado, 0.35); }
+.vis-diagrama .d-codigo { fill: var(--fondo-elevado); }
+.vis-diagrama .d-rotulo { font-family: var(--fuente-texto); font-size: var(--tam-rotulo, 15px); font-weight: var(--peso-medio); fill: var(--texto); }
+.vis-diagrama .d-rotulo-grupo { fill: var(--texto-secundario); font-weight: var(--peso-regular); font-size: 13px; }
+.vis-diagrama .d-sub { font-family: var(--fuente-texto); font-size: 13px; fill: var(--texto-secundario); }
+.vis-diagrama .d-cab { font-weight: var(--peso-semibold); fill: var(--texto); }
+.vis-diagrama .d-codigo-texto { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; fill: var(--texto-secundario); white-space: pre; }
+.vis-diagrama .d-codigo-texto.on { fill: var(--texto); font-weight: var(--peso-semibold); }
+.vis-diagrama .d-linea-activa { fill: color-mix(in srgb, var(--d-acento) 24%, transparent); }
+.vis-diagrama .d-celda { fill: var(--fondo-elevado); stroke: var(--d-neutro); stroke-width: 1; }
+.vis-diagrama .d-celda.cab { fill: var(--fondo-hundido); }
+.vis-diagrama .d-celda.on { fill: color-mix(in srgb, var(--d-acento) 30%, var(--fondo-elevado)); stroke: var(--d-senal); stroke-width: 2; }
+.vis-diagrama .d-halo { paint-order: stroke; stroke: var(--fondo-hundido); stroke-width: 4px; stroke-linejoin: round; }
+.vis-diagrama .d-mensaje { fill: var(--texto); font-weight: var(--peso-semibold); }
+
+.vis-diagrama .nodo { transition: transform var(--m-medio) var(--curva-suave), opacity var(--m-rapido); cursor: default; }
+.vis-diagrama .nodo[tabindex] { cursor: pointer; }
+.vis-diagrama .nodo.n-oculto { opacity: 0; pointer-events: none; }
+.vis-diagrama .nodo:focus-visible { outline: none; }
+.vis-diagrama .nodo:focus-visible .forma { stroke: var(--foco); stroke-width: 3; }
+.vis-diagrama .n-activo .forma { stroke: var(--d-senal); stroke-width: 3; fill: color-mix(in srgb, var(--d-acento) 24%, var(--fondo-elevado)); }
+.vis-diagrama .n-ok .forma { stroke: var(--d-acento); stroke-width: 3; }
+.vis-diagrama .n-error .forma { stroke: var(--d-senal); stroke-width: 2.5; stroke-dasharray: 6 4; }
+.vis-diagrama .n-atenuado .forma { opacity: var(--vis-atenuado, 0.35); }
+
+.vis-diagrama .d-enlace { stroke: var(--d-neutro); fill: none; transition: stroke var(--m-rapido), opacity var(--m-rapido); }
+.vis-diagrama .d-enlace.punteado { stroke-dasharray: 6 5; }
+.vis-diagrama .d-enlace.oculto { opacity: 0; }
+.vis-diagrama .d-enlace.on { stroke: var(--d-senal); }
+.vis-diagrama .d-punto { fill: var(--d-senal); stroke: var(--d-acento); stroke-width: 2; }
+
+
+/* ------------------------------------------------------------------------- */
+/* Mecánicas propias (src/vis/mecanicas/marco.ts): traza-array, curva-de-coste,  */
+/* recorrido-grafo, pila-y-tabla, estructura-viva, simulador-de-carga…          */
+/* Reutilizan las formas de «diagrama»; aquí solo lo que añaden.                */
+/* ------------------------------------------------------------------------- */
+
+.vis-mq { touch-action: manipulation; }
+.vis-mq .mq-on { stroke: var(--d-senal); stroke-width: 3; fill: color-mix(in srgb, var(--d-acento) 24%, var(--fondo-elevado)); }
+.vis-mq .mq-ok { stroke: var(--d-acento); stroke-width: 3; fill: color-mix(in srgb, var(--d-acento) 38%, var(--fondo-elevado)); }
+.vis-mq .mq-visto { fill: color-mix(in srgb, var(--d-acento) 12%, var(--fondo-elevado)); }
+.vis-mq .mq-dim { opacity: var(--vis-atenuado, 0.35); }
+.vis-mq .mq-borde { stroke: var(--d-senal); stroke-dasharray: 5 3; stroke-width: 2; }
+.vis-mq .mq-rep { stroke: var(--d-senal); stroke-dasharray: 4 3; stroke-width: 2.5; fill: none; }
+.vis-mq .mq-hit { stroke: var(--d-acento); stroke-dasharray: 4 3; stroke-width: 2.5; fill: none; }
+.vis-mq .mq-rango { fill: color-mix(in srgb, var(--d-acento) 10%, transparent); stroke: none; }
+.vis-mq .mq-hueco { fill: none; stroke: var(--d-neutro); stroke-dasharray: 3 4; stroke-width: 1; opacity: var(--vis-atenuado, 0.35); }
+.vis-mq .n-error-forma { stroke: var(--d-senal); stroke-width: 3; stroke-dasharray: 6 4; fill: color-mix(in srgb, var(--d-senal) 14%, var(--fondo-elevado)); }
+.vis-mq .mq-origen { fill: none; stroke: var(--d-acento); stroke-width: 2; }
+.vis-mq .mq-nodo { cursor: pointer; }
+.vis-mq .mq-nodo:focus-visible { outline: none; }
+.vis-mq .mq-nodo:focus-visible circle:last-of-type { stroke: var(--foco); stroke-width: 3.5; }
+.vis-mq .mq-rejilla { stroke: var(--d-neutro); stroke-width: 1; opacity: 0.25; }
+.vis-mq .mq-vertical { stroke: var(--d-neutro); stroke-width: 1; stroke-dasharray: 4 4; }
+.vis-mq .mq-lectura { stroke: var(--d-senal); stroke-width: 1.5; opacity: 0.6; }
+.vis-mq .mq-curva { stroke-linecap: round; stroke-linejoin: round; }
+.vis-mq .mq-curva.mq-neutro { stroke: var(--d-neutro); stroke-width: 1.5; }
+.vis-mq .mq-curva.mq-acento { stroke: var(--d-acento); stroke-width: 3; }
+.vis-mq .mq-curva.mq-senal { stroke: var(--d-senal); stroke-width: 2.5; }
+.vis-mq .mq-curva.mq-punteada { stroke-dasharray: 6 4; }
+.vis-mq .mq-punto { stroke: var(--fondo-hundido); stroke-width: 1.5; }
+.vis-mq .mq-punto.mq-neutro { fill: var(--d-neutro); }
+.vis-mq .mq-punto.mq-acento { fill: var(--d-acento); }
+.vis-mq .mq-punto.mq-senal { fill: var(--d-senal); }
+
+/* indexacion-geoespacial */
+.vis-mq.mq-mapa { touch-action: pan-y; cursor: crosshair; }
+.vis-mq .mq-hex { fill: none; stroke: var(--d-neutro); stroke-width: 1; opacity: 0.35; }
+.vis-mq .mq-hex-cliente { fill: color-mix(in srgb, var(--d-acento) 30%, transparent); stroke: var(--d-acento); stroke-width: 2.5; }
+.vis-mq .mq-hex-vecina { fill: color-mix(in srgb, var(--d-acento) 13%, transparent); stroke: var(--d-acento); stroke-width: 1.5; }
+.vis-mq .mq-fondo-texto { fill: var(--fondo-hundido); opacity: 0.88; stroke: none; }
+.vis-mq .mq-conductor { fill: var(--d-neutro); stroke: var(--fondo-hundido); stroke-width: 1; }
+.vis-mq .mq-ok-punto { fill: var(--d-acento); }
+.vis-mq .mq-real { fill: none; stroke: var(--d-senal); stroke-width: 2.5; }
+.vis-mq .mq-real-perdido { stroke-dasharray: 4 3; }
+.vis-mq .mq-cliente { cursor: grab; }
+.vis-mq .mq-cliente:focus-visible { outline: none; }
+.vis-mq .mq-cliente:focus-visible circle:first-of-type { stroke: var(--foco); stroke-width: 4; }
+.vis-mq .mq-cliente-punto { fill: var(--d-senal); }
+
+/* espacio-vectorial */
+.vis-mq .mq-doc { fill: var(--d-neutro); stroke: var(--fondo-hundido); stroke-width: 1; }
+/* Los resultados llevan un aro del color del fondo: si dos puntos se montan, se siguen contando dos. */
+.vis-mq .mq-doc-top { fill: var(--d-acento); stroke-width: 2.5; }
+.vis-mq .mq-consulta { fill: var(--d-senal); stroke: var(--d-acento); stroke-width: 2; }
+.vis-ranking { margin: var(--e3) var(--e5) var(--e4); font-size: var(--t-sm); }
+@media (max-width: 719px) { .vis-ranking { margin-inline: var(--e4); } }
+.vis-ranking-titulo { margin: 0 0 var(--e1, 4px); color: var(--texto-secundario); }
+.vis-ranking ol { margin: 0; padding-left: var(--e5, 1.25rem); display: grid; gap: 2px; }
+.vis-ranking-d { font-family: var(--fuente-mono); color: var(--acento, var(--texto-secundario)); margin-left: var(--e2); }
+
+
+/* ------------------------------------------------------------------------- */
+/* Motor común de interacción (src/vis/motor.ts) y máquinas tocables          */
+/* observador-vivo, pila-cola-viva, cache-viva                                */
+/*                                                                           */
+/* Tres roles de color (neutro, acento, señal) y el ATENUADO solo sobre       */
+/* formas: ver lenguaje.ts. Los tintes salen de --tinte-*-pct, no de números  */
+/* sueltos.                                                                   */
+/* ------------------------------------------------------------------------- */
+
+.vis-mq .m-txt { font-family: var(--fuente-texto); font-size: var(--tam-rotulo, 15px); fill: var(--texto); stroke: none; dominant-baseline: central; }
+.vis-mq .m-txt.m-neg { font-weight: var(--peso-semibold); }
+.vis-mq .m-txt.m-sec { fill: var(--texto-secundario); }
+.vis-mq .m-txt.m-ac { fill: var(--d-acento); font-weight: var(--peso-semibold); }
+.vis-mq .m-txt.m-sobre { fill: var(--fondo); font-weight: var(--peso-semibold); }
+.vis-mq .m-txt.m-mono { font-family: var(--fuente-mono); font-weight: var(--peso-semibold); }
+.vis-mq .m-txt.m-tit { fill: var(--texto-secundario); font-weight: var(--peso-semibold); letter-spacing: 0.04em; text-transform: uppercase; font-size: calc(var(--tam-rotulo, 15px) * 0.95); }
+
+.vis-mq .m-forma { fill: var(--fondo-elevado); stroke: var(--d-neutro); stroke-width: var(--trazo-base); transition: stroke var(--m-rapido), fill var(--m-rapido), opacity var(--m-rapido); }
+.vis-mq .m-forma.m-ac { stroke: var(--d-acento); }
+.vis-mq .m-forma.m-tinte { fill: color-mix(in srgb, var(--d-acento) var(--tinte-fuerte-pct, 16%), var(--fondo-elevado)); }
+.vis-mq .m-forma.m-hueco { fill: none; }
+.vis-mq .m-forma.m-fino { stroke: var(--separador); stroke-width: var(--trazo-fino); }
+.vis-mq .m-forma.m-enfasis { stroke-width: var(--trazo-enfasis); }
+.vis-mq .m-forma.m-visto { fill: var(--d-acento); stroke: var(--d-acento); }
+.vis-mq .m-forma.m-actual { stroke: var(--d-senal); stroke-width: var(--trazo-enfasis); }
+.vis-mq .m-forma.m-senal { stroke: var(--d-senal); stroke-width: var(--trazo-enfasis); }
+.vis-mq .m-disc { stroke-dasharray: 5 4; }
+.vis-mq .m-atenua { opacity: var(--vis-atenuado, 0.35); }
+.vis-mq .m-sol { fill: var(--d-acento); stroke: none; }
+.vis-mq .m-solapa { fill: none; stroke: var(--fondo); stroke-width: var(--trazo-base); }
+.vis-mq .m-suelo { stroke: var(--d-neutro); stroke-width: var(--trazo-enfasis); stroke-linecap: round; fill: none; }
+.vis-mq .m-linea { fill: none; stroke: var(--d-neutro); stroke-width: var(--trazo-base); transition: opacity var(--m-rapido); }
+.vis-mq .m-linea.m-fino { stroke: var(--separador); stroke-width: var(--trazo-fino); }
+.vis-mq .m-linea.m-oculta { opacity: 0; }
+.vis-mq .m-rastro { fill: none; stroke: var(--d-acento); stroke-width: var(--trazo-enfasis); stroke-dasharray: 2 6; stroke-linecap: round; stroke-linejoin: round; }
+.vis-mq .m-onda { fill: none; stroke: var(--d-acento); stroke-width: var(--trazo-enfasis); }
+.vis-mq .m-insignia { fill: var(--d-acento); stroke: none; }
+.vis-mq .m-punto { fill: var(--d-acento); stroke: none; }
+.vis-mq .m-punto.m-neutro { fill: var(--d-neutro); }
+.vis-mq .m-punto.m-senal { fill: var(--fondo-elevado); stroke: var(--d-senal); stroke-width: var(--trazo-enfasis); }
+.vis-mq .m-barra { fill: var(--d-acento); stroke: none; }
+
+.vis-mq .m-tocable { cursor: pointer; outline: none; }
+.vis-mq .m-foco { fill: none; stroke: transparent; transition: stroke var(--m-rapido); pointer-events: none; }
+.vis-mq .m-tocable:hover .m-foco, .vis-mq .m-tocable:focus-visible .m-foco { stroke: var(--foco); stroke-width: var(--trazo-enfasis); }
+.vis-mq .m-reto .m-forma.m-ac { stroke: var(--d-senal); stroke-width: var(--trazo-enfasis); }
+.vis-mq .m-sale > .m-cuerpo .m-forma, .vis-mq .m-sale > .m-forma { stroke: var(--d-senal); stroke-width: var(--trazo-enfasis); }
+
+/* Elementos persistentes: la posición se declara y el navegador la anima. */
+.vis-mq .m-it { transition: transform var(--m-medio) var(--curva-suave), opacity var(--m-rapido); }
+.vis-mq .m-it.m-sin, .vis-mq.m-instante .m-it { transition: none; }
+.vis-botones [hidden] { display: none; }
+
+.vis-mq .m-latir { fill: none; stroke: var(--d-acento); stroke-width: var(--trazo-enfasis); transform-box: fill-box; transform-origin: center; animation: m-latir 1.8s ease-in-out infinite; pointer-events: none; }
+@keyframes m-latir { 0%, 100% { opacity: 0; transform: scale(1); } 50% { opacity: 0.55; transform: scale(1.18); } }
+.vis-mq .m-agitar { transform-box: fill-box; transform-origin: center; animation: m-agitar 360ms ease-in-out; }
+@keyframes m-agitar { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(3px); } }
+.vis-mq .m-rebote { transform-box: fill-box; transform-origin: center; animation: m-rebote 420ms var(--curva-entrada); }
+@keyframes m-rebote { 0% { transform: scale(0.7); } 60% { transform: scale(1.1); } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .vis-mq .m-latir { animation: none; opacity: 0.35; }
+  .vis-mq .m-agitar, .vis-mq .m-rebote { animation: none; }
+  .vis-mq .m-it { transition: none; }
+}
+
+/* Medidores: contador + barra bajo el lienzo, con alerta. */
+.vis-medidores { display: flex; flex-wrap: wrap; gap: var(--e2); padding: var(--e3) var(--e5) 0; }
+@media (max-width: 719px) { .vis-medidores { padding-inline: var(--e4); } }
+.vis-medidor { flex: 1 1 9rem; padding: var(--e2) var(--e3); border: 1px solid var(--separador); border-radius: var(--radio-medio); background: var(--fondo-elevado); }
+.vis-medidor small { display: block; font-size: var(--t-xs); color: var(--texto-secundario); }
+.vis-medidor b { font-family: var(--fuente-titulo); font-size: var(--t-lg); font-weight: var(--peso-semibold); line-height: 1.2; font-variant-numeric: tabular-nums; }
+.vis-medidor-barra { height: 4px; border-radius: 2px; background: var(--separador); margin-top: 6px; overflow: hidden; }
+.vis-medidor-barra i { display: block; height: 100%; width: 0; background: var(--acento, var(--accion)); transition: width var(--m-medio) var(--curva-suave); }
+.vis-medidor.alerta { border-color: var(--aviso); }
+.vis-medidor.alerta b { color: var(--aviso); }
+/* ordenacion-viva: cuatro medidores de etiqueta y valor largos; en filas de una línea (rótulo a la izquierda, valor a la derecha) caben a cualquier ancho. */
+.os-medidores .vis-medidor { flex: 1 1 17rem; display: grid; grid-template-columns: 1fr auto; align-items: baseline; column-gap: var(--e3); }
+.os-medidores .vis-medidor b { font-size: var(--t-base); white-space: nowrap; }
+.os-medidores .vis-medidor-barra { grid-column: 1 / -1; }
+@media (prefers-reduced-motion: reduce) { .vis-medidor-barra i { transition: none; } }
+
+/* grafo-viva (M3): árbol de descubrimiento y etiqueta de peso */
+.vis-mq .gv-arbol { stroke: var(--d-acento); stroke-width: var(--trazo-enfasis); }
+.vis-mq .gv-etq { fill: var(--fondo-elevado); stroke: var(--separador); stroke-width: var(--trazo-fino); }

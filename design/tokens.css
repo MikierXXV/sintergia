@@ -1,0 +1,301 @@
+/*
+ * Tokens del sistema de diseño. Refleja design/tokens.json.
+ *
+ * Los acentos por familia NO están aquí: los inyecta el runtime desde content/<idioma>/familias.json,
+ * porque son contenido. Verificar con `npm run validar:contraste` después de tocar cualquier color.
+ */
+
+/*
+ * LAS TIPOGRAFÍAS SE SIRVEN DESDE EL PROPIO SITIO.
+ *
+ * Los tokens las nombraban y nadie las cargaba: todo se veía con las de respaldo del sistema, que
+ * es la diferencia entre un sitio con voz propia y uno que parece una plantilla sin terminar.
+ *
+ * Van en variable y con el subconjunto latino —48 kB y 132 kB—, sin pedirlas a un tercero: una
+ * hoja de estilos de fuentes ajena añade dos conexiones antes de poder pintar una letra, y de paso
+ * le cuenta a alguien quién visita el sitio.
+ *
+ * `swap`: el texto se pinta desde el primer momento con la de respaldo y cambia al llegar la buena.
+ * Con `block` la portada se quedaría en blanco esperando, que es justo lo que mide el LCP.
+ */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fuentes/inter-latin.woff2') format('woff2-variations');
+  font-weight: 400 600;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2070-209F, U+20AC, U+2122, U+2212;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/fuentes/newsreader-latin.woff2') format('woff2-variations');
+  font-weight: 400 600;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2070-209F, U+20AC, U+2122, U+2212;
+}
+
+/*
+ * LAS DE RESPALDO, AJUSTADAS PARA QUE EL CAMBIO NO MUEVA NADA.
+ *
+ * Con `swap` el texto se pinta antes con la del sistema. Si ocupa otra cosa, al llegar la buena
+ * salta todo lo que hay debajo: el CLS del móvil se fue de 0,000 a 0,071 el día que se cargaron las
+ * fuentes. Estas dos caras son la del sistema con el tamaño y la caja de la nuestra, así que las
+ * líneas caen donde van a caer desde el primer pintado.
+ *
+ * Los números NO se copian de ningún sitio: los mide `scripts/metricas-respaldo.mjs` preguntándole
+ * al navegador. Al cambiar de tipografía, se vuelve a correr.
+ */
+@font-face {
+  font-family: 'Inter respaldo';
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  size-adjust: 104.48%;
+  ascent-override: 92.75%;
+  descent-override: 23.07%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Newsreader respaldo';
+  src: local('Times New Roman'), local('Times'), local('Liberation Serif');
+  size-adjust: 110.23%;
+  ascent-override: 66.68%;
+  descent-override: 24.04%;
+  line-gap-override: 0%;
+}
+
+:root {
+  /* ---- tipografía ---- */
+  --fuente-titulo: "Newsreader", "Newsreader respaldo", ui-serif, Georgia, serif;
+  --fuente-texto: "Inter", "Inter respaldo", ui-sans-serif, system-ui, sans-serif;
+
+  --peso-regular: 400;
+  --peso-medio: 500;
+  --peso-semibold: 600;
+
+  --t-micro: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
+  --t-pequeno: clamp(0.875rem, 0.85rem + 0.12vw, 0.9375rem);
+  --t-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --t-medio: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --t-grande: clamp(1.75rem, 1.5rem + 1.2vw, 2.5rem);
+  --t-titulo: clamp(2.25rem, 1.7rem + 2.7vw, 4rem);
+  --t-hero: clamp(2.5rem, 1.6rem + 3.2vw, 4rem);
+
+  /* ---- escala del modo software-engineer (S4-E): copiada tal cual. La paleta NO se copia: es la de DEC §5.
+     Los tamaños de interfaz son fijos; solo la lectura y los titulares fluyen. ---- */
+  --fuente-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --t-xs: 0.75rem;                                        /* 12  contadores, etiquetas */
+  --t-sm: 0.875rem;                                       /* 14  chips, botones, meta */
+  --t-lectura: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);   /* 16 → 17  cuerpo de lectura */
+  --t-md: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);      /* 17 → 19  título de tarjeta, entradilla */
+  --t-lg: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);        /* 20 → 24  título de familia y de sección */
+  --t-xl: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);         /* 28 → 40  titular de concepto */
+
+  /* Alturas de control */
+  --alto-ui: 44px;       /* objetivo táctil */
+  --alto-btn: 40px;
+  --alto-cabecera: 56px; /* barra superior fija */
+  --alto-chip: 34px;     /* chip visible; el área táctil llega a 44 px con un pseudo-elemento invisible */
+  --medida: 68ch;
+  --e5: 1.25rem;  --e10: 2.5rem;
+
+  /* Proporción (ancho / alto) del lienzo por debajo de 560 px de ancho: cuadrado. La leen las
+     mecánicas con proporcionMovil(). */
+  --vis-proporcion-movil: 1 / 1;
+  /* Alto que se reserva antes de montar la máquina, para que la página no salte (CLS). */
+  --vis-reserva: 26rem;
+  --vis-reserva-movil: 34rem;
+
+  /* El aviso de «Lo que está en disputa» va en el acento NEUTRO, nunca en rojo (DEC §3, §5). */
+  --aviso: var(--enlace);
+  --tinte-pct: 8%;
+  --tinte-fuerte-pct: 16%;
+  --aviso-tinte: color-mix(in srgb, var(--aviso) 7%, var(--fondo-elevado));
+  --sombra-boton: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 2px 0 rgba(0, 0, 0, 0.28);
+
+  /* Forma. Ver design/tokens.json. */
+  --radio-pequeno: 6px;
+  --radio-medio: 10px;
+  --radio-grande: 16px;
+  --radio-pildora: 999px;
+
+  --medida-texto: 68ch;
+  --medida-corta: min(100%, 46ch);
+  --il-apretado: 1.15;
+  --il-titulo: 1.2;
+  --il-texto: 1.65;
+
+  /* ---- espaciado (escala de 4px) ---- */
+  --e1: 0.25rem;  --e2: 0.5rem;   --e3: 0.75rem;  --e4: 1rem;
+  --e6: 1.5rem;   --e8: 2rem;     --e12: 3rem;    --e16: 4rem;
+  --e24: 6rem;    --e32: 8rem;
+
+  /* ---- movimiento ---- */
+  --m-instantaneo: 120ms;
+  --m-rapido: 220ms;
+  --m-medio: 400ms;
+  --m-lento: 700ms;
+  --m-trazo: 900ms;
+  --curva-entrada: cubic-bezier(0.16, 1, 0.3, 1);
+  --curva-salida: cubic-bezier(0.4, 0, 1, 1);
+  --curva-suave: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---- visualizaciones ----
+     CON UNIDADES. Ver la nota de design/tokens.json: un token de longitud sin unidad invalida en
+     silencio cada regla que lo use. */
+  --vis-proporcion: 7 / 3;
+  --trazo-fino: 1px;
+  --trazo-base: 1.5px;
+  --trazo-enfasis: 3px;
+  --vis-atenuado: 0.35;
+
+  /* ---- escenografía ---- */
+  --entrada-desplazamiento: 20px;
+  --entrada-desenfoque: 8px;
+  --entrada-escala: 0.985;
+  --escalonado: 60ms;
+  --paralaje-recorrido: 10%;
+  --portada-alto: min(88svh, 760px);
+  --franja-ancho-tarjeta: min(78vw, 22rem);
+  --velo-alto: clamp(4rem, 12vh, 9rem);
+  --halo-portada: 45%;
+  --halo-heroe: 30%;
+  --halo-oscuro: 14%;
+
+  /* Lo publica src/app/escenografia.ts: 0 cuando la parada entra por abajo, 1 cuando sale por
+     arriba. El respaldo 0.5 —posición media— es el que se usa si el motor no llega a arrancar, y
+     por eso deja las capas centradas en vez de en un extremo. */
+  --avance: 0.5;
+}
+
+/*
+ * Los dos juegos de color, con nombre propio y disponibles SIEMPRE.
+ *
+ * Están declarados aparte de --fondo/--texto porque el tema no es lo único que los elige: una
+ * parada puede pedir tono contrario al del sitio (`escena.tono` en familias.json) y necesita los
+ * valores del otro juego sin repetirlos. Antes estaban escritos tres veces —claro, oscuro y el
+ * respaldo de prefers-color-scheme—, y tres copias de una paleta divergen a la primera corrección.
+ */
+:root {
+  --claro-fondo: #F6F7FA;
+  --claro-fondo-elevado: #FFFFFF;
+  --claro-fondo-hundido: #ECEEF3;
+  --claro-texto: #12151F;
+  --claro-texto-secundario: #4F586B;
+  --claro-separador: #D5D9E3;
+  --claro-borde-interactivo: #6E778C;
+  --claro-foco: #12151F;
+  --claro-enlace: #3A4A6B;
+  --claro-accion: #3A4A6B;
+  /*
+   * El texto que va ENCIMA del acento, y cambia de tema porque el acento cambia de luminosidad: el
+   * naranja del tema claro es oscuro, y el texto negro encima se quedaba en 1,9:1 —la insignia de
+   * favoritos era una mancha con un número dentro que no se leía—.
+   */
+  --claro-sobre-accion: #FFFFFF;
+  --claro-sombra: 0 1px 2px rgba(20, 20, 24, 0.05), 0 8px 24px rgba(20, 20, 24, 0.06);
+
+  --oscuro-fondo: #0E1220;
+  --oscuro-fondo-elevado: #161B2D;
+  --oscuro-fondo-hundido: #0A0D18;
+  --oscuro-texto: #EEF1F8;
+  --oscuro-texto-secundario: #9EA8C0;
+  --oscuro-separador: #26304A;
+  --oscuro-borde-interactivo: #6D7896;
+  --oscuro-foco: #A9B4CC;
+  --oscuro-enlace: #A9B4CC;
+  --oscuro-accion: #A9B4CC;
+  --oscuro-sobre-accion: #0E1220;
+  --oscuro-sombra: 0 1px 2px rgba(0, 0, 0, 0.6), 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+/*
+ * Qué juego está activo. Se resuelve por atributo, no por media query, porque el sitio ofrece un
+ * selector y una preferencia guardada tiene que poder ganarle al sistema. El atributo lo pone el
+ * script síncrono de index.html antes del primer pintado.
+ *
+ * `[data-tono]` es lo mismo aplicado a un trozo del documento. Al usar los mismos ocho valores,
+ * una parada de tono contrario cumple el contraste que check-contraste.mjs ya verifica: no hay una
+ * segunda paleta a la que nadie esté mirando.
+ */
+:root[data-tema="claro"],
+[data-tono="claro"] {
+  /*
+   * `color-scheme` le dice al navegador de qué color pintar lo que pinta ÉL: casillas, barras de
+   * desplazamiento, la x de un campo de búsqueda. Sin esto, el tema oscuro salía con casillas
+   * blancas como azulejos y una barra de desplazamiento clara en mitad de una página casi negra.
+   */
+  color-scheme: light;
+  --fondo: var(--claro-fondo);
+  --fondo-elevado: var(--claro-fondo-elevado);
+  --fondo-hundido: var(--claro-fondo-hundido);
+  --texto: var(--claro-texto);
+  --texto-secundario: var(--claro-texto-secundario);
+  --separador: var(--claro-separador);
+  --borde-interactivo: var(--claro-borde-interactivo);
+  --foco: var(--claro-foco);
+  --enlace: var(--claro-enlace);
+  --accion: var(--claro-accion);
+  --sobre-accion: var(--claro-sobre-accion);
+  --sombra: var(--claro-sombra);
+}
+
+:root[data-tema="oscuro"],
+[data-tono="oscuro"] {
+  color-scheme: dark;
+  --halo-portada: var(--halo-oscuro);
+  --halo-heroe: var(--halo-oscuro);
+  --fondo: var(--oscuro-fondo);
+  --fondo-elevado: var(--oscuro-fondo-elevado);
+  --fondo-hundido: var(--oscuro-fondo-hundido);
+  --texto: var(--oscuro-texto);
+  --texto-secundario: var(--oscuro-texto-secundario);
+  --separador: var(--oscuro-separador);
+  --borde-interactivo: var(--oscuro-borde-interactivo);
+  --foco: var(--oscuro-foco);
+  --enlace: var(--oscuro-enlace);
+  --accion: var(--oscuro-accion);
+  --sobre-accion: var(--oscuro-sobre-accion);
+  --sombra: var(--oscuro-sombra);
+}
+
+/*
+ * `--acento` NO se resuelve aquí, aunque encajaría. Una variable se resuelve en el elemento donde
+ * se declara: si `--acento: var(--acento-claro)` se escribiera en :root, leería el --acento-claro
+ * de :root —que no existe— y no el de la parada, y todas las familias saldrían del mismo color.
+ * Lo pone aplicarAcento() en src/main.ts, que sí sabe el tono efectivo de cada parada.
+ */
+
+/*
+ * Respaldo por si el atributo no llegara a ponerse (JavaScript desactivado). Va después para no
+ * ganarle a la elección explícita, y usa :not() para no pisarla cuando sí existe.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    color-scheme: dark;
+    --halo-portada: var(--halo-oscuro);
+    --halo-heroe: var(--halo-oscuro);
+    --fondo: var(--oscuro-fondo);
+    --fondo-elevado: var(--oscuro-fondo-elevado);
+    --fondo-hundido: var(--oscuro-fondo-hundido);
+    --texto: var(--oscuro-texto);
+    --texto-secundario: var(--oscuro-texto-secundario);
+    --separador: var(--oscuro-separador);
+    --borde-interactivo: var(--oscuro-borde-interactivo);
+    --foco: var(--oscuro-foco);
+    --enlace: var(--oscuro-enlace);
+    --accion: var(--oscuro-accion);
+    --sobre-accion: var(--oscuro-sobre-accion);
+    --sombra: var(--oscuro-sombra);
+  }
+}
+
+/* Nadie se mueve si el sistema pide que no. Es la red de seguridad global; las piezas además lo
+   consultan con movimientoReducido() para elegir un estado final en vez de una animación cortada. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

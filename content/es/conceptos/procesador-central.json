@@ -1,0 +1,100 @@
+{
+  "id": "procesador-central",
+  "familia_id": "la-conciencia",
+  "orden": 1,
+  "simbolo": "PC",
+  "titulo": "El procesador central o «conciencia pura»",
+  "resumen": "Según Grinberg, lo que permanecería detrás de todos los cambios de la experiencia sería un «procesador central», que puede concebirse como conciencia pura. Es una tesis filosófica: no se puede comprobar con un experimento ni hay estudios independientes que la hayan puesto a prueba.",
+  "idea": "Para Grinberg, lo que permanece mientras cambia la experiencia sería un procesador central, concebible como conciencia pura.",
+  "respaldo": 0,
+  "propone": {
+    "pasos": [
+      {
+        "titulo": "La experiencia cambia",
+        "texto": "Según Grinberg, nuestra experiencia pasa por niveles distintos, y cambia a medida que lo hace."
+      },
+      {
+        "titulo": "Algo permanece",
+        "texto": "Detrás de esos cambios habría un procesador central que no cambia: lo que permanece mientras todo lo demás varía."
+      },
+      {
+        "titulo": "La conciencia pura",
+        "texto": "En su artículo de 1983, ese procesador central puede concebirse como conciencia pura. Es una tesis, no una medición."
+      }
+    ]
+  },
+  "se_sabe": [
+    {
+      "texto": "No hay estudios independientes que lo hayan puesto a prueba, y no está claro qué observación podría hacerlo.",
+      "refs": []
+    },
+    {
+      "texto": "Aparece en un artículo de 1983 en Psychoenergetics, revista parapsicológica de revisión dudosa.",
+      "refs": [
+        "P5"
+      ]
+    },
+    {
+      "texto": "La Psi Encyclopedia, enciclopedia del campo parapsicológico, dice que las ideas de Grinberg «never received much academic attention» (nunca recibieron mucha atención académica).",
+      "refs": [
+        "S13"
+      ]
+    }
+  ],
+  "disputa": [
+    {
+      "titulo": "No se puede comprobar con un experimento",
+      "texto": "Es una tesis filosófica: no dice qué observación la confirmaría o la refutaría, así que ningún resultado empírico puede darle ni quitarle la razón.",
+      "refs": [
+        "P5"
+      ]
+    },
+    {
+      "titulo": "Nota del equipo: una idea con larga historia",
+      "texto": "Nota nuestra, que no viene de estas fuentes: hablar de una conciencia que permanece bajo los cambios de la experiencia es una tesis filosófica antigua; aquí se presenta como la de Grinberg, no como un hallazgo.",
+      "refs": []
+    }
+  ],
+  "puntos_clave": [
+    "Tesis filosófica: no se puede comprobar con un experimento y solo la sostiene el propio Grinberg.",
+    "Según Grinberg, el procesador central sería lo que permanece mientras cambia la experiencia, concebible como conciencia pura."
+  ],
+  "cita": {
+    "texto": "The central processor can be conceived as pure consciousness",
+    "traduccion": "El procesador central puede concebirse como conciencia pura",
+    "autor": "Grinberg-Zylberbaum",
+    "atribucion": "directa",
+    "fuente": "P5, Psychoenergetics 5 (1983)"
+  },
+  "fuentes": [
+    {
+      "ref": "P5",
+      "tipo": "primaria",
+      "titulo": "The orbitals of consciousness: a neurosyntergic approach to the levels of conscious experience. Psychoenergetics 5: 235-242",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1983,
+      "url": "https://documents.theblackvault.com/documents/remoteviewing/stargate/STARGATE%20%238%20237/Part0007/CIA-RDP96-00792R000700130001-6.TXT",
+      "nota": "Leído en un OCR del archivo de la CIA, con partes ilegibles."
+    },
+    {
+      "ref": "S13",
+      "tipo": "contexto",
+      "titulo": "Entrada «Jacobo Grinberg-Zylberbaum» de la Psi Encyclopedia (SPR)",
+      "autor": "Society for Psychical Research",
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
+      "nota": "Enciclopedia del campo parapsicológico, no revisada por pares. Tiene errores de paginación."
+    }
+  ],
+  "enlaces": [
+    {
+      "id": "orbitales-de-conciencia",
+      "rotulo": "Los orbitales de conciencia: lo que cambia alrededor"
+    },
+    {
+      "id": "percepcion-campo-lattice",
+      "rotulo": "Percibir como interferencia entre campo y lattice"
+    }
+  ],
+  "maquina": "procesador-central",
+  "reel": "procesador-central"
+}

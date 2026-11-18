@@ -1,0 +1,109 @@
+{
+  "id": "patron-de-interferencia",
+  "familia_id": "el-campo",
+  "orden": 5,
+  "simbolo": "INT",
+  "titulo": "El patrón de interferencia",
+  "resumen": "Según Grinberg, el campo neuronal y el lattice interferirían, como dos ondas, y ese patrón sería la estructura energética de la experiencia perceptiva. Es una propuesta suya, análoga a ideas holográficas contemporáneas, sin estudios independientes que la hayan puesto a prueba.",
+  "idea": "Grinberg propone que el campo neuronal y el lattice interfieren, y que ese patrón sería la estructura de la experiencia perceptiva.",
+  "respaldo": 1,
+  "propone": {
+    "pasos": [
+      {
+        "titulo": "Dos frentes de onda",
+        "texto": "Según Grinberg, el campo neuronal y el lattice se comportarían como dos ondas que se encuentran."
+      },
+      {
+        "titulo": "Se superponen",
+        "texto": "Al superponerse, sus crestas y valles se suman o se anulan: es lo que en física se llama interferencia."
+      },
+      {
+        "titulo": "El patrón es la experiencia",
+        "texto": "El patrón resultante constituiría, según su artículo de 1983, la estructura energética de la experiencia perceptiva."
+      }
+    ]
+  },
+  "se_sabe": [
+    {
+      "texto": "No hay estudios independientes que lo hayan puesto a prueba.",
+      "refs": []
+    },
+    {
+      "texto": "El mecanismo figura en un artículo de 1983 en Psychoenergetics, revista parapsicológica de revisión dudosa.",
+      "refs": [
+        "P5"
+      ]
+    },
+    {
+      "texto": "La Psi Encyclopedia, enciclopedia del campo parapsicológico, dice que las ideas de Grinberg «never received much academic attention» (nunca recibieron mucha atención académica).",
+      "refs": [
+        "S13"
+      ]
+    }
+  ],
+  "disputa": [
+    {
+      "titulo": "Una analogía, no un modelo",
+      "texto": "En lo que hemos leído, la interferencia se afirma pero no se calcula: no hay ecuaciones ni predicciones del patrón que se puedan contrastar.",
+      "refs": [
+        "P5"
+      ]
+    },
+    {
+      "titulo": "Depende de dos ideas sin probar",
+      "texto": "El mecanismo exige que existan el campo neuronal y el lattice, y ninguno de los dos ha sido puesto a prueba.",
+      "refs": [
+        "P5"
+      ]
+    }
+  ],
+  "puntos_clave": [
+    "Especulativo: solo lo sostiene el propio Grinberg; el mecanismo depende de dos ideas que nadie ha puesto a prueba.",
+    "Según Grinberg, el campo neuronal y el lattice interferirían, y el patrón sería la estructura de la experiencia perceptiva."
+  ],
+  "cita": {
+    "texto": "This interference pattern constitutes the energetic structure of perceptual experience",
+    "traduccion": "Este patrón de interferencia constituye la estructura energética de la experiencia perceptiva",
+    "autor": "Grinberg-Zylberbaum",
+    "atribucion": "directa",
+    "fuente": "P5, Psychoenergetics 5 (1983)"
+  },
+  "fuentes": [
+    {
+      "ref": "P5",
+      "tipo": "primaria",
+      "titulo": "The orbitals of consciousness: a neurosyntergic approach to the levels of conscious experience. Psychoenergetics 5: 235-242",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1983,
+      "url": "https://documents.theblackvault.com/documents/remoteviewing/stargate/STARGATE%20%238%20237/Part0007/CIA-RDP96-00792R000700130001-6.TXT",
+      "nota": "Leído en un OCR del archivo de la CIA, con partes ilegibles."
+    },
+    {
+      "ref": "S13",
+      "tipo": "contexto",
+      "titulo": "Entrada «Jacobo Grinberg-Zylberbaum» de la Psi Encyclopedia (SPR)",
+      "autor": "Society for Psychical Research",
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
+      "nota": "Enciclopedia del campo parapsicológico, no revisada por pares. Tiene errores de paginación."
+    }
+  ],
+  "enlaces": [
+    {
+      "id": "factor-de-direccionalidad",
+      "rotulo": "El factor de direccionalidad"
+    },
+    {
+      "id": "percepcion-campo-lattice",
+      "rotulo": "Percibir como interferencia entre campo y lattice"
+    }
+  ],
+  "maquina": "patron-de-interferencia",
+  "reel": "patron-de-interferencia",
+  "detalles": [
+    {
+      "titulo": "Contexto: Bohm y Pribram",
+      "texto": "Contexto de nuestra investigación, no de la fuente: es análogo a las ideas holográficas de Bohm y Pribram, contemporáneas de la teoría.",
+      "refs": []
+    }
+  ]
+}

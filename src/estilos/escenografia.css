@@ -1,0 +1,228 @@
+/*
+ * Los efectos. Todos.
+ *
+ * Aquí está el movimiento del documento entero, y no hay ni una línea de él en TypeScript:
+ * src/app/escenografia.ts solo publica `--avance` y marca `data-visto`. Si algo se mueve mal, se
+ * corrige en este fichero.
+ *
+ * TRES REGLAS QUE NO SE SALTA NINGÚN EFECTO:
+ *
+ *  1. Solo se animan `opacity`, `transform`, `filter` y `clip-path`. Son las que el navegador
+ *     compone sin volver a medir la página. Animar `height`, `top` o `margin` obliga a recalcular la
+ *     maqueta en cada fotograma y, además, cuenta como desplazamiento de contenido: sube el CLS que
+ *     vigila scripts/auditar.mjs. Lo comprueba scripts/capturar-sitio.mjs sobre el render real.
+ *  2. Nada que oculte contenido se aplica si el motor no está vivo. De ahí el prefijo
+ *     `[data-escenografia="viva"]` en todos los estados iniciales.
+ *  3. Nada se mueve bajo el cuerpo del texto que se está leyendo. El paralaje es para capas
+ *     decorativas; mover un párrafo mientras alguien lo lee es hacérselo ilegible a propósito.
+ */
+
+/* ------------------------------------------------------------- entradas -- */
+
+/*
+ * El estado FINAL está en el propio bloque, siempre. El inicial vive en la regla condicionada de
+ * abajo. Escrito al revés —inicial en el bloque, final en una clase que añade JavaScript— es como
+ * se consigue el defecto que esto evita: si el observador no dispara, el contenido no existe.
+ */
+[data-entrada] {
+  transition-property: opacity, transform, filter, mask-size, -webkit-mask-size;
+  transition-duration: var(--m-lento);
+  transition-timing-function: var(--curva-entrada);
+  /* Escalonado por posición dentro de la parada, con tope. `--orden` lo pone main.ts. */
+  transition-delay: calc(min(var(--orden, 0), 5) * var(--escalonado));
+}
+
+/*
+ * `corte` se descubre con una MÁSCARA, no con clip-path, y esto costó encontrarlo.
+ *
+ * Con `clip-path: inset(0 0 100% 0)` el efecto se ve idéntico y el bloque no entra jamás: el
+ * IntersectionObserver calcula la intersección sobre la caja ya recortada, así que un bloque
+ * recortado del todo nunca intersecta, nunca se marca como visto y nunca se le quita el recorte.
+ * Y se lleva por delante lo que tenga dentro: la visualización de esa pieza tampoco se monta,
+ * porque su hueco también se observa y también está recortado. Un bloque en blanco, sin un solo
+ * error en consola. Lo cazó scripts/capturar-sitio.mjs a la primera.
+ *
+ * La máscara solo afecta al pintado. La geometría sigue ahí y el observador la ve.
+ */
+[data-entrada="corte"] {
+  -webkit-mask-image: linear-gradient(#000, #000);
+  mask-image: linear-gradient(#000, #000);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: bottom;
+  mask-position: bottom;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+[data-escenografia="viva"] [data-entrada="velo"]:not([data-visto]) {
+  opacity: 0;
+  transform: translate3d(0, var(--entrada-desplazamiento), 0);
+}
+
+[data-escenografia="viva"] [data-entrada="deriva"]:not([data-visto]) {
+  opacity: 0;
+  transform: translate3d(calc(var(--entrada-desplazamiento) * -1.5), 0, 0);
+}
+
+/*
+ * `foco` es para bloques cuyo peso es una figura, no un párrafo. Sobre texto, el desenfoque de
+ * entrada son medio segundo en los que las palabras están ahí y no se pueden empezar a leer, que es
+ * peor que no animar nada.
+ */
+[data-escenografia="viva"] [data-entrada="foco"]:not([data-visto]) {
+  opacity: 0;
+  filter: blur(var(--entrada-desenfoque));
+  transform: scale(var(--entrada-escala));
+}
+
+[data-escenografia="viva"] [data-entrada="corte"]:not([data-visto]) {
+  -webkit-mask-size: 100% 0%;
+  mask-size: 100% 0%;
+}
+
+/* ------------------------------------------------------- paradas y tono -- */
+
+/* La geometría de `.parada` y `.parada-cuerpo` está en sitio.css: es maqueta, no escenografía. */
+
+.parada[data-tono] {
+  background: var(--fondo);
+  color: var(--texto);
+  /* Con tono propio, el filete de separación sobra: el cambio de fondo ya separa. */
+  border-top: 0;
+}
+
+/*
+ * El paso de una parada a la siguiente cuando cambian de tono.
+ *
+ * `--velo-desde` lo pone main.ts con el fondo de la parada ANTERIOR: el degradado tiene que ir del
+ * color que había al que hay, y el CSS no puede mirar hacia atrás en el documento.
+ */
+[data-velo="suave"]::before,
+[data-velo="grano"]::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: var(--velo-alto);
+  background: linear-gradient(to bottom, var(--velo-desde, transparent), var(--fondo));
+  pointer-events: none;
+}
+
+/*
+ * El grano recorta el degradado con ruido, que es lo que convierte un paso suave en una disolución.
+ * Es una máscara estática —una textura SVG, no una animación—: no cuesta nada por fotograma.
+ * `mask-composite: intersect` combina el ruido con el propio degradado para que la disolución tenga
+ * dirección; donde no esté soportado se queda el ruido a secas, que sigue siendo un paso válido.
+ */
+[data-velo="grano"]::before {
+  --ruido: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23r)'/%3E%3C/svg%3E");
+  -webkit-mask-image: var(--ruido), linear-gradient(to bottom, transparent, #000);
+  mask-image: var(--ruido), linear-gradient(to bottom, transparent, #000);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  mask-size: 140px, auto;
+}
+
+/* --------------------------------------------------------- escena: cubierta -- */
+
+/*
+ * Una portada a sangre. Es la única parada a la que se le permite ocupar la pantalla entera sin
+ * decir nada nuevo: su trabajo es fijar el tono antes de que empiece el contenido.
+ */
+[data-escena="cubierta"] {
+  min-height: var(--portada-alto);
+  display: grid;
+  align-content: center;
+  /* `clip` y no `hidden`: hidden convierte el elemento en un contenedor de scroll, y basta con que
+     una capa asome un píxel para que aparezca una barra horizontal en toda la página. */
+  overflow: clip;
+  border-top: 0;
+}
+
+[data-escena="cubierta"] .parada-cuerpo { padding-block: var(--e24); }
+
+[data-escena="cubierta"] h2 {
+  font-size: var(--t-hero);
+  /* En la portada el titular es la imagen. Mide lo que mide la pantalla, no la columna de texto. */
+  max-width: 100%;
+  text-wrap: balance;
+}
+
+.parada-capas {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+  pointer-events: none;
+}
+
+/*
+ * Cada capa se desplaza según su profundidad. `--avance` va de 0 a 1 en toda la parada, así que se
+ * centra en 0.5 para que la capa esté en su sitio cuando la parada está centrada en pantalla.
+ *
+ * Sin `will-change` a propósito: prometer una transformación en cada capa reserva memoria de GPU por
+ * adelantado, y en el móvil de gama baja del escenario de auditoría eso cuesta más de lo que ahorra.
+ * `translate3d` ya basta para que el navegador la componga aparte.
+ */
+.parada-capa {
+  position: absolute;
+  inset: -12% 0;
+  background-size: cover;
+  background-position: center;
+  transform: translate3d(
+    0,
+    calc((var(--avance) - 0.5) * var(--paralaje-recorrido) * var(--profundidad, 1) * -2),
+    0
+  );
+}
+
+/* Una capa sin imagen es un velo del acento de la familia: sirve de portada sin pedir un archivo. */
+.parada-capa:not([data-imagen]) {
+  background: radial-gradient(
+    120% 90% at 50% 15%,
+    color-mix(in oklab, var(--acento) var(--halo-portada), transparent),
+    transparent 70%
+  );
+}
+
+/* ----------------------------------------------------------- escena: franja -- */
+
+/*
+ * Fila horizontal de piezas.
+ *
+ * ES UN CONTENEDOR DE SCROLL DE VERDAD, no el truco de fijar la sección y desplazar las tarjetas con
+ * un transform mandado por el scroll vertical. Ese truco se ve muy bien y rompe dos cosas que no se
+ * pueden romper: el navegador no puede desplazarse hasta una tarjeta movida con transform, así que
+ * al tabular el foco se va a un elemento que está fuera de la pantalla y nadie sabe dónde está; y
+ * quien llegue con el teclado o con un lector de pantalla no tiene forma de recorrer la fila.
+ * Con overflow real se tabula, se arrastra, se desliza y funciona la barra de desplazamiento.
+ */
+[data-escena="franja"] .parada-piezas {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--franja-ancho-tarjeta);
+  gap: var(--e6);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  /* Sitio para la barra y para que la sombra de foco de la última tarjeta no se recorte. */
+  padding-bottom: var(--e4);
+}
+
+[data-escena="franja"] .pieza {
+  scroll-snap-align: start;
+  margin: 0;
+}
+
+/* ----------------------------------------------------------------- respeto -- */
+
+/*
+ * Con movimiento reducido, escenografia.ts ni siquiera arranca: no marca el documento como vivo, así
+ * que ningún estado inicial se aplica y no hay nada que revertir. Lo que queda aquí es lo que no
+ * depende del motor: el paralaje se queda en su posición central —`--avance` vale 0.5 por defecto en
+ * los tokens— y la franja deja de anclarse, porque el anclaje también es movimiento que el usuario
+ * no ha pedido.
+ */
+@media (prefers-reduced-motion: reduce) {
+  [data-escena="franja"] .parada-piezas { scroll-snap-type: none; }
+}

@@ -1,0 +1,173 @@
+{
+  "mecanica": "diagrama",
+  "tipo": "flujo",
+  "parametros": {
+    "familia_id": "lo-medido",
+    "proporcion": [2.3333, 0.8],
+    "alternativa": "El experimento, en seis pasos. Uno: los dos sujetos interactúan. Dos: se separan en cámaras de Faraday a 14,5 metros. Tres: al sujeto A se le dan 100 destellos de luz. Cuatro: A muestra un potencial evocado. Cinco: según Grinberg, B mostraría una respuesta parecida sin ver nada, y eso es lo que se discute. Seis: los artículos dan ~25 % de casos y ~57 % de 14 sujetos (este último, según un agregador), y cómo se analizan los datos está en disputa. La traza de A, lo medido, va en trazo continuo; la de B, lo que propone Grinberg, en discontinuo. El control «Qué muestra B» cambia esa traza por una línea plana: lo que se esperaría si no hubiera efecto.",
+    "resolucion": "Grinberg y sus colegas dijeron haber registrado, en quien no recibía el estímulo, una respuesta parecida a la del otro; lo que se discute es si sus datos lo sostienen.",
+    "elementos": [
+      {
+        "id": "destellos",
+        "tipo": "ficha",
+        "x": 22,
+        "y": 12,
+        "etiqueta": "100 destellos de luz",
+        "oculto": true,
+        "movil": [26, 3]
+      },
+      {
+        "id": "a",
+        "x": 22,
+        "y": 42,
+        "etiqueta": "Sujeto A",
+        "sub": "recibe los destellos",
+        "movil": [24, 26]
+      },
+      {
+        "id": "b",
+        "x": 78,
+        "y": 42,
+        "etiqueta": "Sujeto B",
+        "sub": "no recibe nada",
+        "movil": [24, 78]
+      },
+      {
+        "id": "regla",
+        "tipo": "texto",
+        "x": 50,
+        "y": 55,
+        "etiqueta": "14,5 m",
+        "oculto": true,
+        "movil": [44, 52]
+      },
+      {
+        "id": "trazaA",
+        "tipo": "traza",
+        "x": 22,
+        "y": 80,
+        "w": 40,
+        "etiqueta": "Potencial evocado (A)",
+        "sub": "lo medido",
+        "rol": "dato",
+        "forma": "respuesta",
+        "oculto": true,
+        "movil": [78, 26]
+      },
+      {
+        "id": "trazaB",
+        "tipo": "traza",
+        "x": 78,
+        "y": 80,
+        "w": 40,
+        "etiqueta": "¿Potencial transferido? (B)",
+        "sub": "según Grinberg",
+        "rol": "propuesta",
+        "forma": "respuesta",
+        "oculto": true,
+        "movil": [78, 78]
+      }
+    ],
+    "enlaces": [
+      {
+        "de": "a",
+        "a": "b",
+        "tipo": "doble",
+        "estilo": "punteado"
+      }
+    ],
+    "pasos": [
+      {
+        "texto": "Según el diseño que describe Grinberg, los dos sujetos pasan un rato interactuando antes de separarse.",
+        "activos": [
+          "a",
+          "b"
+        ],
+        "mensajes": [
+          {
+            "de": "a",
+            "a": "b",
+            "etiqueta": "interactúan"
+          }
+        ]
+      },
+      {
+        "texto": "En el diseño del artículo, cada sujeto se sienta en una cámara de Faraday, aislada de señales eléctricas, a 14,5 metros de la otra.",
+        "muestra": [
+          "regla"
+        ],
+        "activos": [
+          "a",
+          "b"
+        ],
+        "sub": {
+          "a": "en cámara de Faraday",
+          "b": "en cámara de Faraday"
+        }
+      },
+      {
+        "texto": "Según el artículo, al sujeto A se le muestran 100 destellos de luz y el sujeto B no recibe ningún estímulo.",
+        "muestra": [
+          "destellos"
+        ],
+        "mensajes": [
+          {
+            "de": "destellos",
+            "a": "a",
+            "etiqueta": "destellos"
+          }
+        ]
+      },
+      {
+        "texto": "El cerebro de A responde a los destellos con un potencial evocado: una respuesta eléctrica a los destellos.",
+        "muestra": [
+          "trazaA"
+        ],
+        "activos": [
+          "trazaA"
+        ]
+      },
+      {
+        "texto": "Según Grinberg, en B aparecería una respuesta parecida aunque no vea nada: el «potencial transferido». Esta es la parte que se discute.",
+        "muestra": [
+          "trazaB"
+        ],
+        "activos": [
+          "b"
+        ]
+      },
+      {
+        "texto": "Los artículos hablan de ~25 % de casos (P11) y de ~57 % de 14 sujetos (P10, según un agregador), cifras que no coinciden. Cómo se analizan los datos es el centro de la disputa.",
+        "activos": [
+          "trazaB"
+        ]
+      }
+    ],
+    "controles": [
+      {
+        "id": "queMuestraB",
+        "etiqueta": "Qué muestra B",
+        "opciones": [
+          {
+            "id": "articulo",
+            "etiqueta": "Según el artículo"
+          },
+          {
+            "id": "nulo",
+            "etiqueta": "Sin efecto",
+            "parche": {
+              "elementos": [
+                {
+                  "id": "trazaB",
+                  "forma": "plana",
+                  "etiqueta": "B, sin respuesta",
+                  "sub": "lo esperable si no hay transferencia"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

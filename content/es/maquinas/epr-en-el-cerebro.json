@@ -1,0 +1,131 @@
+{
+  "mecanica": "diagrama",
+  "tipo": "comparar",
+  "parametros": {
+    "familia_id": "lo-medido",
+    "proporcion": [
+      2.3333,
+      0.8
+    ],
+    "alternativa": "A la izquierda, lo que proponen Grinberg y sus coautores; a la derecha, lo que exigiría una prueba de Bell. Paso uno: el artículo se titula «La paradoja EPR en el cerebro». Paso dos: según los autores, dos cerebros que interactuaron seguirían correlacionados aunque estén separados, y eso sería el potencial transferido. Paso tres: sería llevar a la escala de dos cerebros una idea que la física formula para partículas; es una extrapolación de los autores. Paso cuatro, una nota del equipo: una prueba de Bell sería la que distinguiría una correlación no local de una clásica, y no se ha hecho en ninguno de estos estudios; además, el teorema de no comunicación impide transmitir señales mediante el entrelazamiento. Todo lo de la izquierda es una propuesta, en trazo discontinuo; no es una medida.",
+    "resolucion": "Grinberg y sus coautores propusieron leer el potencial transferido como una correlación tipo EPR entre cerebros; ningún estudio ha hecho la prueba de Bell que decidiría la cuestión.",
+    "elementos": [
+      {
+        "id": "a",
+        "x": 14,
+        "y": 30,
+        "etiqueta": "Cerebro A",
+        "movil": [
+          26,
+          12
+        ]
+      },
+      {
+        "id": "b",
+        "x": 46,
+        "y": 30,
+        "etiqueta": "Cerebro B",
+        "movil": [
+          26,
+          34
+        ]
+      },
+      {
+        "id": "escala",
+        "tipo": "ficha",
+        "x": 30,
+        "y": 76,
+        "etiqueta": "Escala de dos cerebros",
+        "sub": "según los autores",
+        "rol": "propuesta",
+        "oculto": true,
+        "movil": [
+          74,
+          23
+        ]
+      },
+      {
+        "id": "bell",
+        "x": 82,
+        "y": 30,
+        "etiqueta": "Prueba de Bell",
+        "sub": "nota del equipo",
+        "rol": "neutro",
+        "oculto": true,
+        "movil": [
+          26,
+          62
+        ]
+      },
+      {
+        "id": "sinprueba",
+        "tipo": "ficha",
+        "x": 82,
+        "y": 76,
+        "etiqueta": "Sin hacer en estos estudios",
+        "rol": "neutro",
+        "oculto": true,
+        "movil": [
+          74,
+          62
+        ]
+      }
+    ],
+    "enlaces": [
+      {
+        "de": "a",
+        "a": "b",
+        "tipo": "doble",
+        "estilo": "punteado",
+        "etiqueta": "¿correlación EPR?",
+        "oculto": true
+      },
+      {
+        "de": "bell",
+        "a": "sinprueba",
+        "tipo": "flecha",
+        "oculto": true
+      }
+    ],
+    "pasos": [
+      {
+        "texto": "El artículo de 1994 se titula «La paradoja EPR en el cerebro»; según su resumen, buscaba verificar si el cerebro tiene un componente cuántico macroscópico.",
+        "activos": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "texto": "Según Grinberg y sus coautores, dos cerebros que interactuaron seguirían correlacionados aunque estén separados: eso sería el potencial transferido.",
+        "muestra": [
+          "a>b"
+        ],
+        "activos": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "texto": "Sería llevar a la escala de dos cerebros una idea que la física formula para partículas. Es una extrapolación de los autores, sin prueba a esa escala.",
+        "muestra": [
+          "escala"
+        ],
+        "activos": [
+          "escala"
+        ]
+      },
+      {
+        "texto": "Nota del equipo: una prueba de Bell distinguiría una correlación no local de una clásica y ninguno de estos estudios la hace. El teorema de no comunicación impide además enviar señales con el entrelazamiento.",
+        "muestra": [
+          "bell",
+          "sinprueba",
+          "bell>sinprueba"
+        ],
+        "activos": [
+          "bell",
+          "sinprueba"
+        ]
+      }
+    ]
+  }
+}

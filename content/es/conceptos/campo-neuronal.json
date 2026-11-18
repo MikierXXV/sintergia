@@ -1,0 +1,102 @@
+{
+  "id": "campo-neuronal",
+  "familia_id": "el-campo",
+  "orden": 2,
+  "simbolo": "CN",
+  "titulo": "El campo neuronal",
+  "resumen": "Según Grinberg, de todas las interacciones entre neuronas surgiría un «campo neuronal». No dice qué campo físico sería, nadie lo ha medido como tal y no hay estudios independientes que lo hayan puesto a prueba.",
+  "idea": "Grinberg propone que de las interacciones entre todas las neuronas surgiría un campo, sin decir de qué clase es.",
+  "respaldo": 1,
+  "propone": {
+    "pasos": [
+      {
+        "titulo": "Neuronas que interactúan",
+        "texto": "Su punto de partida sería la actividad de las neuronas, que interactúan entre sí."
+      },
+      {
+        "titulo": "Todas las interacciones juntas",
+        "texto": "Según Grinberg, esas interacciones, tomadas todas a la vez, darían lugar a algo nuevo."
+      },
+      {
+        "titulo": "Un campo",
+        "texto": "En su artículo de 1983, el campo neuronal aparecería como resultado de todas las interacciones neuronales. En 1997 lo describe como un «campo hipercomplejo de interacciones»."
+      }
+    ]
+  },
+  "se_sabe": [
+    {
+      "texto": "No hay estudios independientes que lo hayan puesto a prueba.",
+      "refs": []
+    },
+    {
+      "texto": "La idea aparece en un artículo de 1983 en Psychoenergetics, revista parapsicológica de revisión dudosa, y en uno póstumo de 1997 en el Journal of Mind and Behavior, revista con revisión por pares y abierta a la teoría.",
+      "refs": ["P5", "P12"]
+    },
+    {
+      "texto": "La Psi Encyclopedia, enciclopedia del campo parapsicológico, dice que las ideas de Grinberg «never received much academic attention» (nunca recibieron mucha atención académica).",
+      "refs": ["S13"]
+    }
+  ],
+  "disputa": [
+    {
+      "titulo": "No se dice qué campo es",
+      "texto": "En lo que hemos leído, Grinberg no dice qué campo físico sería. Sin saberlo no hay forma de medirlo ni de descartarlo.",
+      "refs": ["P5"]
+    },
+    {
+      "titulo": "Sin operacionalizar",
+      "texto": "No hay una definición con la que decidir, en un experimento, qué cuenta como «campo neuronal» y qué no.",
+      "refs": ["P5", "P12"]
+    }
+  ],
+  "puntos_clave": [
+    "Especulativo: solo lo sostiene el propio Grinberg, no dice qué campo sería y nadie lo ha puesto a prueba.",
+    "Según Grinberg, el campo neuronal aparecería como resultado de todas las interacciones entre neuronas."
+  ],
+  "cita": {
+    "texto": "The neuronal field appears as a result of all the neuronal interactions",
+    "traduccion": "El campo neuronal aparece como resultado de todas las interacciones neuronales",
+    "autor": "Grinberg-Zylberbaum",
+    "atribucion": "directa",
+    "fuente": "P5, Psychoenergetics 5 (1983)"
+  },
+  "fuentes": [
+    {
+      "ref": "P5",
+      "tipo": "primaria",
+      "titulo": "The orbitals of consciousness: a neurosyntergic approach to the levels of conscious experience. Psychoenergetics 5: 235-242",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1983,
+      "url": "https://documents.theblackvault.com/documents/remoteviewing/stargate/STARGATE%20%238%20237/Part0007/CIA-RDP96-00792R000700130001-6.TXT",
+      "nota": "Leído en un OCR del archivo de la CIA, con partes ilegibles."
+    },
+    {
+      "ref": "P12",
+      "tipo": "primaria",
+      "titulo": "Ideas about a new psychophysiology of consciousness: the syntergic theory. Journal of Mind and Behavior 18(4): 443-458",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1997,
+      "url": "https://philpapers.org/rec/GRIIAA",
+      "nota": "Póstumo. Ficha y resumen verificados; no hemos leído el texto completo."
+    },
+    {
+      "ref": "S13",
+      "tipo": "contexto",
+      "titulo": "Entrada «Jacobo Grinberg-Zylberbaum» de la Psi Encyclopedia (SPR)",
+      "autor": "Society for Psychical Research",
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
+      "nota": "Enciclopedia del campo parapsicológico, no revisada por pares. Tiene errores de paginación."
+    }
+  ],
+  "enlaces": [
+    {
+      "id": "lattice",
+      "rotulo": "El lattice: la retícula que Grinberg supone en el espacio"
+    },
+    {
+      "id": "sintergia",
+      "rotulo": "Sintergia: síntesis más energía"
+    }
+  ],
+  "maquina": "campo-neuronal"
+}

@@ -1,0 +1,83 @@
+{
+  "mecanica": "diagrama",
+  "tipo": "estructura",
+  "parametros": {
+    "proporcion": [
+      2.3333,
+      1
+    ],
+    "alternativa": "Tres capas concéntricas, de dentro afuera. Paso uno: en el centro, el procesador central, que según Grinberg permanece. Paso dos: a su alrededor aparecen niveles de experiencia, capas sucesivas. Paso tres: los niveles se resaltan, porque son lo que cambia, mientras el centro sigue siendo el mismo. Todo va en trazo discontinuo porque es una tesis filosófica, no algo medido. Es un esquema de una idea, no de un fenómeno medido.",
+    "resolucion": "Para Grinberg, los niveles de experiencia cambiarían alrededor de un procesador central que permanece; es una tesis filosófica, no comprobable.",
+    "elementos": [
+      {
+        "id": "n3",
+        "tipo": "grupo",
+        "x": 50,
+        "y": 50,
+        "w": 84,
+        "h": 90,
+        "etiqueta": "Nivel 3",
+        "rol": "propuesta",
+        "oculto": true,
+        "movil": [
+          50,
+          50
+        ]
+      },
+      {
+        "id": "n2",
+        "tipo": "grupo",
+        "x": 50,
+        "y": 56,
+        "w": 56,
+        "h": 60,
+        "etiqueta": "Nivel 2",
+        "rol": "propuesta",
+        "oculto": true,
+        "movil": [
+          50,
+          56
+        ]
+      },
+      {
+        "id": "proc",
+        "tipo": "circulo",
+        "x": 50,
+        "y": 64,
+        "etiqueta": "Procesador central",
+        "rol": "propuesta",
+        "movil": [
+          50,
+          64
+        ]
+      }
+    ],
+    "enlaces": [],
+    "pasos": [
+      {
+        "texto": "Partimos del procesador central, que según Grinberg es lo que permanece.",
+        "activos": [
+          "proc"
+        ]
+      },
+      {
+        "texto": "Alrededor habría niveles de experiencia, como capas sucesivas: los orbitales de conciencia que da título a su artículo de 1983.",
+        "muestra": [
+          "n2",
+          "n3"
+        ],
+        "activos": [
+          "n2",
+          "n3"
+        ]
+      },
+      {
+        "texto": "Según Grinberg, la experiencia pasaría de un nivel a otro mientras el procesador central sigue siendo el mismo.",
+        "activos": [
+          "n2",
+          "n3"
+        ]
+      }
+    ]
+  }
+}

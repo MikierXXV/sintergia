@@ -1,0 +1,92 @@
+{
+  "id": "orbitales-de-conciencia",
+  "familia_id": "la-conciencia",
+  "orden": 2,
+  "simbolo": "ORB",
+  "titulo": "Los orbitales de conciencia",
+  "resumen": "Según Grinberg, las experiencias serían niveles que cambian alrededor de un procesador central que permanece. Es una tesis filosófica: no se puede comprobar con un experimento ni hay estudios independientes que la hayan puesto a prueba.",
+  "idea": "Para Grinberg, los niveles de experiencia cambiarían alrededor de un procesador central que permanece.",
+  "respaldo": 0,
+  "propone": {
+    "pasos": [
+      {
+        "titulo": "Un centro que permanece",
+        "texto": "Partimos del procesador central, que según Grinberg es lo que permanece."
+      },
+      {
+        "titulo": "Niveles alrededor",
+        "texto": "Alrededor habría niveles de experiencia, como capas sucesivas: los «orbitales de conciencia» que da título a su artículo de 1983."
+      },
+      {
+        "titulo": "Los niveles cambian",
+        "texto": "Según Grinberg, la experiencia pasaría de un nivel a otro mientras el procesador central sigue siendo el mismo."
+      }
+    ]
+  },
+  "se_sabe": [
+    {
+      "texto": "No hay estudios independientes que lo hayan puesto a prueba, y no está claro qué observación podría hacerlo.",
+      "refs": []
+    },
+    {
+      "texto": "Es el tema del artículo de 1983 en Psychoenergetics, revista parapsicológica de revisión dudosa, que da nombre al concepto.",
+      "refs": [
+        "P5"
+      ]
+    },
+    {
+      "texto": "La Psi Encyclopedia, enciclopedia del campo parapsicológico, dice que las ideas de Grinberg «never received much academic attention» (nunca recibieron mucha atención académica).",
+      "refs": [
+        "S13"
+      ]
+    }
+  ],
+  "disputa": [
+    {
+      "titulo": "No se puede comprobar con un experimento",
+      "texto": "Es una tesis filosófica: no dice qué observación la confirmaría o la refutaría, así que ningún resultado empírico puede darle ni quitarle la razón.",
+      "refs": [
+        "P5"
+      ]
+    },
+    {
+      "titulo": "Nota del equipo: un nombre prestado",
+      "texto": "Nota nuestra, que no viene de estas fuentes: «orbital» viene de la física atómica y aquí parece una metáfora; en lo que hemos leído no hay una descripción de los niveles ni cómo medirlos.",
+      "refs": []
+    }
+  ],
+  "puntos_clave": [
+    "Tesis filosófica: no se puede comprobar con un experimento y solo la sostiene el propio Grinberg.",
+    "Según Grinberg, los niveles de experiencia cambiarían alrededor de un procesador central que permanece."
+  ],
+  "fuentes": [
+    {
+      "ref": "P5",
+      "tipo": "primaria",
+      "titulo": "The orbitals of consciousness: a neurosyntergic approach to the levels of conscious experience. Psychoenergetics 5: 235-242",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1983,
+      "url": "https://documents.theblackvault.com/documents/remoteviewing/stargate/STARGATE%20%238%20237/Part0007/CIA-RDP96-00792R000700130001-6.TXT",
+      "nota": "Leído en un OCR del archivo de la CIA, con partes ilegibles."
+    },
+    {
+      "ref": "S13",
+      "tipo": "contexto",
+      "titulo": "Entrada «Jacobo Grinberg-Zylberbaum» de la Psi Encyclopedia (SPR)",
+      "autor": "Society for Psychical Research",
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
+      "nota": "Enciclopedia del campo parapsicológico, no revisada por pares. Tiene errores de paginación."
+    }
+  ],
+  "enlaces": [
+    {
+      "id": "procesador-central",
+      "rotulo": "El procesador central o «conciencia pura»"
+    },
+    {
+      "id": "percepcion-campo-lattice",
+      "rotulo": "Percibir como interferencia entre campo y lattice"
+    }
+  ],
+  "maquina": "orbitales-de-conciencia"
+}

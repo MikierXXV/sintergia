@@ -1,0 +1,31 @@
+{
+  "mecanica": "eje",
+  "tipo": "comparar",
+  "parametros": {
+    "familia_id": "el-campo",
+    "alternativa": "Un eje que va de baja a alta sintergia, con una marca que se desliza. Paso uno: según Grinberg, «sintergia» sería síntesis más energía, un término propio para un grado de organización. Paso dos: su artículo de 1983 habla de «sintergia alta», lo que supone que habría grados; puedes mover la marca por el eje. Paso tres: la sintergia alta sería una organización cuyos elementos contienen, cada uno, grandes cantidades de información. Es un esquema de una idea: el eje no tiene unidades, porque en lo que hemos leído no hay manera de medir la sintergia.",
+    "resolucion": "Para Grinberg, una sintergia alta sería una organización en la que cada elemento contiene mucha información; es una definición cualitativa, sin medida.",
+    "polo_a": "Baja sintergia",
+    "polo_b": "Alta sintergia",
+    "marca": "Una organización",
+    "posicion": 0.5,
+    "deslizador": "Grado de sintergia (esquema, sin unidades)",
+    "pasos": [
+      {
+        "texto": "Según Grinberg, «sintergia» sería la unión de síntesis y energía: un término propio para nombrar un grado de organización.",
+        "posicion": 0.5,
+        "marca": "Una organización"
+      },
+      {
+        "texto": "Su artículo de 1983 habla de «sintergia alta», lo que supone que habría grados, de baja a alta. Mueve la marca: es un esquema, no una medida.",
+        "posicion": 0.3,
+        "marca": "Un grado cualquiera"
+      },
+      {
+        "texto": "Según ese artículo, una sintergia alta sería una organización cuyos elementos contienen, cada uno, grandes cantidades de información.",
+        "posicion": 0.9,
+        "marca": "Cada elemento contiene mucha información"
+      }
+    ]
+  }
+}

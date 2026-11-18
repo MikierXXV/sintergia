@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Concepto",
+  "description": "Un concepto de Sintergia (S4-D/S4-E, DEC §3): el texto en bloques con estructura. La máquina vive en content/<idioma>/maquinas/<id>.json. Un fichero por concepto en content/<idioma>/conceptos/. El schema solo comprueba la forma; las longitudes por elemento, las refs y las reglas editoriales las comprueba scripts/comprobar-fichas.mjs con content/reglas.json → ficha.",
+  "type": "object",
+  "required": ["id", "familia_id", "orden", "simbolo", "titulo", "resumen"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "familia_id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "orden": { "type": "integer", "minimum": 1 },
+    "simbolo": { "type": "string", "minLength": 1, "maxLength": 5, "description": "Texto, nunca emoji. DEC §3." },
+    "titulo": { "type": "string" },
+    "resumen": { "type": "string", "description": "Va en la tarjeta de la portada (primera frase) y en <meta description>." },
+    "borrador": { "type": "boolean", "description": "Ficha de relleno: solo lo mínimo para validar. No sale como tarjeta en la portada. Se reescribe entera en S5." },
+    "idea": { "type": "string", "description": "«En una frase». En condicional o atribuida." },
+    "respaldo": { "type": "integer", "minimum": 0, "maximum": 4, "description": "Escala de DEC §4 (0 tesis filosófica … 4 establecido). Opcional en el schema porque el marco no tiene nivel; scripts/comprobar-fichas.mjs lo exige en el resto." },
+    "propone": {
+      "type": "object",
+      "required": ["pasos"],
+      "additionalProperties": false,
+      "properties": {
+        "intro": { "type": "string" },
+        "pasos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["titulo", "texto"],
+            "additionalProperties": false,
+            "properties": { "titulo": { "type": "string" }, "texto": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "analogia": {
+      "type": "object",
+      "required": ["origen", "titulo", "texto"],
+      "additionalProperties": false,
+      "properties": {
+        "origen": { "type": "string", "enum": ["editorial"], "description": "Solo editorial: una comparación nuestra, nunca de Grinberg. DEC §3." },
+        "titulo": { "type": "string" },
+        "texto": { "type": "string" }
+      }
+    },
+    "se_sabe": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["texto", "refs"],
+        "additionalProperties": false,
+        "properties": {
+          "texto": { "type": "string" },
+          "refs": { "type": "array", "items": { "type": "string", "pattern": "^(P|S)[0-9]{1,2}$" } }
+        }
+      }
+    },
+    "disputa": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["titulo", "texto"],
+        "additionalProperties": false,
+        "properties": {
+          "titulo": { "type": "string" },
+          "texto": { "type": "string" },
+          "refs": { "type": "array", "items": { "type": "string", "pattern": "^(P|S)[0-9]{1,2}$" } }
+        }
+      }
+    },
+    "detalles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["titulo", "texto"],
+        "additionalProperties": false,
+        "properties": {
+          "titulo": { "type": "string" },
+          "texto": { "type": "string" },
+          "refs": { "type": "array", "items": { "type": "string", "pattern": "^(P|S)[0-9]{1,2}$" } }
+        }
+      }
+    },
+    "puntos_clave": { "type": "array", "items": { "type": "string" } },
+    "cita": {
+      "type": "object",
+      "required": ["texto", "traduccion", "autor", "atribucion"],
+      "additionalProperties": false,
+      "properties": {
+        "texto": { "type": "string" },
+        "traduccion": { "type": "string", "description": "Traducción propia al español del literal." },
+        "autor": { "type": "string" },
+        "atribucion": { "type": "string", "enum": ["directa", "tradicional", "dudosa"] },
+        "fuente": { "type": "string" }
+      }
+    },
+    "fuentes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ref", "tipo", "titulo"],
+        "additionalProperties": false,
+        "properties": {
+          "ref": { "type": "string", "pattern": "^(P|S)[0-9]{1,2}$", "description": "Código de INV §1-2." },
+          "tipo": { "type": "string", "enum": ["primaria", "replica", "critica", "contexto"] },
+          "titulo": { "type": "string" },
+          "autor": { "type": "string" },
+          "anio": { "type": "integer" },
+          "url": { "type": "string" },
+          "nota": { "type": "string" }
+        }
+      }
+    },
+    "enlaces": {
+      "type": "array",
+      "description": "Relacionados: la frase de frontera de DEC §2 (el detalle vive en el otro concepto).",
+      "items": {
+        "type": "object",
+        "required": ["id", "rotulo"],
+        "additionalProperties": false,
+        "properties": { "id": { "type": "string" }, "rotulo": { "type": "string" } }
+      }
+    },
+    "maquina": { "type": "string", "description": "Id de la máquina en content/<idioma>/maquinas/ (por ahora, el del propio concepto)." },
+    "reel": { "type": "string", "description": "Id del reel en content/reels.json (opcional)." }
+  }
+}

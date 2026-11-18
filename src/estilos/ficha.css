@@ -1,0 +1,189 @@
+/*
+ * Lo propio de Sintergia sobre la base de software-engineer (app.css): insignia de respaldo, cita,
+ * «Lo que se sabe» con chips de fuente, la caja de disputa, fuentes tipadas, el reel en dos columnas
+ * y la portada con su leyenda. Todo cuelga de los tokens; ningún valor suelto.
+ *
+ * La insignia NO usa el acento de la familia: es una escala de un solo tono de 0 a 4 segmentos más el
+ * rótulo en texto, para que no haya rojo-verde que juzgue (DEC §5).
+ */
+
+/* ---- insignia de respaldo ---- */
+.badge-respaldo {
+  display: inline-flex; align-items: center; flex-wrap: wrap; gap: var(--e1) var(--e2);
+  padding: var(--e1) var(--e3); margin: 0;
+  border: 1px solid var(--borde-interactivo); border-radius: var(--radio-pildora);
+  font-size: var(--t-xs); line-height: 1.3; color: var(--texto); background: var(--fondo-elevado);
+}
+.badge-segmentos { display: inline-flex; gap: 3px; }
+.badge-segmento { width: 14px; height: 8px; border-radius: 2px; border: 1.5px solid var(--texto-secundario); box-sizing: border-box; }
+.badge-segmento[data-lleno='si'] { background: var(--texto-secundario); }
+.badge-rotulo { font-weight: var(--peso-semibold); }
+.badge-prefijo { color: var(--texto-secundario); }
+.card-cuerpo .badge-respaldo { align-self: flex-start; margin-top: var(--e1); }
+
+/* ---- bloques propios ---- */
+.propone-intro { margin-bottom: var(--e5); color: var(--texto-secundario); }
+.cita { margin: var(--e6) 0 0; padding: var(--e4) var(--e5); border-left: 3px solid var(--acento); background: var(--tinte); border-radius: 0 var(--radio-medio) var(--radio-medio) 0; max-width: var(--medida); }
+.cita-texto { font: var(--peso-regular) var(--t-md)/1.45 var(--fuente-titulo); }
+.cita-traduccion { margin-top: var(--e2); font-size: var(--t-sm); color: var(--texto-secundario); }
+.cita footer { margin-top: var(--e2); font-size: var(--t-xs); color: var(--texto-secundario); }
+
+.se-sabe { list-style: none; padding: 0; display: grid; gap: var(--e4); max-width: var(--medida); }
+.se-sabe li { display: flex; flex-direction: column; gap: var(--e2); padding-left: var(--e4); border-left: 2px solid var(--separador); line-height: 1.6; }
+.refs { display: inline-flex; flex-wrap: wrap; gap: var(--e1); margin-top: var(--e1); }
+.det-cuerpo .refs, .disp .refs { margin-top: var(--e2); }
+.ref {
+  display: inline-flex; align-items: center; min-height: 24px; padding: 0 var(--e2);
+  border: 1px solid var(--borde-interactivo); border-radius: var(--radio-pildora);
+  font: var(--peso-medio) var(--t-xs)/1 var(--fuente-mono); color: var(--texto-secundario); text-decoration: none;
+}
+.ref:hover { color: var(--texto); border-color: var(--texto-secundario); }
+
+/* La disputa va SIEMPRE a la vista, en una caja con aviso: nunca plegada. */
+.caja-disputa { padding: var(--e5); border: 1px solid var(--aviso); border-radius: var(--radio-grande); background: var(--aviso-tinte); }
+.caja-disputa > h2 { margin-top: 0; }
+.aviso-disputa { display: flex; align-items: flex-start; gap: var(--e3); margin-bottom: var(--e4); color: var(--aviso); }
+.aviso-disputa svg { width: 22px; height: 22px; flex: none; }
+.aviso-disputa p { color: var(--texto); font-size: var(--t-sm); }
+.disp + .disp { margin-top: var(--e4); padding-top: var(--e4); border-top: 1px dashed var(--separador); }
+.disp h3 { font: var(--peso-semibold) var(--t-base)/1.35 var(--fuente-texto); margin-bottom: var(--e1); }
+.aviso-borrador { margin-top: var(--e8); padding: var(--e4); border: 1px dashed var(--borde-interactivo); border-radius: var(--radio-medio); color: var(--texto-secundario); }
+
+/* ---- fuentes ---- */
+.bloque.fuentes-bloque h3, #fuentes h3 { margin: var(--e5) 0 var(--e2); font-size: var(--t-xs); letter-spacing: 0.07em; text-transform: uppercase; color: var(--texto-secundario); }
+.fuentes { list-style: none; padding: 0; display: grid; gap: var(--e3); max-width: var(--medida); font-size: var(--t-sm); }
+.fuentes li { display: grid; gap: 2px; padding: var(--e2) var(--e3); border-radius: var(--radio-medio); }
+.fuentes li a { display: block; min-height: 24px; padding-block: 2px; }
+.fuentes li.resaltada { background: var(--tinte); }
+.fuente-ref { font: var(--peso-semibold) var(--t-xs)/1.4 var(--fuente-mono); color: var(--texto-secundario); }
+.fuente-nota { color: var(--texto-secundario); font-size: var(--t-xs); }
+.det-fuentes { border: 1px solid var(--separador); border-radius: var(--radio-grande); background: var(--fondo-elevado); padding: 0 var(--e4) var(--e4); }
+.det-fuentes > summary { display: flex; align-items: center; justify-content: space-between; min-height: 52px; cursor: pointer; list-style: none; font-weight: var(--peso-medio); }
+.det-fuentes > summary::-webkit-details-marker { display: none; }
+.det-fuentes > summary svg { width: 20px; height: 20px; color: var(--texto-secundario); }
+.det-fuentes[open] > summary svg { transform: rotate(180deg); }
+.det-fuentes > summary:focus-visible { outline: 2px solid var(--foco); outline-offset: 2px; }
+
+/* ---- el reel, lo primero de la ficha (DEC §11.3) ----
+   Una escena a todo el ancho de la columna, también en móvil, con el vídeo vertical centrado. El alto
+   del vídeo se acota con svh para que, debajo, el h1 y la insignia de respaldo entren en el primer
+   pantallazo (V5). El marco va en --fondo-hundido y sin borde claro: mismo tono que el sitio en oscuro. */
+.reel { margin-bottom: var(--e4); }
+.reel-escena { display: flex; justify-content: center; inline-size: 100%; padding-block: var(--e3); background: var(--fondo-hundido); border-radius: var(--radio-grande); }
+.reel video { display: block; block-size: min(48svh, 30rem); aspect-ratio: 9 / 16; max-inline-size: 100%; background: var(--fondo-hundido); border-radius: var(--radio-medio); }
+.reel-fuentes { margin-top: var(--e2); font-size: var(--t-xs); color: var(--texto-secundario); max-width: var(--medida); }
+.reel-fuentes strong { font-weight: var(--peso-semibold); }
+.reel + .migas { margin-top: var(--e3); margin-bottom: var(--e3); }
+.reel ~ .cab { margin-bottom: var(--e6); }
+
+/* ---- límites ---- */
+.limites h1 { font: var(--peso-medio) var(--t-xl)/1.1 var(--fuente-titulo); margin-bottom: var(--e4); }
+.idea-limites { font-size: var(--t-md); color: var(--texto-secundario); max-width: var(--medida); margin-bottom: var(--e6); }
+.btn-texto { display: inline-flex; align-items: center; min-height: 36px; padding: 0 var(--e3); color: var(--texto); font-size: var(--t-sm); text-decoration: none; }
+.btn-texto:hover { text-decoration: underline; }
+
+/* ---- portada: las paradas ocupan el ancho y el cuerpo es la columna ---- */
+main#sitio.es-portada { max-width: none; padding: 0; }
+.parada { position: relative; border-top: 1px solid var(--separador); }
+.parada-cuerpo { position: relative; max-width: 70rem; margin: 0 auto; padding: var(--e12) var(--e4); }
+@media (min-width: 720px) { .parada-cuerpo { padding-inline: var(--e6); } }
+.parada h1, .parada h2 { color: var(--acento, var(--texto)); font-family: var(--fuente-titulo); font-weight: var(--peso-medio); letter-spacing: -0.01em; }
+.parada h2 { font-size: var(--t-lg); line-height: 1.2; }
+.descripcion-familia { margin-top: var(--e2); max-width: var(--medida); color: var(--texto-secundario); }
+.en-preparacion { margin-top: var(--e4); font-size: var(--t-sm); color: var(--texto-secundario); }
+.empieza { margin-top: var(--e6); display: flex; flex-wrap: wrap; align-items: center; gap: var(--e3) var(--e4); }
+.empieza p { color: var(--texto-secundario); max-width: var(--medida); }
+/* La leyenda: franja propia bajo el héroe, a todo el ancho, con los cinco niveles en UNA fila. En móvil la
+   fila se desplaza de lado de verdad (overflow-x: auto), nunca como lista de cinco filas. */
+.parada .parada-cuerpo.leyenda-franja { padding-block: 0 var(--e8); }
+.leyenda { margin-top: 0; min-width: 0; max-width: 100%; }
+.parada-cuerpo.leyenda-franja { min-width: 0; max-width: 100%; }
+.leyenda h2 { font: var(--peso-semibold) var(--t-xs)/1 var(--fuente-texto); letter-spacing: 0.07em; text-transform: uppercase; color: var(--texto-secundario); margin-bottom: var(--e3); }
+.leyenda ol { list-style: none; padding: 0; display: flex; gap: var(--e3) var(--e6); font-size: var(--t-xs); overflow-x: auto; padding-bottom: var(--e2); }
+.leyenda li { display: grid; gap: var(--e2); align-content: start; flex: 0 0 auto; }
+.leyenda strong { font-weight: var(--peso-medio); color: var(--texto-secundario); white-space: nowrap; }
+@media (min-width: 900px) { .leyenda ol { justify-content: space-between; overflow-x: visible; } .leyenda li { flex: 1 1 0; } }
+
+/* ---- portada: franja compacta de lo que viene (fichas aún en borrador) ---- */
+.proximas .parada-cuerpo { padding-block: var(--e8); }
+.proximas h2 { font-size: var(--t-xs); letter-spacing: 0.07em; text-transform: uppercase; color: var(--texto-secundario); margin-bottom: var(--e3); font-family: var(--fuente-texto); font-weight: var(--peso-semibold); }
+.proximas-lista { list-style: none; padding: 0; display: grid; gap: var(--e3); font-size: var(--t-sm); }
+.proximas-lista li { display: grid; gap: var(--e1); }
+.proximas-lista strong { font-weight: var(--peso-semibold); color: var(--texto); }
+.proximas-lista span { color: var(--texto-secundario); }
+@media (min-width: 720px) { .proximas-lista li { grid-template-columns: 14rem 1fr; gap: var(--e4); } }
+
+/* ---- portada: la cubierta con la figura ---- */
+/* La cubierta mide lo que mide su contenido: sin altura mínima no hay aire muerto, y el relleno de
+   abajo deja sitio al resplandor de la figura para que no se recorte contra el borde de la parada. */
+[data-escena="cubierta"]:has(.portada-hero) { min-height: 0; }
+[data-escena="cubierta"] .parada-cuerpo.portada-hero { padding-block: var(--e8) var(--e12); }
+.portada-hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--e6); align-items: center; }
+/* Columna de texto, en el mismo orden en móvil y en escritorio: kicker → titular → bajada → botones.
+   La leyenda ya no vive aquí (franja propia, abajo) y la figura va DESPUÉS en el DOM: en móvil el
+   texto va primero (DEC §11.1 P3). */
+.hero-texto { display: flex; flex-direction: column; gap: var(--e4); min-width: 0; }
+.hero-texto .kicker { margin-bottom: var(--e3); }
+.parada .kicker-familia { margin-bottom: var(--e2); white-space: normal; }
+
+/* ---- bandas de familia: ritmo vertical fijo y rejilla sin huecos (DEC §11.1 P5-P6) ---- */
+.parada:not([data-escena="cubierta"]) .parada-cuerpo { padding-block: calc(var(--e16) / 2); }
+.parada .rejilla { margin-top: var(--e6); }
+@media (min-width: 640px) { .parada .rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .parada .rejilla { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* Filete superior discontinuo: «aquí empieza lo postulado». Mismo código que `propuesta` en las máquinas. */
+.parada[data-postulado='si'] { border-top: 2px dashed var(--acento); }
+.parada .kicker { font: var(--peso-semibold) var(--t-xs)/1.3 var(--fuente-texto); letter-spacing: 0.06em; text-transform: uppercase; color: var(--texto-secundario); margin-bottom: var(--e5); white-space: nowrap; }
+.portada-hero h1 { font-size: var(--t-hero); line-height: var(--il-apretado); max-width: 14ch; text-wrap: balance; margin: 0; }
+.portada-hero .descripcion-familia { font-size: var(--t-md); margin-top: 0; max-width: 38ch; }
+.portada-hero .cifras { margin-top: var(--e3); font: var(--peso-medio) var(--t-sm)/1.4 var(--fuente-mono); color: var(--texto-secundario); }
+.portada-hero .empieza { flex-wrap: wrap; margin-top: var(--e2); gap: var(--e3) var(--e4); align-items: flex-start; }
+/* El botón y su subtítulo van juntos: la nota explica «Empieza aquí», no flota suelta. */
+.empieza-principal { display: flex; flex-direction: column; align-items: flex-start; gap: var(--e2); }
+.portada-hero .empieza-nota { margin: 0; font-size: var(--t-sm); color: var(--texto-secundario); max-width: 34ch; }
+.portada-hero .empieza .btn { min-height: var(--alto-btn); }
+.portada-hero .empieza .btn svg { width: 1.1em; height: 1.1em; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* El hueco de la figura se reserva cuadrado desde el principio: si la escena tarda o no llega, la
+   maqueta no se mueve. El resplandor del acento va detrás, estático: no anima nada. */
+.hero-figura { position: relative; margin: 0 auto; width: min(70vw, 17rem); }
+.hero-figura::before {
+  content: ''; position: absolute; inset: -14%; pointer-events: none;
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--acento) var(--halo-heroe), transparent), transparent);
+}
+/* En claro el acento es oscuro: a la misma fuerza queda un gris sucio. Se aclara hacia el fondo. */
+:root[data-tema='claro'] .hero-figura::before {
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--acento) 46%, var(--fondo)), transparent);
+}
+:root[data-tema='claro'] [data-escena="cubierta"] .parada-capa:not([data-imagen]) {
+  background: radial-gradient(120% 90% at 70% 40%, color-mix(in oklab, var(--acento) 9%, transparent), transparent 70%);
+}
+.figura-hueco { position: relative; aspect-ratio: 1 / 1; width: 100%; }
+/* El andamiaje de las escenas envuelve el lienzo en la tarjeta de las visualizaciones; aquí la figura
+   va suelta sobre la página, sin borde ni cuadrícula, y es cuadrada. */
+.figura-hueco .vis-lienzo { aspect-ratio: 1 / 1; margin: 0; border: 0; border-radius: 0; background: none; overflow: visible; }
+.figura-hueco canvas { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; }
+.figura-hueco .silueta { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--texto-secundario); transition: opacity var(--m-lento) var(--curva-suave); }
+.figura-hueco .silueta .anillo { stroke: var(--acento); }
+.figura-hueco[data-listo] .silueta { opacity: 0; pointer-events: none; }
+/* El pie va pegado bajo la figura, con hueco suficiente hasta el kicker. Contraste AA: color de texto
+   secundario, que el sistema ya garantiza sobre el fondo del tema. */
+.hero-figura .pie-figura { position: relative; margin: var(--e2) auto 0; max-width: 28ch; font-size: var(--t-xs); line-height: 1.4; color: var(--texto-secundario); text-align: center; text-wrap: balance; }
+@media (prefers-reduced-motion: no-preference) {
+  .figura-hueco .silueta .linea { stroke-dasharray: 400; animation: trazar-figura 2.4s var(--curva-entrada) forwards; }
+}
+@keyframes trazar-figura { from { stroke-dashoffset: 400; } to { stroke-dashoffset: 0; } }
+@media (min-width: 900px) {
+  .portada-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--e12); }
+  .hero-figura { width: 100%; max-width: 34rem; }
+  .hero-figura .pie-figura { font-size: var(--t-sm); max-width: 40ch; margin-top: var(--e3); }
+  .hero-texto { gap: var(--e5); }
+}
+
+.pie-caja { max-width: 70rem; margin: 0 auto; padding: 0 var(--e4) var(--e8); }
+@media (min-width: 720px) { .pie-caja { padding-inline: var(--e6); } }
+.anal { display: block; }
+
+/* En la portada el pie lleva un único filete (el del aviso): sin bandas vacías entre la última parada y él. */
+.pie-caja .pie { margin-top: var(--e4); border-top: 0; padding-block: 0; }
+.pie-caja .pie-aviso { margin-top: 0; }

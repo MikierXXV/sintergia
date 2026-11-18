@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visionado del piloto</title>
+<style>
+  :root { --fondo:#f7f5f0; --texto:#1f1d1a; --suave:#5c5850; --borde:#d9d4c8; --oro:#8a6410; }
+  @media (prefers-color-scheme: dark) { :root { --fondo:#161513; --texto:#ece8df; --suave:#b5afa3; --borde:#3a3731; --oro:#d4a23a; } }
+  body { background:var(--fondo); color:var(--texto); font:16px/1.55 system-ui, sans-serif; margin:0 auto; max-width:1100px; padding:24px 16px 64px; }
+  h1 { margin:0 0 4px; } h2 { margin-top:40px; border-bottom:1px solid var(--borde); padding-bottom:4px; }
+  .nota { color:var(--suave); } code { font-size:.92em; }
+  .fila { display:flex; flex-wrap:wrap; gap:16px; align-items:flex-start; }
+  figure { margin:0; } figcaption { color:var(--suave); font-size:.9em; }
+  img, video { max-width:100%; border:1px solid var(--borde); border-radius:6px; }
+  .movil img { width:312px; } .escritorio img { width:520px; }
+  video { width:320px; }
+  td, th { text-align:left; padding:4px 10px 4px 0; vertical-align:top; } th { color:var(--suave); font-weight:600; }
+  .no { color:#b3412f; } .si { color:var(--oro); }
+</style>
+</head>
+<body>
+<h1>Piloto S4 · «El potencial transferido»</h1>
+<p class="nota">Página para revisar el piloto (t-ae0000), del 14-11-2026. Las imágenes y el vídeo usan rutas relativas: abre este fichero desde <code>sintergia/qa/</code>.</p>
+
+<h2>Ver el sitio en local</h2>
+<pre><code>cd C:\Users\migue\sintergia
+npm run build
+npx vite preview --port 4173</code></pre>
+<p>Abre <a href="http://localhost:4173/#potencial-transferido">http://localhost:4173/#potencial-transferido</a>. Es la única ficha completa; las otras 14 son borradores. Para el servidor, pulsa Ctrl+C.</p>
+
+<h2>El reel</h2>
+<div class="fila">
+  <figure><video controls preload="metadata" poster="../public/reels/potencial-transferido.webp" src="../public/reels/potencial-transferido.mp4"></video>
+    <figcaption>Versión web (3,0 MB). El original de 8,8 MB está en <code>videos-cortos/reel/reels/sintergia-potencial-transferido/salida/</code>.</figcaption></figure>
+  <figure><img src="capturas/reel-fotogramas.png" alt="Hoja de fotogramas del reel con las zonas seguras marcadas" style="width:520px">
+    <figcaption>Hoja de fotogramas de la QA. Las franjas rojas marcan las zonas de interfaz y no salen en el vídeo.</figcaption></figure>
+</div>
+<p><strong>PARADA de escucha:</strong> <code>videos-cortos/reel/qa/ESCUCHAR-sintergia-piloto.md</code>.</p>
+
+<h2>La ficha, con la visualización montada (paso 3 activo)</h2>
+<div class="fila movil">
+  <figure><img src="capturas/vis-360-claro.png" alt="Ficha a 360 px, tema claro"><figcaption>360 px · claro</figcaption></figure>
+  <figure><img src="capturas/vis-360-oscuro.png" alt="Ficha a 360 px, tema oscuro"><figcaption>360 px · oscuro</figcaption></figure>
+</div>
+<div class="fila escritorio">
+  <figure><img src="capturas/vis-1280-claro.png" alt="Ficha a 1280 px, tema claro"><figcaption>1280 px · claro</figcaption></figure>
+  <figure><img src="capturas/vis-1280-oscuro.png" alt="Ficha a 1280 px, tema oscuro"><figcaption>1280 px · oscuro</figcaption></figure>
+</div>
+<p class="nota">Las capturas de página entera de <code>npm run capturar</code> están en <code>sintergia/capturas/</code>. En ellas la visualización sale vacía, y es lo esperado: se toman con el scroll arriba y las visualizaciones que no están en pantalla se desmontan.</p>
+
+<h2>Criterios (DEC §8)</h2>
+<table>
+<tr><th>Criterio</th><th>Estado</th></tr>
+<tr><td>C1-C9 · validar, comprobar-fichas, revisor de contenido</td><td class="si">Cumplen, después de corregir 4 bloqueantes del revisor: réplicas S5/S6, cifras con «~», reserva del agregador y «críticas» sin fuente.</td></tr>
+<tr><td>C10 · revisor sin problemas abiertos</td><td>En la ficha están todos corregidos. En el reel, 2 puntos de la voz se resolvieron en pantalla (ver PARADA).</td></tr>
+<tr><td>V1-V4 · build, capturar, auditar, contraste</td><td class="si">En verde: LCP 964/1060 ms, CLS 0,018, 0 WebGL, 56/56 AA.</td></tr>
+<tr><td>V5 · insignia de respaldo</td><td class="si">Cumple: se lee sin color y está en la cabecera en móvil.</td></tr>
+<tr><td>V6 · pie «Esquema…»</td><td>No aplica: la ficha es de «lo medido».</td></tr>
+<tr><td>V7 · sin iconografía mística</td><td class="si">Cumple, revisado por un subagente en la hoja de contacto.</td></tr>
+<tr><td>V8 · sin bucle</td><td class="si">Cumple: la secuencia solo avanza a mano.</td></tr>
+<tr><td>R1 · QA de la skill</td><td class="no">Q1 en rojo en la frase 1: falsa alarma («1994» y «14,5» en cifras). Hace falta una excepción humana. Además hay 8 pausas, y la skill sugiere 1-3.</td></tr>
+<tr><td>R2 · reglas de §7</td><td class="si">Cumple: el gancho es un hecho atribuido, el respaldo se dice en la frase 3, el cierre muestra el título y no hay cian.</td></tr>
+<tr><td>R3 · reels.json y póster</td><td class="si">Cumple.</td></tr>
+<tr><td>R4 · escucha</td><td class="no">PARADA pendiente del humano.</td></tr>
+</table>
+</body>
+</html>

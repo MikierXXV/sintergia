@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Familia",
+  "description": "Agrupación de contenido. Da el color y una parada del recorrido.",
+  "type": "object",
+  "required": [
+    "id",
+    "nombre",
+    "orden",
+    "color_acento"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "nombre": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 60
+    },
+    "orden": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "descripcion": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 400
+    },
+    "color_acento": {
+      "type": "object",
+      "description": "Dos acentos, uno por tema. Verificados contra WCAG AA por check-contraste.mjs.",
+      "required": [
+        "claro",
+        "oscuro"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "claro": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "oscuro": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        }
+      }
+    },
+    "escena": {
+      "type": "object",
+      "description": "Cómo se pone en escena la parada. AQUÍ NO HAY ENUM A PROPÓSITO: los valores válidos los registra src/app/efectos.ts y los comprueba validar-contenido.mjs leyéndolo. Repetir la lista en el schema es tener dos listas que se separan en cuanto se añade un efecto.",
+      "additionalProperties": false,
+      "properties": {
+        "tipo": {
+          "type": "string"
+        },
+        "tono": {
+          "type": "string"
+        },
+        "velo": {
+          "type": "string"
+        },
+        "entrada": {
+          "type": "string",
+          "description": "Entrada por defecto de las piezas de esta familia. Cada pieza puede pedir otra."
+        },
+        "capas": {
+          "type": "array",
+          "description": "Capas decorativas con paralaje. Son DECORACIÓN: van con aria-hidden y no llevan texto. Si una capa aporta algo que hay que entender, no es una capa, es una visualización.",
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": [
+              "profundidad"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "profundidad": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "0 no se mueve, 1 recorre paralaje_recorrido entero. Más de tres capas no se distinguen y sí se pagan."
+              },
+              "imagen": {
+                "type": "string",
+                "description": "Ruta bajo public/. Sin imagen, la capa es un velo del acento de la familia."
+              }
+            }
+          }
+        }
+      }
+    },
+    "pie_visualizacion": {
+      "type": "boolean",
+      "description": "Si es true, toda visualización de la familia lleva el pie fijo «Esquema de una idea, no de un fenómeno medido» (DEC §4)."
+    }
+  }
+}

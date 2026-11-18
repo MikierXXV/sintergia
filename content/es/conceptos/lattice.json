@@ -1,0 +1,108 @@
+{
+  "id": "lattice",
+  "familia_id": "el-campo",
+  "orden": 3,
+  "simbolo": "LAT",
+  "titulo": "El lattice: la retícula que Grinberg supone en el espacio",
+  "resumen": "Según Grinberg, el campo neuronal interactuaría con una retícula, el «lattice», con dimensiones del orden de la longitud de onda de los rayos X. El término viene de la cristalografía y Grinberg le da una escala física, pero no es física reconocida ni hay estudios independientes que lo hayan puesto a prueba.",
+  "idea": "Grinberg supone una retícula en el espacio, el «lattice», con la que interactuaría el campo neuronal; no es física reconocida.",
+  "respaldo": 1,
+  "propone": {
+    "pasos": [
+      {
+        "titulo": "Una retícula",
+        "texto": "Según Grinberg, el espacio tendría una estructura de retícula, como las de un cristal: puntos regulares unidos entre sí."
+      },
+      {
+        "titulo": "A una escala concreta",
+        "texto": "En su artículo de 1983 las dimensiones de esa retícula serían del orden de la longitud de onda de los rayos X."
+      },
+      {
+        "titulo": "Con la que interactúa el campo",
+        "texto": "Esa retícula sería la que interactúa con el campo neuronal. Es una propuesta de Grinberg, sin formalismo físico que la acompañe."
+      }
+    ]
+  },
+  "se_sabe": [
+    {
+      "texto": "No hay estudios independientes que lo hayan puesto a prueba.",
+      "refs": []
+    },
+    {
+      "texto": "«Lattice» es un término de la cristalografía; Grinberg lo toma de ahí y le da una escala física, pero no es un objeto que la física reconozca.",
+      "refs": [
+        "P5"
+      ]
+    },
+    {
+      "texto": "Aparece en un artículo de 1983 en Psychoenergetics, revista parapsicológica de revisión dudosa.",
+      "refs": [
+        "P5"
+      ]
+    },
+    {
+      "texto": "La Psi Encyclopedia, enciclopedia del campo parapsicológico, dice que las ideas de Grinberg «never received much academic attention» (nunca recibieron mucha atención académica).",
+      "refs": [
+        "S13"
+      ]
+    }
+  ],
+  "disputa": [
+    {
+      "titulo": "No es física reconocida",
+      "texto": "En lo que hemos leído no se dice de qué estaría hecha esa retícula ni cómo detectarla. Sin eso no hay forma de comprobarla ni de descartarla.",
+      "refs": [
+        "P5"
+      ]
+    },
+    {
+      "titulo": "Una metáfora que parece un dato",
+      "texto": "Hablar de «dimensiones del orden de los rayos X» le da apariencia de medida a una escala que no se ha medido en ningún experimento.",
+      "refs": [
+        "P5"
+      ]
+    }
+  ],
+  "puntos_clave": [
+    "Especulativo: solo lo sostiene el propio Grinberg; el lattice toma su nombre de la cristalografía y no es un objeto físico reconocido.",
+    "Según Grinberg, sería una retícula del espacio con la que interactuaría el campo neuronal."
+  ],
+  "cita": {
+    "texto": "a crystalline structure whose lattice dimensions are of the order of the wavelength of x-rays",
+    "traduccion": "una estructura cristalina cuyas dimensiones de retícula son del orden de la longitud de onda de los rayos X",
+    "autor": "Grinberg-Zylberbaum",
+    "atribucion": "directa",
+    "fuente": "P5, Psychoenergetics 5 (1983)"
+  },
+  "fuentes": [
+    {
+      "ref": "P5",
+      "tipo": "primaria",
+      "titulo": "The orbitals of consciousness: a neurosyntergic approach to the levels of conscious experience. Psychoenergetics 5: 235-242",
+      "autor": "Grinberg-Zylberbaum",
+      "anio": 1983,
+      "url": "https://documents.theblackvault.com/documents/remoteviewing/stargate/STARGATE%20%238%20237/Part0007/CIA-RDP96-00792R000700130001-6.TXT",
+      "nota": "Leído en un OCR del archivo de la CIA, con partes ilegibles."
+    },
+    {
+      "ref": "S13",
+      "tipo": "contexto",
+      "titulo": "Entrada «Jacobo Grinberg-Zylberbaum» de la Psi Encyclopedia (SPR)",
+      "autor": "Society for Psychical Research",
+      "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
+      "nota": "Enciclopedia del campo parapsicológico, no revisada por pares. Tiene errores de paginación."
+    }
+  ],
+  "enlaces": [
+    {
+      "id": "distorsion-del-espacio-tiempo",
+      "rotulo": "Distorsión del espacio-tiempo: lo que el campo le haría al lattice"
+    },
+    {
+      "id": "campo-neuronal",
+      "rotulo": "El campo neuronal"
+    }
+  ],
+  "maquina": "lattice",
+  "reel": "lattice"
+}

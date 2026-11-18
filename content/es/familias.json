@@ -1,0 +1,64 @@
+{
+  "$comment": "Las cuatro familias de DEC §2, por distancia al dato: de lo que se midió a lo que solo se postula. Acentos de DEC §5 (tono fijo, luminosidad ajustada por check-contraste). Escenografía de DEC §5: el marco es la portada a sangre; sin tono contrario ni velo en ninguna familia (DEC §11.2: en oscuro, todo en el mismo tono); una entrada por familia (corte, deriva, deriva); sin paralaje en las visualizaciones.",
+  "familias": [
+    {
+      "id": "marco",
+      "nombre": "El mapa",
+      "orden": 1,
+      "descripcion": "Qué es la teoría sintérgica y cómo leer este sitio: cada idea lleva una etiqueta que dice cuánto respaldo tiene.",
+      "color_acento": {
+        "claro": "#4A5670",
+        "oscuro": "#A9B4CC"
+      },
+      "escena": {
+        "tipo": "cubierta",
+        "capas": [
+          {
+            "profundidad": 0.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "lo-medido",
+      "nombre": "Lo que se midió",
+      "orden": 2,
+      "descripcion": "Los experimentos que publicó Grinberg y lo que pasó cuando otros intentaron repetirlos.",
+      "color_acento": {
+        "claro": "#00727A",
+        "oscuro": "#4FD1D9"
+      },
+      "escena": {
+        "entrada": "corte"
+      }
+    },
+    {
+      "id": "el-campo",
+      "nombre": "La teoría del campo",
+      "orden": 3,
+      "descripcion": "Los constructos con los que Grinberg propone explicar esos resultados. Aquí solo hay fuentes suyas: es la parte especulativa.",
+      "color_acento": {
+        "claro": "#5B45B0",
+        "oscuro": "#A99BF0"
+      },
+      "escena": {
+        "entrada": "deriva"
+      },
+      "pie_visualizacion": true
+    },
+    {
+      "id": "la-conciencia",
+      "nombre": "Conciencia y experiencia",
+      "orden": 4,
+      "descripcion": "Las tesis filosóficas sobre qué es percibir y qué es la conciencia. No se pueden comprobar con un experimento.",
+      "color_acento": {
+        "claro": "#8A5A00",
+        "oscuro": "#F2B544"
+      },
+      "escena": {
+        "entrada": "deriva"
+      },
+      "pie_visualizacion": true
+    }
+  ]
+}

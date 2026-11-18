@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visionado del piloto v2</title>
+<style>
+  :root { --fondo:#f7f5f0; --texto:#1f1d1a; --suave:#5c5850; --borde:#d9d4c8; --ok:#2f6b3a; --no:#a33a2a; }
+  @media (prefers-color-scheme: dark) { :root { --fondo:#161513; --texto:#ece8df; --suave:#b5afa3; --borde:#3a3731; --ok:#7cc48a; --no:#e48a7a; } }
+  body { background:var(--fondo); color:var(--texto); font:16px/1.55 system-ui, sans-serif; margin:0 auto; max-width:1180px; padding:24px 16px 64px; }
+  h1 { margin:0 0 4px; } h2 { margin-top:40px; border-bottom:1px solid var(--borde); padding-bottom:4px; }
+  .nota { color:var(--suave); } code { font-size:.92em; }
+  .fila { display:flex; flex-wrap:wrap; gap:16px; align-items:flex-start; }
+  figure { margin:0; } figcaption { color:var(--suave); font-size:.9em; max-width:560px; }
+  img { max-width:100%; border:1px solid var(--borde); border-radius:6px; }
+  .esc img { width:560px; } .mov img { width:260px; } .ancha img { width:100%; }
+  .tabla { overflow-x:auto; }
+  table { border-collapse:collapse; font-size:.93em; } td, th { text-align:left; padding:6px 10px 6px 0; vertical-align:top; border-bottom:1px solid var(--borde); }
+  th { color:var(--suave); font-weight:600; }
+  .si { color:var(--ok); font-weight:600; } .no { color:var(--no); font-weight:600; }
+</style>
+</head>
+<body>
+<h1>Piloto S4-E · «El potencial transferido», al modo de software-engineer</h1>
+<p class="nota">Tarea t-57f9fe, del 16-11-2026. Las imágenes usan rutas relativas: abre este fichero desde <code>sintergia/qa/</code>. Sustituye a <code>VISIONADO-PILOTO.html</code> (t-ae0000), que se conserva para comparar.</p>
+
+<h2>Ver el sitio en local</h2>
+<pre><code>cd C:\Users\migue\sintergia
+npm run build
+npx vite preview --port 4173</code></pre>
+<p>Abre <a href="http://localhost:4173/#/c/potencial-transferido">http://localhost:4173/#/c/potencial-transferido</a>, la única ficha completa, o la portada en <a href="http://localhost:4173/#/">http://localhost:4173/#/</a>. Los enlaces antiguos, <code>#potencial-transferido</code>, redirigen a <code>#/c/potencial-transferido</code>. Para parar el servidor, pulsa Ctrl+C.</p>
+
+<h2>Antes y después (DEC §10)</h2>
+<div class="tabla"><table>
+<tr><th>Aspecto</th><th>Piloto S4 (antes)</th><th>Sintergia S4-E (después, hecho)</th></tr>
+<tr><td>Navegación</td><td>Un solo scroll con las 15 fichas en línea; 14 dicen «BORRADOR»</td><td>Portada con una banda por familia y tarjetas. Página <code>#/c/&lt;id&gt;</code> con migas y la ruta única «El recorrido · n de 15», con anterior y siguiente, más <code>#/limites</code>. Los borradores se cuentan como «En preparación · n fichas» y no salen como tarjeta.</td></tr>
+<tr><td>Cabecera</td><td>Título, insignia y párrafo de resumen</td><td>Símbolo PT, h1 serif, insignia de respaldo «Disputado · 2 de 4», «En una frase» en condicional y «Ver el reel»</td></tr>
+<tr><td>Interactivo</td><td><code>secuencia</code>: pista de 6 puntos, sin figura</td><td>Mecánica <code>diagrama</code> en <code>content/es/maquinas/potencial-transferido.json</code>. Cámaras A y B, destellos y 14,5 m. La traza A (dato) va continua y la B (propuesta) discontinua en gris. Lleva el mando común y el control «Qué muestra B» con la opción «Si no hubiera efecto».</td></tr>
+<tr><td>Lugar de la máquina</td><td>Tras el resumen</td><td>Lo primero tras la cabecera: a 1280×800 empieza en y=446. «Qué estás viendo» va debajo.</td></tr>
+<tr><td>Texto</td><td>Tres párrafos de 575-683 car.</td><td>Pasos numerados, «Lo que se sabe» con chips de fuente, disputa en caja con aviso (nunca plegada) y «Para recordar», cuyo primer punto lleva el rótulo de respaldo</td></tr>
+<tr><td>Fuentes</td><td>Lista larga</td><td>Tipadas como primaria, réplica o contexto; más de 6, así que van plegadas. Las refs son chips que abren y resaltan su fuente.</td></tr>
+<tr><td>Reel</td><td>Tras la máquina</td><td>Tras «Para recordar», en dos columnas con vídeo y transcripción. El vídeo no cambia.</td></tr>
+<tr><td>Color y escenografía</td><td>Cada parada teñida, escenografía en todo el recorrido</td><td>Casi monocromo; la escenografía solo en la portada</td></tr>
+</table></div>
+
+<h2>Primer pantallazo: portada y concepto</h2>
+<div class="fila esc">
+  <figure><img src="capturas/v2-1280-claro-portada.png" alt="Portada a 1280 en claro"><figcaption>Portada · 1280 · claro</figcaption></figure>
+  <figure><img src="capturas/v2-1280-oscuro-portada.png" alt="Portada a 1280 en oscuro"><figcaption>Portada · 1280 · oscuro</figcaption></figure>
+  <figure><img src="capturas/v2-1280-claro-concepto.png" alt="Concepto a 1280 en claro"><figcaption>Concepto · 1280 · claro: migas, insignia, h1, «En una frase» y la máquina empezando en el primer pantallazo</figcaption></figure>
+  <figure><img src="capturas/v2-1280-oscuro-concepto.png" alt="Concepto a 1280 en oscuro"><figcaption>Concepto · 1280 · oscuro</figcaption></figure>
+</div>
+<div class="fila mov" style="margin-top:16px">
+  <figure><img src="capturas/v2-360-claro-portada.png" alt="Portada a 360 en claro"><figcaption>Portada · 360 · claro</figcaption></figure>
+  <figure><img src="capturas/v2-360-oscuro-portada.png" alt="Portada a 360 en oscuro"><figcaption>Portada · 360 · oscuro</figcaption></figure>
+  <figure><img src="capturas/v2-360-claro-concepto.png" alt="Concepto a 360 en claro"><figcaption>Concepto · 360 · claro</figcaption></figure>
+  <figure><img src="capturas/v2-360-oscuro-concepto.png" alt="Concepto a 360 en oscuro"><figcaption>Concepto · 360 · oscuro</figcaption></figure>
+</div>
+
+<h2>La máquina</h2>
+<figure class="ancha"><img src="capturas/hoja-contacto-v2-maquina.png" alt="Hoja de contacto de la máquina: 2 anchos por 2 temas, en el inicio, el paso 4, el paso 6 y la opción sin efecto"><figcaption>Inicio, paso 4, paso 6 y «Si no hubiera efecto», en 2 anchos × 2 temas.</figcaption></figure>
+
+<h2>Páginas enteras (capturar-sitio.mjs)</h2>
+<div class="fila mov">
+  <figure><img src="capturas/v2-entera-escritorio-claro-c-potencial-transferido.png" alt="Página entera del concepto en escritorio claro"><figcaption>Concepto · escritorio · claro</figcaption></figure>
+  <figure><img src="capturas/v2-entera-escritorio-oscuro-c-potencial-transferido.png" alt="Página entera del concepto en escritorio oscuro"><figcaption>Concepto · escritorio · oscuro</figcaption></figure>
+  <figure><img src="capturas/v2-entera-movil-claro-c-potencial-transferido.png" alt="Página entera del concepto en móvil claro"><figcaption>Concepto · móvil · claro</figcaption></figure>
+  <figure><img src="capturas/v2-entera-movil-oscuro-c-potencial-transferido.png" alt="Página entera del concepto en móvil oscuro"><figcaption>Concepto · móvil · oscuro</figcaption></figure>
+</div>
+<p class="nota">Las páginas enteras corresponden al build final, con los retoques editoriales y los de la máquina.</p>
+
+<h2>Antes y después, juntos</h2>
+<figure class="ancha"><img src="capturas/hoja-contacto-v2.png" alt="Hoja de contacto: antes, después, máquina y portada en 2 anchos por 2 temas"><figcaption>La primera columna es el piloto anterior (<code>vis-*</code>). Las demás son el build final.</figcaption></figure>
+
+<h2>Comprobaciones</h2>
+<div class="tabla"><table id="criterios">
+<tr><th>Qué</th><th>Estado</th><th>Nota</th></tr>
+<tr><td><code>npm run validar</code> y <code>npm run build</code></td><td class="si">verde</td><td>contenido, fichas (reglas por elemento, refs en los dos sentidos, tope de 2400), máquinas, contraste 56/56 y idiomas</td></tr>
+<tr><td><code>capturar-sitio.mjs</code></td><td class="si">sin errores</td><td>2 temas × 2 anchos, rutas <code>#/</code> y <code>#/c/potencial-transferido</code></td></tr>
+<tr><td>Ancla antigua <code>#potencial-transferido</code></td><td class="si">redirige</td><td>comprobado en los 4 contextos</td></tr>
+<tr><td>Revisor de contenido</td><td class="si">corregido</td><td>8 observaciones. Atribuidas las frases del diseño (pasos 2 y 3, también en la máquina). La traza B dice «según Grinberg». La valoración estadística va marcada como editorial. La reserva de S2 está escrita. Ya no se atribuye a P10/P11 lo que valora la investigación. La alternativa explica la diferencia entre continuo y discontinuo y el control. La nota de enlace va en S5 y S6, y la fecha de P10 está unificada. «Tocar B muestra 25 % frente a 57 %»: ya lo hace la mecánica al saltar al paso 6.</td></tr>
+<tr><td>V7 · sin iconografía mística</td><td class="si">pasa</td><td>subagente sobre la hoja de contacto</td></tr>
+<tr><td>V9 · orden y primer pantallazo</td><td class="si">pasa en 1280, con reserva en 360</td><td>A 1280×800 la máquina empieza en y=446 y se ven migas, insignia, h1 y «En una frase». A 360×740 la insignia, el h1 y «En una frase» se ven sin scroll. La máquina empieza en y=522, tras la cabecera del concepto (migas, insignia, h1, idea, «Ver el reel»): en el primer pantallazo solo asoma su principio. Si «justo bajo la cabecera» quiere decir pegada al logo, habría que esconder «Ver el reel» o la idea en móvil. Lo dejo a tu criterio.</td></tr>
+<tr><td>V10 · mando común y rol de las trazas</td><td class="si">pasa</td><td>Tres pasadas del subagente. Se ven la pista, «Paso n de 6», Reproducir, Paso y Reiniciar. Hay 13 elementos con <code>aria-label</code>. La traza A va continua; la B va discontinua en gris (79,88,107), no en cian. Con «Sin efecto», la traza B sale plana con «B, sin respuesta». Entre pasadas se arregló el 360 con posiciones <code>movil</code> y <code>proporcion</code> en la ficha de la máquina: antes los rótulos se partían palabra a palabra, A y B se tocaban y «14,5 m» quedaba tachado por la flecha.</td></tr>
+</table></div>
+
+<h2>Lo que falta</h2>
+<ul id="falta">
+  <li><code>npm run auditar</code> (presupuestos de rendimiento) no se ha ejecutado en esta tarea, por la RAM.</li>
+  <li>V9 en móvil: decidir si la máquina tiene que subir más (ver la tabla).</li>
+  <li>Detalles menores: en 360 la etiqueta «interactúan» va justa junto a la punta de flecha, y la insignia pasa a dos líneas.</li>
+  <li>Las otras 14 fichas siguen siendo borradores; se escriben en S5.</li>
+</ul>
+</body>
+</html>

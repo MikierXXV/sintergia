@@ -1,0 +1,191 @@
+{
+  "id": "replicas-del-potencial-transferido",
+  "familia_id": "lo-medido",
+  "orden": 3,
+  "simbolo": "REP",
+  "titulo": "¿Se replicó? El balance de las réplicas",
+  "resumen": "Tres estudios intentaron repetir el diseño del potencial transferido: dos dieron resultados positivos débiles o parciales y uno fue negativo. Otros estudios emparentados no son réplicas estrictas, y varios comparten autores, así que no son independientes entre sí.",
+  "idea": "De tres intentos de repetir el diseño del potencial transferido, dos dieron resultados débiles o parciales y uno fue negativo.",
+  "respaldo": 2,
+  "propone": {
+    "intro": "Esta ficha cuenta qué pasó después del experimento. El diseño y las cifras de Grinberg están en «El potencial transferido».",
+    "pasos": [
+      {
+        "titulo": "Un diseño que otros pueden repetir",
+        "texto": "El diseño que describe Grinberg (dos sujetos aislados y destellos para uno de ellos) se puede repetir en otros laboratorios: eso es una réplica del diseño."
+      },
+      {
+        "titulo": "Tres réplicas del diseño",
+        "texto": "Intentaron repetirlo Wackermann y colegas (2003), Standish y colegas (2004) y Ambach (2008). Solo estos tres entran en el balance."
+      },
+      {
+        "titulo": "Estudios emparentados, aparte",
+        "texto": "Otros estudios usan ideas parecidas, como la resonancia magnética o la intención a distancia, sin repetir el diseño. Se muestran aparte y no cuentan en el balance."
+      }
+    ]
+  },
+  "se_sabe": [
+    {
+      "texto": "Wackermann y colegas (2003, 17 parejas) concluyen que las correlaciones «may occur», aunque «no biophysical mechanism is known». Standish y colegas (2004, EEG) dan un resultado positivo débil o parcial, con cifras exactas sin verificar.",
+      "refs": ["S3", "S2"]
+    },
+    {
+      "texto": "Ambach (2008) comunica una réplica negativa.",
+      "refs": ["S8"]
+    },
+    {
+      "texto": "Entre los emparentados, Radin (2004) encontró solo 3 parejas positivas de 13. Standish (2003) y Richards (2005) usaron fMRI con una sola pareja; de ninguno hemos leído el resumen.",
+      "refs": ["S5", "S1", "S6"]
+    },
+    {
+      "texto": "Achterberg y colegas (2005) estudiaron a 11 sanadores con fMRI e intencionalidad a distancia. No es una réplica del potencial transferido.",
+      "refs": ["S7"]
+    },
+    {
+      "texto": "Una revisión de 2016 lista 29 estudios y concluye que no se pueden metaanalizar.",
+      "refs": ["S10"]
+    }
+  ],
+  "disputa": [
+    {
+      "titulo": "Los autores se repiten",
+      "texto": "Los mismos autores aparecen en S1, S2, S6 y S7: no son réplicas independientes entre sí. Walach, coautor de S3, trabaja también en el campo psi.",
+      "refs": ["S1", "S2", "S6", "S7", "S3"]
+    },
+    {
+      "titulo": "La réplica negativa, con reserva",
+      "texto": "Según un agregador, el método estadístico original daba entre un 20 % y un 25 % de falsos positivos y, con la corrección, nada fue significativo. Está sin confirmar en el original.",
+      "refs": ["S8"]
+    },
+    {
+      "titulo": "Qué cuenta como réplica",
+      "texto": "Contar solo S2, S3 y S8 es una decisión de este sitio. S10 reúne 29 estudios con un método elegido tras fallar el promedio estándar, y un revisor señala la falta de corrección por comparaciones múltiples.",
+      "refs": ["S10"]
+    }
+  ],
+  "detalles": [
+    {
+      "titulo": "Revisiones y una crítica general",
+      "texto": "Wackermann (2004) describe la evidencia de las correlaciones entre dos personas como «scarce and controversial». Hinterberger (2010) resume tres estudios; no lo hemos leído. Novella (2013) critica en un blog los estudios de EEG a distancia, sin mencionar a Grinberg: es una crítica general.",
+      "refs": ["S4", "S9", "S11"]
+    }
+  ],
+  "puntos_clave": [
+    "Disputado: tres intentos de repetir el diseño, dos positivos débiles o parciales y uno negativo, y varios estudios comparten autores.",
+    "El balance solo cuenta las réplicas del diseño (S2, S3 y S8); los emparentados se muestran aparte.",
+    "Del dato estadístico de la réplica negativa solo tenemos la versión de un agregador, sin confirmar."
+  ],
+  "fuentes": [
+    {
+      "ref": "S3",
+      "tipo": "replica",
+      "titulo": "Correlations between brain electrical activities of two spatially separated human subjects. Neuroscience Letters 336: 60-64",
+      "autor": "Wackermann, Seiter, Keibel y Walach",
+      "anio": 2003,
+      "url": "https://psi-research-site.pages.dev/paper/wackermann_2003_correlations",
+      "nota": "17 parejas. DOI sin verificar. Mejor medio de las réplicas; Walach trabaja en el campo psi."
+    },
+    {
+      "ref": "S2",
+      "tipo": "replica",
+      "titulo": "Standish, Kozak, Johnson y Richards (2004). Journal of Alternative and Complementary Medicine 10(2): 307-314",
+      "autor": "Standish, Kozak, Johnson y Richards",
+      "anio": 2004,
+      "url": "https://www.researchgate.net/publication/8541903",
+      "nota": "EEG con tablero de ajedrez. Resultados exactos sin verificar."
+    },
+    {
+      "ref": "S8",
+      "tipo": "replica",
+      "titulo": "Ambach (2008). European Journal of Parapsychology 23(2)",
+      "autor": "Ambach",
+      "anio": 2008,
+      "url": "https://psi-research-site.pages.dev/paper/ambach_2008_correlations",
+      "nota": "Réplica negativa, desde dentro del campo. Los porcentajes de falsos positivos proceden de un agregador: sin confirmar en el original."
+    },
+    {
+      "ref": "S5",
+      "tipo": "contexto",
+      "titulo": "Radin (2004). Journal of Alternative and Complementary Medicine 10: 315-323",
+      "autor": "Radin",
+      "anio": 2004,
+      "url": "https://f1000research.com/articles/4-457",
+      "nota": "13 parejas, solo 3 positivas. El enlace lleva a la tabla de una revisión en F1000 (S10), no al artículo."
+    },
+    {
+      "ref": "S1",
+      "tipo": "contexto",
+      "titulo": "Standish, Johnson, Kozak y Richards (2003). Alternative Therapies in Health and Medicine 9(1)",
+      "autor": "Standish, Johnson, Kozak y Richards",
+      "anio": 2003,
+      "url": "https://f1000research.com/articles/4-457",
+      "nota": "Una pareja, fMRI. Resumen no leído. El enlace lleva a la tabla de S10."
+    },
+    {
+      "ref": "S6",
+      "tipo": "contexto",
+      "titulo": "Richards, Kozak, Johnson y Standish (2005). Journal of Alternative and Complementary Medicine 11(6): 955-963",
+      "autor": "Richards, Kozak, Johnson y Standish",
+      "anio": 2005,
+      "url": "https://f1000research.com/articles/4-457",
+      "nota": "fMRI, una pareja. Resumen no leído. El enlace lleva a la tabla de S10."
+    },
+    {
+      "ref": "S7",
+      "tipo": "contexto",
+      "titulo": "Achterberg y otros (2005). Journal of Alternative and Complementary Medicine 11(6): 965-971",
+      "autor": "Achterberg y otros",
+      "anio": 2005,
+      "url": "https://f1000research.com/articles/4-457",
+      "nota": "11 sanadores, fMRI, intencionalidad a distancia. No es una réplica del potencial transferido."
+    },
+    {
+      "ref": "S10",
+      "tipo": "contexto",
+      "titulo": "EEG correlates of social interaction at distance. F1000Research 4: 457",
+      "autor": "Giroldini, Tressoldi y otros",
+      "anio": 2016,
+      "url": "https://f1000research.com/articles/4-457",
+      "nota": "Lista 29 estudios, no metaanalizables. Efecto de ~0,5 %. Revisión abierta, con informes de revisores."
+    },
+    {
+      "ref": "S4",
+      "tipo": "contexto",
+      "titulo": "Dyadic correlations between brain functional states. Mind and Matter 2(1): 105-122",
+      "autor": "Wackermann",
+      "anio": 2004,
+      "url": "https://dc2.philarchive.org/rec/WACDCB",
+      "nota": "Revisión del propio autor."
+    },
+    {
+      "ref": "S9",
+      "tipo": "contexto",
+      "titulo": "Searching for neuronal markers of psi",
+      "autor": "Hinterberger",
+      "anio": 2010,
+      "url": "https://psi-research-site.pages.dev/paper/hinterberger_2010_searching",
+      "nota": "Resume tres estudios. No leído."
+    },
+    {
+      "ref": "S11",
+      "tipo": "critica",
+      "titulo": "EEG ESP. NeuroLogica (blog)",
+      "autor": "Novella",
+      "anio": 2013,
+      "url": "https://theness.com/neurologicablog/?p=6135",
+      "nota": "Crítica escéptica general (el efecto parecería ruido; selección de datos en Radin). No menciona a Grinberg."
+    }
+  ],
+  "enlaces": [
+    {
+      "id": "potencial-transferido",
+      "rotulo": "El potencial transferido: el experimento"
+    },
+    {
+      "id": "epr-en-el-cerebro",
+      "rotulo": "«La paradoja EPR en el cerebro» y por qué no es una prueba de Bell"
+    }
+  ],
+  "maquina": "replicas-del-potencial-transferido",
+  "reel": "replicas-del-potencial-transferido"
+}
