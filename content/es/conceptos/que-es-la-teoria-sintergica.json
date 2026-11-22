@@ -24,7 +24,7 @@
   },
   "se_sabe": [
     {
-      "texto": "Lo más cercano a un dato son dos experimentos con EEG de dos personas: el de 1987 no tiene réplica directa; el de 1994, el potencial transferido, tiene réplicas mixtas y en disputa.",
+      "texto": "Lo más cercano a un dato son dos experimentos con EEG de dos personas: el de 1987, publicado, no tiene réplica directa que hayamos encontrado; el de 1994, el potencial transferido, tiene réplicas mixtas y su resultado está en disputa.",
       "refs": [
         "P7",
         "P11"
@@ -48,6 +48,12 @@
       "texto": "Según la bibliografía, dedicó libros a los chamanes de México como fuente declarada de sus ideas. Solo conocemos la ficha del libro, no su contenido.",
       "refs": [
         "P8"
+      ]
+    },
+    {
+      "texto": "Existe un análisis académico de la teoría sintérgica desde la filosofía de la ciencia (Guzmán y Noda, 2025). No hemos leído su veredicto.",
+      "refs": [
+        "S12"
       ]
     }
   ],
@@ -130,6 +136,15 @@
       "autor": "Society for Psychical Research",
       "url": "https://psi-encyclopedia.spr.ac.uk/articles/jacobo-grinberg-zylberbaum/",
       "nota": "Enciclopedia del campo parapsicológico, no revisada por pares. Tiene errores de paginación."
+    },
+    {
+      "ref": "S12",
+      "tipo": "contexto",
+      "titulo": "Demarcación científica de la teoría sintérgica. Cinta de Moebio 84: 76-93",
+      "autor": "Guzmán y Noda",
+      "anio": 2025,
+      "url": "https://cintademoebio.uchile.cl/index.php/CDM/article/download/82934/81438/334304",
+      "nota": "Único análisis académico de la teoría que hemos encontrado. Veredicto no leído: la página bloqueó la lectura."
     }
   ],
   "enlaces": [

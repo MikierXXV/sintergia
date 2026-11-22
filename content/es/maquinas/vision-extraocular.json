@@ -4,8 +4,8 @@
   "parametros": {
     "familia_id": "lo-medido",
     "proporcion": [2.3333, 1],
-    "alternativa": "Una lista de cinco controles que haría falta ver para creer que niños vendados «perciben» imágenes al tocarlas. Paso uno: según la referencia del artículo, niños con los ojos vendados percibirían imágenes al tocarlas. Paso dos: se enumeran los cinco controles: venda, procedimiento ciego, juez ciego, registro previo de las respuestas y control de fugas sensoriales. Paso tres: solo la venda está descrita en la referencia; de los otros cuatro no consta nada en lo que hemos podido leer, lo que no significa que no se hicieran. Solo tenemos la ficha del artículo, no su contenido.",
-    "resolucion": "Grinberg describió a niños vendados que «percibirían» imágenes al tocarlas; solo tenemos la referencia, y de cuatro de los cinco controles necesarios no consta nada.",
+    "alternativa": "Una lista de cinco controles que haría falta ver para creer que niños vendados «perciben» imágenes al tocarlas. Paso uno: según nuestra investigación, sin el texto del artículo, niños con los ojos vendados percibirían imágenes al tocarlas. Paso dos: se enumeran los cinco controles: venda, procedimiento ciego, juez ciego, registro previo de las respuestas y control de fugas sensoriales. Paso tres: sin el texto del artículo no podemos comprobar ninguno; en lo que hemos podido leer no consta nada sobre ellos, lo que no significa que no se hicieran. Solo tenemos la ficha del artículo, no su contenido.",
+    "resolucion": "Grinberg describió a niños vendados que «percibirían» imágenes al tocarlas; solo tenemos la referencia, y de ninguno de los cinco controles necesarios consta nada.",
     "elementos": [
       { "id": "afirmacion", "tipo": "ficha", "x": 50, "y": 14, "etiqueta": "Niños vendados «perciben» imágenes", "sub": "según Grinberg", "rol": "propuesta", "movil": [50, 8] },
       {
@@ -29,7 +29,7 @@
     "enlaces": [],
     "pasos": [
       {
-        "texto": "Según la referencia del artículo de 1983, niños con los ojos vendados «percibirían» imágenes al tocarlas.",
+        "texto": "Según nuestra investigación, sin el texto del artículo de 1983, niños con los ojos vendados «percibirían» imágenes al tocarlas.",
         "activos": ["afirmacion"]
       },
       {
@@ -38,12 +38,12 @@
         "activos": ["controles"]
       },
       {
-        "texto": "Solo la venda está descrita en la referencia. De los otros cuatro no consta nada en lo que hemos podido leer: no es lo mismo que decir que no se hicieran.",
+        "texto": "Sin el texto del artículo no podemos comprobar ninguno. En lo que hemos podido leer no consta nada sobre ellos: no es lo mismo que decir que no se hicieran.",
         "activos": ["controles"],
         "resalta": { "controles": [0] },
         "celdas": {
           "controles": {
-            "0,1": "descrita",
+            "0,1": "no consta",
             "1,1": "no consta",
             "2,1": "no consta",
             "3,1": "no consta",

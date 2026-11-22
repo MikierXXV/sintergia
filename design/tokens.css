@@ -92,7 +92,7 @@
 
   /* Alturas de control */
   --alto-ui: 44px;       /* objetivo táctil */
-  --alto-btn: 40px;
+  --alto-btn: 44px;
   --alto-cabecera: 56px; /* barra superior fija */
   --alto-chip: 34px;     /* chip visible; el área táctil llega a 44 px con un pseudo-elemento invisible */
   --medida: 68ch;

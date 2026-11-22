@@ -110,9 +110,9 @@ function transcodificar(mp4, destino, segundos) {
   const videoKbps = Math.min(VIDEO_KBPS_MAX, Math.floor(totalKbps * 0.95 - AUDIO_KBPS));
   ffmpeg([
     '-i', mp4,
-    '-vf', 'scale=720:1280:flags=lanczos,format=yuv420p',
+    '-vf', 'scale=1080:1920:flags=lanczos,format=yuv420p',
     '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high',
-    '-crf', '23', '-maxrate', `${videoKbps}k`, '-bufsize', `${videoKbps * 2}k`,
+    '-crf', '26', '-maxrate', `${videoKbps}k`, '-bufsize', `${videoKbps * 2}k`,
     '-c:a', 'aac', '-b:a', `${AUDIO_KBPS}k`, '-ac', '2',
     // El índice al principio: el navegador puede empezar a reproducir sin
     // descargar el archivo entero.
@@ -122,7 +122,7 @@ function transcodificar(mp4, destino, segundos) {
 }
 
 function posteres(png, base) {
-  ffmpeg(['-i', png, '-vf', 'scale=720:1280:flags=lanczos', '-c:v', 'libwebp', '-quality', '80', `${base}.webp`]);
+  ffmpeg(['-i', png, '-vf', 'scale=1080:1920:flags=lanczos', '-c:v', 'libwebp', '-quality', '80', `${base}.webp`]);
   ffmpeg(['-i', png, '-vf', 'scale=360:640:flags=lanczos', '-c:v', 'libwebp', '-quality', '75', `${base}-mini.webp`]);
 }
 

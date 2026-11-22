@@ -33,14 +33,20 @@
       "refs": [
         "S13"
       ]
+    },
+    {
+      "texto": "El punto de partida, la interferencia entre campo neuronal y lattice, sí aparece formulado por Grinberg en su artículo de 1983.",
+      "refs": [
+        "P5"
+      ]
     }
   ],
   "disputa": [
     {
       "titulo": "No se puede comprobar con un experimento",
-      "texto": "Es una tesis filosófica: no dice qué observación la confirmaría o la refutaría, así que ningún resultado empírico puede darle ni quitarle la razón.",
+      "texto": "Tal como la recoge la Psi Encyclopedia, es una tesis filosófica: no dice qué observación la confirmaría o la refutaría, así que ningún resultado empírico puede darle ni quitarle la razón.",
       "refs": [
-        "P5"
+        "S13"
       ]
     },
     {

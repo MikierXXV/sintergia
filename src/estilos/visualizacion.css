@@ -60,6 +60,8 @@
 .vis-resolucion { font-size: var(--t-sm); color: var(--texto-secundario); border-left: var(--trazo-enfasis) solid var(--acento, var(--separador)); padding-left: var(--e3); margin: var(--e4) var(--e5) var(--e4); max-width: none; }
 
 /* Lo que se ve cuando no hay WebGL o el sistema pide no moverse. */
+.vis-pie-esquema { font-size: var(--t-xs); color: var(--texto-secundario); margin: var(--e2) var(--e4) 0; max-width: none; }
+@media (max-width: 719px) { .vis-pie-esquema { margin-inline: var(--e3); } }
 .vis-respaldo { display: grid; place-items: center; height: 100%; padding: var(--e6); text-align: center; color: var(--texto-secundario); font-size: var(--t-sm); }
 
 /* ------------------------------------------------------------------------- */

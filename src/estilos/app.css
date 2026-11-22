@@ -15,7 +15,7 @@
 .top { background: var(--fondo); border-bottom: 1px solid var(--separador); }
 .top-in { max-width: 70rem; margin: auto; height: var(--alto-cabecera); padding-inline: var(--e4); display: flex; align-items: center; justify-content: space-between; }
 @media (min-width: 720px) { .top-in { padding-inline: var(--e6); } }
-.logo { display: inline-flex; align-items: center; min-height: 24px; font: var(--peso-medio) 1.25rem/1 var(--fuente-titulo); color: var(--texto); text-decoration: none; letter-spacing: -0.01em; }
+.logo { display: inline-flex; align-items: center; min-height: 44px; font: var(--peso-medio) 1.25rem/1 var(--fuente-titulo); color: var(--texto); text-decoration: none; letter-spacing: -0.01em; }
 .top-der { display: flex; gap: var(--e2); }
 .btn-buscar, .btn-icono {
   height: 36px; border: 1px solid var(--separador); background: var(--fondo-elevado); border-radius: var(--radio-medio);
@@ -29,7 +29,7 @@
 /* El botón mide 36 px; el área táctil llega a 44 con un hueco invisible. */
 .btn-buscar, .btn-icono:not(.peque) { position: relative; }
 .btn-buscar::before, .btn-icono:not(.peque)::before { content: ''; position: absolute; inset: -4px; }
-@media (max-width: 719px) { .btn-buscar { width: 36px; padding: 0; justify-content: center; } }
+@media (max-width: 719px) { .btn-buscar { width: 44px; padding: 0; justify-content: center; } .btn-buscar, .btn-icono:not(.peque) { height: 44px; } .btn-icono:not(.peque) { width: 44px; } }
 
 main#sitio { max-width: 70rem; margin: 0 auto; padding: 0 var(--e4) var(--e8); }
 @media (min-width: 720px) { main#sitio { padding-inline: var(--e6); } }

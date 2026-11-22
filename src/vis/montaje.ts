@@ -12,6 +12,7 @@
 
 import { crearVisualizacion, type FichaVisualizacion } from './registro';
 import { t, type Visualizacion } from './lenguaje';
+import { FAMILIAS } from '../app/contenido';
 
 export interface FichaMaquina extends FichaVisualizacion {
   mecanica: string;
@@ -51,6 +52,21 @@ function llevarALaPagina(hueco: HTMLElement): void {
   destino.dispatchEvent(new Event('vision-lista'));
 }
 
+/**
+ * El pie fijo de las familias que lo piden en su ficha (`pie_visualizacion`): lo que se ve es un
+ * esquema de una idea, no un dato medido. Se pone aquí, y no en cada mecánica, para que no dependa de
+ * que cada una se acuerde.
+ */
+function ponerPieEsquema(hueco: HTMLElement, familiaId: string): void {
+  if (!FAMILIAS.find((f) => f.id === familiaId)?.pie_visualizacion) return;
+  if (hueco.querySelector('.vis-pie-esquema')) return;
+  const pie = document.createElement('p');
+  pie.className = 'vis-pie-esquema';
+  pie.textContent = t('vis.pie_esquema');
+  const lienzo = hueco.querySelector('.vis-lienzo');
+  if (lienzo) lienzo.insertAdjacentElement('afterend', pie); else hueco.append(pie);
+}
+
 /** Mecánicas que ocupan un contexto WebGL y por tanto se sueltan al salir de pantalla. */
 const CON_WEBGL = new Set(['espacio-vectorial', 'reticula-3d']);
 
@@ -71,6 +87,7 @@ export function montarMaquina(hueco: HTMLElement, id: string, familiaId: string)
       hueco.dataset.mecanica = ficha.mecanica;
       viva = await crearVisualizacion(id, { mecanica: ficha.mecanica, parametros: { ...ficha.parametros, familia_id: familiaId } }, hueco);
       if (destruido) { viva.destruir(); viva = null; return; }
+      ponerPieEsquema(hueco, familiaId);
       llevarALaPagina(hueco);
     } catch (e) {
       console.error(`[maquina] "${id}" no ha podido arrancar`, e);

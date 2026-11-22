@@ -566,6 +566,20 @@ Las cajas de cita, disputa, «Para recordar», «Relacionados» y «Fuentes» us
 | `patron-de-interferencia` | Maniquí observador con las ondas delante; `pensar`. Nada que salga de su cabeza. |
 | `procesador-central` | El investigador ante las capas concéntricas, fuera de ellas. **Prohibido el maniquí sentado en el centro.** |
 
+**Lo aprendido en el 2.º reel v3 (`replicas-del-potencial-transferido`, S5-E1, 2026-11-20).** Importado con `--variante v3` a 2,9 MB.
+- **El atrezo es de cada reel.** Cada reel aporta un `escena-v3.js` corto que llama a `montarEscena` con su `crearAtrezo` (cabinas, taburetes, balanza, trazas, línea, rótulos, móvil) y su coreografía. La coreografía sola no dibuja nada: sin ese fichero el render no arranca. El atrezo común está en `atrezo-sintergia.js`; las piezas nuevas (`crearLinea`, `iluminar`) se añadieron ahí, sin cambiar las anteriores.
+- **Borde de entrada: x ≥ 2,4.** Un maniquí que entra desde fuera de plano toca el borde derecho (Q6) y la zona de interfaz. Con la cámara desplazada, el máximo seguro es entrar por x=2,4 en vez de 3,3. La cabina del extremo no debe pasar de x≈2,63 en pantalla. La cámara no vuelve al centro en la CTA: el móvil acabaría sobre la zona de interfaz de la derecha.
+- **El cian no se usa, tampoco en los subtítulos.** La marca `clave` del guion pinta la palabra en turquesa y rompe el reparto de color. En estos reels el énfasis va en `error` (coral) o no va.
+- **QA estricta.** Q1 (whisper oye mal los nombres propios), Q4 (sin `__kit`) y Q5 (parejas diminutas que se pisan) quedan en rojo por diseño, igual que en el piloto. Lo que cuenta es Q6 limpio y que Q5 no tenga cajas sobre el subtítulo.
+- **Comprobar a tamaño real.** En la hoja de contacto pequeña no se distinguen los pesos de una balanza ni unas pocas figuras encendidas en una fila; se confirman con un recorte a tamaño real.
+- **Mecánica.** `reel.mjs` y `sincronia-final.mjs` leen `guion.json`: con `guion-v3.json` hay que dejar una copia con ese nombre. El importador exige un `post.md` en la carpeta del reel.
+
+**Lote v3 de los reels restantes (S5, 2026-11-20/21; qué hay de nuevo).**
+- Hechos e importados con el flujo del piloto: `epr-en-el-cerebro`, `sintergia`, `lattice`, `patron-de-interferencia`, `procesador-central` y `que-es-la-teoria-sintergica` (cada mp4 entre 2,2 y 3,2 MB; presupuesto 4,7 MB, tope 5). Un solo maniquí por reel salvo `epr` (tres: investigador y dos personas A y B sin ningún hilo entre ellas).
+- Atrezo por reel: `epr` cabinas y balanza; `sintergia` eje oro discontinuo y regla sin marcas; `lattice` retícula y lupa que no encuentra nada; `patron` ondas de la física en neutro continuo y las de Grinberg en oro discontinuo; `procesador` capas concéntricas con el centro vacío (el maniquí siempre fuera); `que-es` el mapa de respaldo en el suelo, con el maniquí andando de «muy respaldado» a «solo postulado».
+- Whisper (Q1) oye mal los nombres propios y siglas («EPR» → «entre las hadas», «Grinberg» → «Greenberg»); Q4 y Q5 quedan en rojo por diseño. Conviene que el humano escuche `epr-en-el-cerebro` para confirmar que se entiende «entrelazadas».
+- Trampas aprendidas: la coreografía debe declarar `ventanas.I`; en `poner()` los rótulos aceptan arrays o la función de `aPx` (no envolverla otra vez); `pensar` seguido de otro gesto de brazo supera R-v3-4 (12°/fotograma); `andar` pide ≥ 3,2 s para 0,5–1 u; hay que usar `--forzar` para re-renderizar tras cambiar la escena; los objetos 3D altos pisan el subtítulo (y 338–462 px) y los rótulos de ARRIBA, así que se bajan a y ≈ 0,75; el maniquí entra en x = 2,4 con z = 0 y cámara en x ≈ 0,3 (con z > 0 toca el borde derecho); los rótulos de extremo no deben tocar el borde izquierdo (Q6).
+
 ### 11.5 Modelo 3D «souls» (Sketchfab) en el héroe
 
 **Qué es:**
