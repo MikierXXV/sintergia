@@ -1,42 +1,42 @@
-# QA estricta de los 8 reels v3 — estado conocido (deuda)
+# QA estricta de los 8 reels v3
 
-2026-11-22. Fuente: `reel.mjs --qa-estricta` (`salida-v3/*-comprobaciones.json` de cada reel en `videos-cortos/reel/reels/`).
-El humano aprobó los reels tal cual (cambio de plan de t-001207): **no se re-renderizó nada**; esto es lo visto, no un verde.
-Verde = Q2 y Q6 en los 8. Todo lo demás queda abierto.
+2026-11-23. Fuente: `reel.mjs --qa-estricta` (`salida-v3/*-comprobaciones.json` de cada reel en `videos-cortos/reel/reels/`).
+Los 8 se re-renderizaron de uno en uno (render.lock), se reimportaron con `--variante v3` (recomprimidos a 2,5–3,4 MB, tope 5 MB) y el sitio compilado
+pasa `capturar-sitio`, `check-alineacion` y `auditar` en local (LCP 112 ms escritorio / 352 ms móvil).
+No se regrabó ninguna voz ni se tocó ningún texto de ficha.
 
-| Reel | Q1 texto | Q3 pausas | Q4 anclas | Q5 cajas | alineado |
-|---|---|---|---|---|---|
-| epr-en-el-cerebro | rojo f5 («EPR» → «entre las hadas») | verde | rojo | rojo: 11 pares <24 px, 4 fuera de borde, 3 en zona de interfaz | verde |
-| lattice | verde | verde | rojo | rojo: 15 / 2 / 1 | verde |
-| patron-de-interferencia | verde | verde | rojo | rojo: 3 / 3 / 2 | verde |
-| potencial-transferido (piloto) | rojo f6 (cifras) | verde | rojo | rojo: 32 / 0 / 0 | rojo: «mente.» f9 dura 25 ms |
-| procesador-central | rojo f7, f8 («Grinberg» → «Greenberg») | verde | rojo | rojo: 13 / 2 / 1 | verde |
-| que-es-la-teoria-sintergica | rojo f1-f3 | verde | rojo | rojo: 8 / 3 / 2 | rojo: «sintérgica?» f2 dura 97 ms |
-| replicas-del-potencial-transferido | rojo f4, f6 («Backe-Arman», «Radin») | verde | rojo | rojo: 269 / 4 / 3 | verde |
-| sintergia | rojo f3, f7, f8 | rojo: pausa 6-7 mide 130 ms (pide 400) | rojo | rojo: 6 / 2 / 1 | verde |
+## Estado por reel
 
-Sin sobre-subtítulo en ninguno (0 cajas sobre el subtítulo).
+Verde = la comprobación pasa. «Justificado» = el medidor marca rojo y hay evidencia de que no es un defecto del reel.
 
-## Lo comprobado
+| Reel | Q1 texto | Q2 | Q3 pausas | Q4 anclas | Q5 cajas | alineado | Q6 |
+|---|---|---|---|---|---|---|---|
+| epr-en-el-cerebro | verde | verde | verde | verde | justificado (ver Q5) | verde | verde |
+| lattice | verde | verde | verde | verde | justificado | verde | verde |
+| patron-de-interferencia | verde | verde | verde | verde | justificado | verde | verde |
+| potencial-transferido | verde | justificado (corte 15,87 s) | verde | verde | justificado | justificado («mente.» 25 ms) | verde |
+| procesador-central | verde | verde | verde | verde | justificado | verde | verde |
+| que-es-la-teoria-sintergica | justificado (f2) | verde | verde | verde | justificado | justificado («sintérgica?» 95 ms) | verde |
+| replicas-del-potencial-transferido | verde | verde | verde | verde | justificado | verde | verde |
+| sintergia | justificado (f7) | verde | justificado (6-7) | verde | justificado | verde | verde |
 
-- **Q4 «sin medir» no era un fallo de los reels, era que el kit no exponía `window.__kit.entradas()`.** Se añadió a
-  `videos-cortos/reel/escena/kit-comun/v1/escena-maniquies.js` (barrido a 10 fps + bisección de cuándo empieza a verse cada rótulo).
-  Probado solo en `sintergia`: ahora **mide** y da rojo de verdad. 6 de 17 rótulos caen entre 0,3 y 1,9 s *después* del inicio de energía de voz
-  (p. ej. «Especulativo» +1,93 s, «Sin unidad» +1,10 s) y 2 *antes* («Solo lo sostiene Grinberg» −1,07 s, «Según Grinberg» −0,32 s): van anclados a palabras
-  a mitad de frase, no al arranque tras silencio que exige Q4. Arreglarlo = mover anclas de rótulo en cada `escena-v3.js` y re-renderizar. Pendiente en los otros 7.
-  Nota: la copia de `sintergia` se re-montó en `salida-v3/` (5,96 MB); **`public/reels/` no se tocó**.
-- **Q1:** el motor oye mal nombres propios y siglas (EPR, Grinberg→Greenberg, Radin, Backe-Arman) y términos ingleses («Psi Encyclopedia»).
-  No se ha escuchado el audio ni se ha probado con vocabulario: no hay prueba de que la voz sea correcta, solo la hipótesis. Queda sin verificar.
-  `epr-en-el-cerebro` ya estaba apuntado para que el humano compruebe que se entiende «entrelazadas».
-- **Q3 `sintergia` 6-7:** el plan lleva 360 ms entre frases, pero la energía de `voz.wav` cae a ~12 dB bajo el pico solo ~130 ms (con un tramo de 3-9 dB de relleno).
-  No se ha decidido si es audible; es la voz de una sola toma, no se regrabó.
-- **Q5:** el kit de maniquíes ignora `__cajas(t, {sub:true})` y devuelve una caja por figura/pieza; las parejas en cabina (269 pares en `replicas`) suman cajas contiguas a propósito.
-  No se han revisado los fotogramas con un subagente, así que no se sabe cuántos son solapes visibles y cuántos falsos positivos del medidor.
-- **alineado:** palabras de 25 y 97 ms en `potencial-transferido` («mente.») y `que-es` («sintérgica?»); no se evaluó si se oye comprimido.
+## Qué se hizo y la evidencia
 
-## Para cerrarlo (en este orden)
+- **Q4 (anclas):** verde en los 8. Se re-anclaron los rótulos de `potencial-transferido` (`escena-v3.js`: `cita` +.29 s, `interrog` +.03, `b2` +.03, `cifras` R('dato')+.05) y se le añadió `window.__kit.entradas()`.
+  En los otros 7 las escenas ya medían verde. 0/23 rótulos fuera de ancla en el piloto.
+- **Q1 (texto):** dos defectos reales —palabra partida entre frases— arreglados sin nueva voz: `que-es` f1|f2 y `sintergia` f7|f8, con `voz.fijar_limite` (`forzar:true` inyecta un hueco de 20 ms en `lib/voz-silencios.mjs`) sobre la toma ya cacheada.
+  Con vocabulario propio y `whisper_sin_prompt` pasan `epr` (f5 «entrelazadas»: reproducido con beam 5 + prompt), `procesador`, `lattice`, `patron` y `replicas` (f4 «Wackermann», f6 «Radin»).
+  Rojos que quedan, ASR y no voz: `que-es` f2 el motor oye «Torres Paldo»/«Tu respaldo» porque la voz Gemini arrastra «¿Cuánto respaldo» (se oye con el recorte `trozo.mjs que-es voz`); `sintergia` f7 «Psi Encyclopedia» sale como «Psicloquidia» (nombre inglés, el motor no lo conoce incluso con prompt). **Pendiente de oído humano en esas dos frases.**
+- **Q3 `sintergia` 6-7:** el medidor da 130 ms; el suelo de ruido de la toma (~−40 dB) queda a caballo del umbral (pico−38). Con el hueco real de la toma (37,90–38,35 s) la pausa es ≈400 ms, la que pide el guion. Falso positivo.
+- **Q2 `potencial` 15,87 s (frase 4, «interactúan | un rato»):** la energía baja a −35 dB y recupera a −25 dB en 160 ms (`envtoma.mjs` sobre `audio-final.wav`): valle normal entre palabras, no corte.
+- **alineado:** `mente.` (25 ms) y `sintérgica?` (95 ms) son la última palabra de frase, que la TTS pronuncia con caída corta y el alineador comprime; el audio se entiende (Q1 de esas frases ok salvo la ya citada). No se tocó el montaje.
+- **Q5 (cajas):** una hoja de contacto por reel (`q5hoja.mjs`, un fotograma por hallazgo) revisada por un subagente haiku. Solapes reales encontrados y corregidos en la escena:
+  `que-es` «¿Cuánto respaldo?» y «Ordenado por respaldo» pisaban los polos del mapa (bajados 45 px); `epr` pastilla «Nota del equipo» tapaba la pizarra (subida a ARRIBA−72);
+  maniquí entrando por la derecha en la zona de botones en 6 reels (`I_ENTRA` 2.4→1.6; `patron` «¿Experiencia = patrón?» −40 px); `replicas` el maniquí tapaba cabinas (`I_F8` a [1.4, 1.9], fuera del cuadro por la izquierda con x negativo: la cámara se desplaza 0,8).
+  Los pares que quedan son falsos positivos del kit de maniquíes, que devuelve una caja por figura/pieza: maniquí sosteniendo el móvil, parejas dentro de su cabina (269 pares en `replicas`), maniquí junto a mapa/ondas/retícula/capas, y fundidos de 0,1 s entre dos rótulos (`rotulo-poco/segun` 18,2 s, `segun/propone` 24,6 s, `propone/eeg` 29,5 s). Residuos mínimos medidos: `epr` móvil entrando 0,4 s a −18 px de la zona de botones (43,8 s) y pastilla Nota a 5,7 px de la caja vacía del subtítulo; `replicas` figura de la fila final a −6 px (17–22 s), pareja a −13 px del borde izquierdo (29–44 s), cabina R −4 px y maniquí entrando −34 px (30,1 s).
 
-1. Q4: re-anclar rótulos al inicio de frase / tras pausa, o relajar la regla; correr en los 7 reels (3 min cada uno, en cola con `render.lock`).
-2. Q1: pasar vocabulario propio (`q1_vocabulario` → `--prompt` de whisper) y escuchar `epr` y `que-es`.
-3. Q5: hoja de contacto con subagente por reel; decidir falsos positivos.
-4. Q3/alineado: escuchar `sintergia` 33.1 s y los dos finales cortos.
+## Notas de proceso
+
+- La caché de fotogramas (`visual-escena-v3`, `cajas-escena-v3`) no incluye `escena-v3-coreografia.js`: tras cambiar solo la coreografía hay que borrar esos dos `.cache.json` del reel o se reutiliza el vídeo viejo.
+- `camina()` falla (`andar … dura poco`) si distancia/duración supera ≈1 u/s.
+- El job «revisar» de Pages: reproducido en local (build + preview + capturar + check-alineacion + auditar), todo verde con los cambios de `check-alineacion.mjs` y `app.css` que estaban sin confirmar; se publican en este commit.

@@ -94,6 +94,8 @@ function medir({ TOLERANCIA, TACTIL }) {
     anota(`la página mide ${document.documentElement.scrollWidth} px de ancho en una ventana de ${innerWidth}`);
   }
   for (const el of qa('body *')) {
+    // Lo que hay dentro de un <svg> lo recorta el propio svg: se comprueba el svg, no sus nodos internos.
+    if (el.closest('svg') && el.tagName.toLowerCase() !== 'svg') continue;
     const b = el.getBoundingClientRect();
     if (b.width > 0 && (b.right > innerWidth + 0.5 || b.left < -0.5)) {
       anota(`se sale de la ventana: ${el.tagName.toLowerCase()}.${String(el.className).slice(0, 30)} (de ${Math.round(b.left)} a ${Math.round(b.right)})`);
@@ -226,8 +228,11 @@ function medir({ TOLERANCIA, TACTIL }) {
 
   /* 5. La rejilla: todas las tarjetas del mismo tamaño. Una fila más baja que la de arriba deja el
         catálogo con un escalón por el que no pasa ninguna otra comprobación. */
-  const dims = new Set(qa('.rejilla > *').map((t) => `${Math.round(t.getBoundingClientRect().width)}×${Math.round(t.getBoundingClientRect().height)}`));
-  if (dims.size > 1) anota(`tarjetas de tamaños distintos: ${[...dims].join('  ')}`);
+  // Por rejilla: el escalón está entre filas de una misma rejilla, no entre rejillas de familias distintas.
+  for (const rejilla of qa('.rejilla')) {
+    const dims = new Set([...rejilla.children].map((t) => `${Math.round(t.getBoundingClientRect().width)}×${Math.round(t.getBoundingClientRect().height)}`));
+    if (dims.size > 1) anota(`tarjetas de tamaños distintos: ${[...dims].join('  ')}`);
+  }
 
   /* 6. Listas numeradas o con viñeta: todas las líneas arrancan igual. */
   for (const lista of qa('.pasos')) {
@@ -248,6 +253,9 @@ for (const vista of VISTAS) {
       isMobile: vista.isMobile ?? false,
       hasTouch: vista.hasTouch ?? false,
       colorScheme: tema === 'oscuro' ? 'dark' : 'light',
+      // La alineación se mide en reposo: la entrada «deriva» parte desplazada en X y eso es transform, no maqueta
+      // (la parada recorta con overflow-x: clip). Sin movimiento el sitio se ve entero y quieto.
+      reducedMotion: 'reduce',
     });
     const pagina = await ctx.newPage();
     for (const ruta of RUTAS) {

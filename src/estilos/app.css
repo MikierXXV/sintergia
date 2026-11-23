@@ -46,7 +46,7 @@ main#sitio { max-width: 70rem; margin: 0 auto; padding: 0 var(--e4) var(--e8); }
 @media (max-width: 719px) { .fam-desc { display: none; } .fam-cab { margin-bottom: var(--e3); } }
 
 /* tarjeta de concepto: tarjeta en escritorio, fila en móvil */
-.rejilla { list-style: none; padding: 0; display: grid; gap: var(--e3); grid-template-columns: repeat(auto-fill, minmax(236px, 1fr)); }
+.rejilla { list-style: none; padding: 0; display: grid; gap: var(--e3); grid-template-columns: repeat(auto-fill, minmax(236px, 1fr)); grid-auto-rows: 1fr; }
 .rejilla > li { display: grid; }
 .card {
   position: relative; display: grid; grid-template-columns: auto 1fr auto; gap: var(--e3); align-items: start; text-decoration: none; color: var(--texto);
