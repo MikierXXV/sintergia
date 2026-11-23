@@ -96,6 +96,14 @@ function medir({ TOLERANCIA, TACTIL }) {
   for (const el of qa('body *')) {
     // Lo que hay dentro de un <svg> lo recorta el propio svg: se comprueba el svg, no sus nodos internos.
     if (el.closest('svg') && el.tagName.toLowerCase() !== 'svg') continue;
+    // Lo que desplaza un contenedor con scroll horizontal propio (el selector de opciones de una pieza)
+    // queda fuera de la ventana a propósito: el contenedor lo recorta, la página no se mueve.
+    let enScroll = false;
+    for (let p = el.parentElement; p && p !== document.body; p = p.parentElement) {
+      const ox = getComputedStyle(p).overflowX;
+      if (ox === 'auto' || ox === 'scroll') { enScroll = true; break; }
+    }
+    if (enScroll) continue;
     const b = el.getBoundingClientRect();
     if (b.width > 0 && (b.right > innerWidth + 0.5 || b.left < -0.5)) {
       anota(`se sale de la ventana: ${el.tagName.toLowerCase()}.${String(el.className).slice(0, 30)} (de ${Math.round(b.left)} a ${Math.round(b.right)})`);
