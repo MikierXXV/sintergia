@@ -112,9 +112,14 @@ jobs:
           curl -sf -o /dev/null http://localhost:4173/ || { echo 'el servidor no llegó a responder'; exit 1; }
 
           fallos=0
-          URL_BASE=http://localhost:4173/ node scripts/capturar-sitio.mjs || fallos=1
-          URL_BASE=http://localhost:4173/ node scripts/check-alineacion.mjs || fallos=1
-          URL_BASE=http://localhost:4173/ node scripts/auditar.mjs || fallos=1
+          # Cada script deja su salida en un fichero; si falla, la cola sale como anotación (legible sin iniciar sesión).
+          for guion in capturar-sitio check-alineacion auditar; do
+            URL_BASE=http://localhost:4173/ node scripts/$guion.mjs > /tmp/$guion.log 2>&1 || {
+              fallos=1
+              cat /tmp/$guion.log
+              echo "::error title=$guion::$(grep -v '^[[:space:]]*$' /tmp/$guion.log | tail -n 30 | cut -c1-300 | sed ':a;N;$!ba;s/\n/%0A/g')"
+            }
+          done
 
           kill $servidor 2>/dev/null || true
           exit $fallos
