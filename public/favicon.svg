@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- Lattice: el acento de un solo tono (accion) sobre el fondo del tema oscuro de design/tokens.json. -->
+  <circle cx="16" cy="16" r="15.5" fill="#0E1220" stroke="#6D7896"/>
+  <path fill="none" stroke="#A9B4CC" stroke-width="2.5" d="M16 6L26 16L16 26L6 16ZM11 11L21 21M21 11L11 21"/>
+  <g fill="#A9B4CC">
+    <circle cx="16" cy="6" r="3"/>
+    <circle cx="26" cy="16" r="3"/>
+    <circle cx="16" cy="26" r="3"/>
+    <circle cx="6" cy="16" r="3"/>
+    <circle cx="16" cy="16" r="3.5"/>
+  </g>
+</svg>
