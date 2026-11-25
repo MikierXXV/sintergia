@@ -120,6 +120,11 @@
         "properties": { "id": { "type": "string" }, "rotulo": { "type": "string" } }
       }
     },
+    "cifras": {
+      "type": "array",
+      "description": "Frases literales del texto cuyos números son cifras de estudios (muestras, porcentajes, recuentos): cuentan desde 0 al aparecer.",
+      "items": { "type": "string" }
+    },
     "maquina": { "type": "string", "description": "Id de la máquina en content/<idioma>/maquinas/ (por ahora, el del propio concepto)." },
     "reel": { "type": "string", "description": "Id del reel en content/reels.json (opcional)." }
   }

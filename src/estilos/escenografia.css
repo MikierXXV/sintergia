@@ -214,6 +214,61 @@
   margin: 0;
 }
 
+/* ------------------------------------------------------- efectos de texto -- */
+
+/*
+ * Título que se enfoca palabra a palabra. Las palabras solo existen mientras dura: las crea y las
+ * retira src/app/texto-vivo.ts. Con `backwards` y sin `forwards`, el estado normal es el visible.
+ */
+.bt-palabra {
+  display: inline-block;
+  animation: palabra-enfocar var(--m-palabra) ease-out backwards;
+  animation-delay: calc(var(--i, 0) * var(--escalonado-palabra));
+}
+
+@keyframes palabra-enfocar {
+  0% { opacity: 0; filter: blur(var(--desenfoque-palabra)); transform: translate3d(0, -0.3em, 0); }
+  60% { opacity: 0.6; filter: blur(calc(var(--desenfoque-palabra) * 0.4)); transform: translate3d(0, 0.05em, 0); }
+  100% { opacity: 1; filter: blur(0); transform: none; }
+}
+
+/*
+ * Cifra de un estudio que cuenta hasta su valor. La cifra real no se toca: mientras cuenta se hace
+ * transparente y encima, en posición absoluta, va el contador. Así no se mueve ni un carácter de la
+ * línea (CLS 0) y el lector de pantalla y el copiar y pegar ven siempre el dato de la ficha.
+ */
+@property --cuenta {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 0;
+}
+
+/* Cifras tabulares: con las proporcionales un «10» que cuenta es más ancho que el «11» real y tapa el espacio de delante. */
+.cifra { position: relative; font-variant-numeric: tabular-nums; }
+
+.cifra[data-contando] .cifra-valor { animation: cifra-ocultar var(--m-cuenta) linear; }
+
+.cifra[data-contando]::after {
+  content: counter(cuenta);
+  content: counter(cuenta) / "";
+  counter-reset: cuenta var(--cuenta);
+  position: absolute;
+  top: 0;
+  right: 0;
+  line-height: normal;
+  opacity: 0;
+  animation: cifra-contar var(--m-cuenta) var(--curva-entrada);
+}
+
+@keyframes cifra-ocultar {
+  from, to { opacity: 0; }
+}
+
+@keyframes cifra-contar {
+  from { --cuenta: 0; opacity: 1; }
+  to { --cuenta: var(--hasta); opacity: 1; }
+}
+
 /* ----------------------------------------------------------------- respeto -- */
 
 /*

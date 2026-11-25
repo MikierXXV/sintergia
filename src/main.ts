@@ -26,6 +26,8 @@ import type { Visualizacion } from './vis/lenguaje';
 import { alCambiarRuta, anclaAntigua, enlace, rutaActual } from './app/rutas';
 import { alCambiarTema, cambiarTema, temaActual } from './app/tema';
 import { t } from './app/textos';
+import { irA, montarScrollSuave, subirArriba } from './app/scroll-suave';
+import { montarTextoVivo } from './app/texto-vivo';
 import { montarMaquina, type Montaje } from './vis/montaje';
 
 const cabeceraBuscada = document.querySelector<HTMLElement>('#cabecera');
@@ -189,7 +191,7 @@ function pintarPortada(): void {
       const texto = document.createElement('div');
       texto.className = 'hero-texto';
       encabezado.innerHTML = `<p class="kicker">${escapar(t('portada.kicker'))}</p>`
-        + `<h1 id="fam-${familia.id}">${escapar(t('portada.titular'))}</h1>`;
+        + `<h1 id="fam-${familia.id}" data-titulo-vivo>${escapar(t('portada.titular'))}</h1>`;
       const intro = document.createElement('p');
       intro.className = 'descripcion-familia';
       intro.textContent = t('portada.intro');
@@ -220,7 +222,7 @@ function pintarPortada(): void {
         seccion.dataset.postulado = 'si';
         primeraEspeculativa = false;
       }
-      encabezado.innerHTML = `<p class="kicker kicker-familia">${escapar(kickerFamilia(i + 1, visibles))}</p><h2 id="fam-${familia.id}">${escapar(familia.nombre)}</h2>${familia.descripcion ? `<p class="descripcion-familia">${escapar(familia.descripcion)}</p>` : ''}`;
+      encabezado.innerHTML = `<p class="kicker kicker-familia">${escapar(kickerFamilia(i + 1, visibles))}</p><h2 id="fam-${familia.id}" data-titulo-vivo>${escapar(familia.nombre)}</h2>${familia.descripcion ? `<p class="descripcion-familia">${escapar(familia.descripcion)}</p>` : ''}`;
       cuerpo.append(encabezado);
       if (visibles.length) {
         const ul = document.createElement('ul');
@@ -347,9 +349,9 @@ function pagerRuta(c: Concepto): string {
 
 /** «En esta página»: salta a la sección sin tocar el fragmento (que es la ruta) y marca la que se lee. */
 function activarIndice(): void {
-  const reducido = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ir = (id: string | undefined): void => {
-    if (id) sitio.querySelector<HTMLElement>(`#${id}`)?.scrollIntoView({ behavior: reducido ? 'auto' : 'smooth', block: 'start' });
+    const destino = id ? sitio.querySelector<HTMLElement>(`#${id}`) : null;
+    if (destino) irA(destino);
   };
   for (const a of sitio.querySelectorAll<HTMLElement>('[data-ir]')) {
     a.addEventListener('click', (e) => { e.preventDefault(); ir(a.dataset.ir); });
@@ -399,7 +401,7 @@ function pintarConcepto(id: string): void {
             <span class="card-sim grande" role="img" aria-label="${escapar(t('concepto.simbolo_aria'))}">${escapar(c.simbolo)}</span>
             ${insigniaHtml(c)}
           </div>
-          <h1>${escapar(c.titulo)}</h1>
+          <h1 data-titulo-vivo>${escapar(c.titulo)}</h1>
           ${c.idea ? ideaHtml(c) : `<p class="resumen">${escapar(c.resumen)}</p>`}
         </header>
         ${conMaquina ? `<section class="maq" id="maquina" aria-labelledby="h-maquina">
@@ -480,7 +482,12 @@ alCambiarTema(() => {
 alCambiarRuta(() => {
   if (redirigirAnclaAntigua()) return;
   pintar();
-  scrollTo(0, 0);
+  subirArriba();
+  montarTextoVivo(sitio);
 });
 
-if (!redirigirAnclaAntigua()) pintar();
+montarScrollSuave();
+if (!redirigirAnclaAntigua()) {
+  pintar();
+  montarTextoVivo(sitio);
+}

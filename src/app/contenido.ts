@@ -64,6 +64,8 @@ export interface Concepto {
   puntos_clave?: string[];
   cita?: { texto: string; traduccion: string; autor: string; atribucion: string; fuente?: string };
   fuentes?: Ref[];
+  /** Frases del texto cuyos números son cifras de estudios y cuentan al aparecer. */
+  cifras?: string[];
   enlaces?: { id: string; rotulo: string }[];
   /** Id de la máquina en content/<idioma>/maquinas/. */
   maquina?: string;

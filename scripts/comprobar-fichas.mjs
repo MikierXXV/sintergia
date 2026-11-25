@@ -145,6 +145,14 @@ for (const p of conceptos) {
 
   for (const en of p.enlaces ?? []) if (!ids.has(en.id)) e(`enlace a un concepto que no existe: ${en.id}`);
 
+  // Cifras que cuentan: cada frase está literal en un bloque de la ficha, con enteros y sin años.
+  const bloques = textos.filter(([k]) => /^(idea|propone|analogia|se_sabe|disputa|detalles|puntos_clave)/.test(k));
+  for (const f of p.cifras ?? []) {
+    if (!/\d/.test(f)) e(`cifras: «${f}» no lleva ningún número`);
+    if (/\d[.,]\d|\b(19|20)\d\d\b/.test(f)) e(`cifras: «${f}» lleva un decimal o un año; el contador es de enteros`);
+    if (!bloques.some(([, v]) => v.includes(f))) e(`cifras: «${f}» no aparece en ningún bloque de la ficha`);
+  }
+
   // C6 / C8
   for (const [campo, v] of textos) {
     for (const re of PROHIBIDAS) if (re.test(v)) e(`${campo}: expresión prohibida ${re}`);

@@ -75,6 +75,7 @@
     "El balance solo cuenta las réplicas del diseño (S2, S3 y S8); los emparentados se muestran aparte.",
     "Del dato estadístico de la réplica negativa solo tenemos la versión de un agregador, sin confirmar."
   ],
+  "cifras": ["17 parejas","3 parejas positivas de 13","11 sanadores","29 estudios","20 % y un 25 %"],
   "fuentes": [
     {
       "ref": "S3",

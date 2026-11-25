@@ -12,6 +12,7 @@
  * «Lo que está en disputa» es una caja con aviso y NUNCA se pliega (DEC §3): una reserva escondida en
  * un bloque plegado es una reserva que no existe.
  */
+import { irA } from './scroll-suave';
 import { t } from './textos';
 import type { Concepto } from './contenido';
 import type { Reel } from './reels';
@@ -20,8 +21,30 @@ import type { Reel } from './reels';
 const escapar = (s: string): string =>
   s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 
-export function md(texto: string): string {
-  return escapar(texto).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>');
+/**
+ * Marca para el contador los números de las frases que la ficha declara en `cifras` (las de estudios:
+ * muestras, porcentajes, recuentos). Qué cuenta y qué no lo decide el contenido; un año o un número de
+ * página no se anima porque nadie lo declara.
+ */
+function marcarCifras(html: string, frases: string[]): string {
+  const numeros = new Map<number, string>();
+  for (const frase of frases.map(escapar)) {
+    for (let i = html.indexOf(frase); i >= 0; i = html.indexOf(frase, i + frase.length)) {
+      for (const n of frase.matchAll(/\d+/g)) numeros.set(i + n.index, n[0]);
+    }
+  }
+  let salida = '';
+  let desde = 0;
+  for (const [i, n] of [...numeros].sort(([a], [b]) => a - b)) {
+    salida += `${html.slice(desde, i)}<span class="cifra" style="--hasta:${n}"><span class="cifra-valor">${n}</span></span>`;
+    desde = i + n.length;
+  }
+  return salida + html.slice(desde);
+}
+
+export function md(texto: string, cifras: string[] = []): string {
+  return marcarCifras(escapar(texto), cifras)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>');
 }
 
 /** Trazos de 24×24 de los títulos de bloque. */
@@ -53,7 +76,7 @@ export function insigniaHtml(c: Concepto): string {
 
 /** La entradilla «En una frase». */
 export function ideaHtml(c: Concepto): string {
-  return c.idea ? `<div class="idea"><small>${escapar(t('bloques.en_una_frase'))}</small><p>${md(c.idea)}</p></div>` : '';
+  return c.idea ? `<div class="idea"><small>${escapar(t('bloques.en_una_frase'))}</small><p>${md(c.idea, c.cifras)}</p></div>` : '';
 }
 
 interface Entrada { id: string; titulo: string }
@@ -83,8 +106,8 @@ const chips = (refs: string[] | undefined): string =>
 function propone(c: Concepto): string {
   const p = c.propone;
   if (!p) return '';
-  const intro = p.intro ? `<p class="propone-intro">${md(p.intro)}</p>` : '';
-  const pasos = `<ol class="pasos">${p.pasos.map((s) => `<li><b>${md(s.titulo)}</b><span>${md(s.texto)}</span></li>`).join('')}</ol>`;
+  const intro = p.intro ? `<p class="propone-intro">${md(p.intro, c.cifras)}</p>` : '';
+  const pasos = `<ol class="pasos">${p.pasos.map((s) => `<li><b>${md(s.titulo, c.cifras)}</b><span>${md(s.texto, c.cifras)}</span></li>`).join('')}</ol>`;
   let cita = '';
   if (c.cita) {
     cita = `<blockquote class="cita"><p class="cita-texto" lang="en">${escapar(t('bloques.cita_original').replace('{texto}', c.cita.texto))}</p>`
@@ -98,32 +121,32 @@ function analogia(c: Concepto): string {
   const a = c.analogia;
   if (!a) return '';
   return seccion('analogia', 'idea', t('bloques.piensalo_asi'),
-    `<div class="anal"><h3>${md(a.titulo)}</h3><p>${md(a.texto)}</p></div><p class="anal-origen">${escapar(t('bloques.analogia_editorial'))}</p>`);
+    `<div class="anal"><h3>${md(a.titulo, c.cifras)}</h3><p>${md(a.texto, c.cifras)}</p></div><p class="anal-origen">${escapar(t('bloques.analogia_editorial'))}</p>`);
 }
 
 function seSabe(c: Concepto): string {
   if (!c.se_sabe?.length) return '';
   return seccion('se-sabe', 'ok', t('bloques.se_sabe'),
-    `<ul class="se-sabe">${c.se_sabe.map((s) => `<li><span>${md(s.texto)}</span>${chips(s.refs)}</li>`).join('')}</ul>`);
+    `<ul class="se-sabe">${c.se_sabe.map((s) => `<li><span>${md(s.texto, c.cifras)}</span>${chips(s.refs)}</li>`).join('')}</ul>`);
 }
 
 function disputa(c: Concepto): string {
   if (!c.disputa?.length) return '';
   const cuerpo = `<div class="aviso-disputa" role="note">${ico('aviso')}<p>${escapar(t('bloques.disputa_aviso'))}</p></div>`
-    + c.disputa.map((d) => `<div class="disp"><h3>${md(d.titulo)}</h3><p>${md(d.texto)}</p>${chips(d.refs)}</div>`).join('');
+    + c.disputa.map((d) => `<div class="disp"><h3>${md(d.titulo, c.cifras)}</h3><p>${md(d.texto, c.cifras)}</p>${chips(d.refs)}</div>`).join('');
   return seccion('disputa', 'aviso', t('bloques.disputa'), cuerpo, 'caja-disputa');
 }
 
 function detalles(c: Concepto): string {
   if (!c.detalles?.length) return '';
   return seccion('detalles', 'mas', t('bloques.para_ir_mas_lejos'), `<div class="det">${c.detalles.map((d) =>
-    `<details><summary>${md(d.titulo)}${ico('chev')}</summary><div class="det-cuerpo"><p>${md(d.texto)}</p>${chips(d.refs)}</div></details>`).join('')}</div>`);
+    `<details><summary>${md(d.titulo, c.cifras)}${ico('chev')}</summary><div class="det-cuerpo"><p>${md(d.texto, c.cifras)}</p>${chips(d.refs)}</div></details>`).join('')}</div>`);
 }
 
 function recordar(c: Concepto): string {
   if (!c.puntos_clave?.length) return '';
   return seccion('recordar', 'recordar', t('bloques.para_recordar'),
-    `<ul class="recordar">${c.puntos_clave.map((p) => `<li>${ico('ok')}<span>${md(p)}</span></li>`).join('')}</ul>`);
+    `<ul class="recordar">${c.puntos_clave.map((p) => `<li>${ico('ok')}<span>${md(p, c.cifras)}</span></li>`).join('')}</ul>`);
 }
 
 const TIPOS = ['primaria', 'replica', 'critica', 'contexto'] as const;
@@ -190,7 +213,7 @@ export function activarBloques(raiz: HTMLElement): void {
     e.preventDefault();
     const det = destino.closest('details');
     if (det) det.open = true;
-    destino.scrollIntoView({ block: 'center' });
+    irA(destino, 'center');
     destino.classList.add('resaltada');
     setTimeout(() => destino.classList.remove('resaltada'), 1800);
   });

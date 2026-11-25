@@ -138,6 +138,10 @@
   --curva-entrada: cubic-bezier(0.16, 1, 0.3, 1);
   --curva-salida: cubic-bezier(0.4, 0, 1, 1);
   --curva-suave: cubic-bezier(0.4, 0, 0.2, 1);
+  --m-palabra: 600ms;
+  --escalonado-palabra: 70ms;
+  --m-cuenta: 1400ms;
+  --desenfoque-palabra: 10px;
 
   /* ---- visualizaciones ----
      CON UNIDADES. Ver la nota de design/tokens.json: un token de longitud sin unidad invalida en
